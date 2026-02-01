@@ -31,24 +31,35 @@ export const GithubLanguages = ({ username }: GithubLanguagesProps) => {
   // Get top 6 languages
   const topLanguages = Object.entries(languages).slice(0, 6);
 
+  // Calcular porcentaje total de bytes para calcular proporciones
+  const totalBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
+
   return (
-    <div className="space-y-3">
+    <div className="space-y-5">
       {topLanguages.length > 0 ? (
-        <div className="flex flex-wrap gap-2">
-          {topLanguages.map(([language, count]) => (
-            <div 
-              key={language} 
-              className="px-3 py-2 rounded-lg bg-white/5 border border-white/10 flex items-center gap-2 group hover:bg-white/10 transition-colors"
-            >
-              <div 
-                className="w-3 h-3 rounded-full" 
-                style={{ backgroundColor: getLanguageColor(language) }}
-              ></div>
-              <span className="text-sm font-medium">{language}</span>
-              <span className="text-xs text-muted-foreground">({count})</span>
+        topLanguages.map(([language, bytes]) => {
+          const percentage = totalBytes > 0 ? Math.round((bytes / totalBytes) * 100) : 0;
+          return (
+            <div key={language} className="group">
+              <div className="flex justify-between items-center mb-2 text-sm">
+                <span className="text-black font-bold flex items-center gap-2">
+                  <div
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: getLanguageColor(language) }}
+                  ></div>
+                  {language}
+                </span>
+                <span className="text-muted-foreground text-xs">{percentage}%</span>
+              </div>
+              <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div
+                  className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
             </div>
-          ))}
-        </div>
+          );
+        })
       ) : (
         <p className="text-sm text-muted-foreground">No language data available</p>
       )}

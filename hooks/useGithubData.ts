@@ -67,20 +67,33 @@ export const useGithubData = (username: string) => {
         // Filter out forks and get top repos
         const originalRepos = reposData.filter(repo => !repo.fork);
 
-        // Calculate language stats
+        // Calculate language stats by fetching languages for each repo
         const languageStats: LanguageStats = {};
         for (const repo of originalRepos) {
-          if (repo.language) {
-            languageStats[repo.language] = (languageStats[repo.language] || 0) + 1;
+          try {
+            const repoLangResponse = await fetch(repo.languages_url);
+            if (repoLangResponse.ok) {
+              const repoLanguages: Record<string, number> = await repoLangResponse.json();
+
+              // Sum up language bytes across all repos
+              for (const [lang, bytes] of Object.entries(repoLanguages)) {
+                languageStats[lang] = (languageStats[lang] || 0) + bytes;
+              }
+            }
+          } catch (err) {
+            // If we can't fetch repo languages, fall back to the primary language
+            if (repo.language) {
+              languageStats[repo.language] = (languageStats[repo.language] || 0) + 100; // Assign some default value
+            }
           }
         }
 
-        // Sort languages by count
+        // Sort languages by total bytes
         const sortedLanguages: LanguageStats = {};
         Object.entries(languageStats)
           .sort(([, a], [, b]) => b - a)
-          .forEach(([lang, count]) => {
-            sortedLanguages[lang] = count;
+          .forEach(([lang, bytes]) => {
+            sortedLanguages[lang] = bytes;
           });
 
         setData({
