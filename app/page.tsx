@@ -127,11 +127,61 @@ export default function Portfolio() {
                   Languages & Technologies
                 </h3>
                 <div className="space-y-5">
-                  <p className="text-sm text-muted-foreground">
-                    Based on my GitHub repositories and contributions
-                  </p>
                   <div className="mt-4">
-                    <GithubLanguages username="SnoW-099" />
+                    <div className="group">
+                      <div className="flex justify-between items-center mb-2 text-sm">
+                        <span className="text-black font-bold flex items-center gap-2">
+                          <div
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: "#3572a5" }}
+                          ></div>
+                          Python
+                        </span>
+                        <span className="text-muted-foreground text-xs">60%</span>
+                      </div>
+                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div
+                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
+                          style={{ width: "60%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="group mt-4">
+                      <div className="flex justify-between items-center mb-2 text-sm">
+                        <span className="text-black font-bold flex items-center gap-2">
+                          <div
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: "#e34c26" }}
+                          ></div>
+                          HTML
+                        </span>
+                        <span className="text-muted-foreground text-xs">10%</span>
+                      </div>
+                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div
+                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
+                          style={{ width: "10%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="group mt-4">
+                      <div className="flex justify-between items-center mb-2 text-sm">
+                        <span className="text-black font-bold flex items-center gap-2">
+                          <div
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: "#563d7c" }}
+                          ></div>
+                          CSS
+                        </span>
+                        <span className="text-muted-foreground text-xs">10%</span>
+                      </div>
+                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div
+                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
+                          style={{ width: "10%" }}
+                        ></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
