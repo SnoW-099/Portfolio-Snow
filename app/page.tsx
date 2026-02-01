@@ -22,6 +22,8 @@ import {
 import { BentoGrid } from "@/components/BentoGrid"
 import { BentoCard } from "@/components/BentoCard"
 import { robloxScript } from "@/components/roblox-script"
+import { GithubProfile } from "@/components/GithubProfile";
+import { GithubLanguages } from "@/components/GithubLanguages";
 import {
   Dialog,
   DialogContent,
@@ -39,24 +41,9 @@ export default function Portfolio() {
     document.documentElement.classList.add("dark")
   }, [])
 
-  const languages = [
-    { name: "Python", level: 80 },
-    { name: "LuaU", level: 75 },
-    { name: "HTML / CSS", level: 30 },
-    { name: "GDScript", level: 15 },
-    { name: "JavaScript", level: 10 },
-  ]
-
-  const stack = [
-    { name: "Git", desc: "Version Control", icon: Github },
-    { name: "VS Code", desc: "Editor", icon: Terminal },
-    { name: "Vercel", desc: "Deployment", icon: Zap },
-    { name: "Netlify", desc: "Deployment", icon: Cloud },
-  ]
-
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background pb-20">
-      {/* 
+      {/*
         --------------------------------------------------
         PRESERVED BACKGROUND BLOBS & NOISE
         --------------------------------------------------
@@ -100,7 +87,7 @@ export default function Portfolio() {
                 Crafting worlds effectively.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-lg">
-                Hi, I’m Angel, a person eager to learn new things. I have knowledge in video games, programming, UI, web design, and more.
+                Hi, I'm Angel, a person eager to learn new things. I have knowledge in video games, programming, UI, web design, and more.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -114,34 +101,22 @@ export default function Portfolio() {
             </div>
           </BentoCard>
 
-          {/* SOCIAL / STATS - Col Span 4 */}
+          {/* GITHUB PROFILE - Col Span 3 */}
           <BentoCard colSpan={3} className="p-6 relative">
             <div className="h-full flex flex-col justify-between">
               <div>
-                <h3 className="text-lg font-semibold mb-1">Connect</h3>
-                <p className="text-sm text-muted-foreground">Find me on these platforms.</p>
+                <h3 className="text-lg font-semibold mb-1 flex items-center gap-2">
+                  <Github className="w-5 h-5" />
+                  GitHub Profile
+                </h3>
+                <p className="text-sm text-muted-foreground">Latest activity & projects</p>
               </div>
 
-              <div className="space-y-3 mt-6">
-                <a href="https://github.com/SnoW-099" target="_blank" className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all group">
-                  <Github className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
-                  <span className="text-sm font-medium">GitHub</span>
-                  <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
-                </a>
-                <button onClick={() => navigator.clipboard.writeText(".snow_xd")} className="w-full flex items-center gap-3 p-3 rounded-lg bg-[#5865F2]/10 hover:bg-[#5865F2]/20 border border-[#5865F2]/20 transition-all group text-left">
-                  <MessageCircle className="w-5 h-5 text-[#5865F2]" />
-                  <span className="text-sm font-medium">Discord</span>
-                  <span className="text-xs ml-auto opacity-50 bg-[#5865F2]/20 px-2 py-0.5 rounded">.snow_xd</span>
-                </button>
-                <a href="mailto:contact@angel.dev" className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all group">
-                  <Mail className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
-                  <span className="text-sm font-medium">Email</span>
-                </a>
+              <div className="overflow-y-auto max-h-[calc(100%-3rem)] pr-2">
+                <GithubProfile username="SnoW-099" />
               </div>
             </div>
           </BentoCard>
-
-
 
           {/* SKILLS - Col Span 8 */}
           <BentoCard colSpan={8} className="p-8">
@@ -149,20 +124,15 @@ export default function Portfolio() {
               <div>
                 <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
                   <Cpu className="w-5 h-5 text-muted-foreground" />
-                  Languages
+                  Languages & Technologies
                 </h3>
                 <div className="space-y-5">
-                  {languages.map((lang, i) => (
-                    <div key={lang.name} className="group">
-                      <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-black font-bold">{lang.name}</span>
-                        <span className="text-muted-foreground text-xs">{lang.level}%</span>
-                      </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                        <div className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400" style={{ width: `${lang.level}%` }}></div>
-                      </div>
-                    </div>
-                  ))}
+                  <p className="text-sm text-muted-foreground">
+                    Based on my GitHub repositories and contributions
+                  </p>
+                  <div className="mt-4">
+                    <GithubLanguages username="SnoW-099" />
+                  </div>
                 </div>
               </div>
 
@@ -173,15 +143,34 @@ export default function Portfolio() {
                     Tools & Platforms
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                    {stack.map(tool => (
-                      <div key={tool.name} className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
-                        <tool.icon className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                        <div>
-                          <div className="text-sm font-medium">{tool.name}</div>
-                          <div className="text-xs text-muted-foreground">{tool.desc}</div>
-                        </div>
+                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
+                      <Github className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                      <div>
+                        <div className="text-sm font-medium">GitHub</div>
+                        <div className="text-xs text-muted-foreground">Version Control</div>
                       </div>
-                    ))}
+                    </div>
+                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
+                      <Terminal className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                      <div>
+                        <div className="text-sm font-medium">VS Code</div>
+                        <div className="text-xs text-muted-foreground">Editor</div>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
+                      <Zap className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                      <div>
+                        <div className="text-sm font-medium">Vercel</div>
+                        <div className="text-xs text-muted-foreground">Deployment</div>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
+                      <Cloud className="w-5 h-5 mt-0.5 text-muted-foreground" />
+                      <div>
+                        <div className="text-sm font-medium">Netlify</div>
+                        <div className="text-xs text-muted-foreground">Deployment</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -220,8 +209,6 @@ export default function Portfolio() {
               <span className="text-xs border border-white/10 px-2 py-1 rounded-md bg-white/5">Tailwind</span>
             </div>
           </BentoCard>
-
-
 
         </BentoGrid>
 
