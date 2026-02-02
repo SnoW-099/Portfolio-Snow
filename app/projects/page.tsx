@@ -81,14 +81,29 @@ export default function ProjectsPage() {
                         </div>
                     </BentoCard>
 
-                    {/* TEMPLATE 1 */}
-                    <BentoCard colSpan={6} className="min-h-[350px] p-8 group/card border-dashed">
-                        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center opacity-50 group-hover/card:opacity-100 transition-opacity">
-                            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
-                                <LayoutTemplate className="w-8 h-8 text-muted-foreground" />
+                    {/* REZ BOT PROJECT */}
+                    <BentoCard
+                        colSpan={6}
+                        className="min-h-[350px] p-8 group/card cursor-pointer"
+                        onClick={() => window.open('https://github.com/SnoW-099/Rez', '_blank')}
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
+                        <div className="relative z-10 h-full flex flex-col">
+                            <div className="mb-auto">
+                                <div className="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center mb-4 text-purple-400">
+                                    <Gamepad2 className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-2">Rez Bot</h3>
+                                <p className="text-muted-foreground">Rez is a bot you can use in your Discord server for a lot of things like security, fun functions, etc.</p>
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">Project Template A</h3>
-                            <p className="text-xs text-muted-foreground">Reserved for future game prototype.</p>
+
+                            <div className="mt-8 flex items-center justify-between">
+                                <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-purple-300 border border-purple-500/20">Python</span>
+                                <button className="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 transition-colors">
+                                    <Code2 className="w-3.5 h-3.5" />
+                                    View on GitHub
+                                </button>
+                            </div>
                         </div>
                     </BentoCard>
 
