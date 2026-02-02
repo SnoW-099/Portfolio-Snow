@@ -101,19 +101,32 @@ export default function Portfolio() {
             </div>
           </BentoCard>
 
-          {/* GITHUB PROFILE - Col Span 3 */}
+          {/* CONTACT - Col Span 3 */}
           <BentoCard colSpan={3} className="p-6 relative">
             <div className="h-full flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-semibold mb-1 flex items-center gap-2">
                   <Github className="w-5 h-5" />
-                  GitHub Profile
+                  Contact
                 </h3>
-                <p className="text-sm text-muted-foreground">Latest activity & projects</p>
+                <p className="text-sm text-muted-foreground">Get in touch</p>
               </div>
 
-              <div className="overflow-y-auto max-h-[calc(100%-3rem)] pr-2">
-                <GithubProfile username="SnoW-099" />
+              <div className="space-y-3 mt-6">
+                <a href="https://github.com/SnoW-099" target="_blank" className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all group">
+                  <Github className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+                  <span className="text-sm font-medium">GitHub</span>
+                  <ExternalLink className="w-3 h-3 ml-auto opacity-50" />
+                </a>
+                <button onClick={() => navigator.clipboard.writeText(".snow_xd")} className="w-full flex items-center gap-3 p-3 rounded-lg bg-[#5865F2]/10 hover:bg-[#5865F2]/20 border border-[#5865F2]/20 transition-all group text-left">
+                  <MessageCircle className="w-5 h-5 text-[#5865F2]" />
+                  <span className="text-sm font-medium">Discord</span>
+                  <span className="text-xs ml-auto opacity-50 bg-[#5865F2]/20 px-2 py-0.5 rounded">.snow_xd</span>
+                </button>
+                <a href="mailto:ryze0950@gmail.com" className="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all group">
+                  <Mail className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+                  <span className="text-sm font-medium">Email</span>
+                </a>
               </div>
             </div>
           </BentoCard>
