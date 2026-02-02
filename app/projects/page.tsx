@@ -84,8 +84,7 @@ export default function ProjectsPage() {
                     {/* REZ BOT PROJECT */}
                     <BentoCard
                         colSpan={6}
-                        className="min-h-[350px] p-8 group/card cursor-pointer"
-                        onClick={() => window.open('https://github.com/SnoW-099/Rez', '_blank')}
+                        className="min-h-[350px] p-8 group/card"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
                         <div className="relative z-10 h-full flex flex-col">
@@ -99,10 +98,15 @@ export default function ProjectsPage() {
 
                             <div className="mt-8 flex items-center justify-between">
                                 <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-purple-300 border border-purple-500/20">Python</span>
-                                <button className="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 transition-colors">
+                                <a
+                                  href="https://github.com/SnoW-099/Rez"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 transition-colors"
+                                >
                                     <Code2 className="w-3.5 h-3.5" />
                                     View on GitHub
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </BentoCard>
