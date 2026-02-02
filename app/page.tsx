@@ -144,10 +144,7 @@ export default function Portfolio() {
                     <div className="group">
                       <div className="flex justify-between items-center mb-2 text-sm">
                         <span className="text-black font-bold flex items-center gap-2">
-                          <div
-                            className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: "#3572a5" }}
-                          ></div>
+                          <div className="w-3 h-3 rounded-full border border-current"></div>
                           Python
                         </span>
                         <span className="text-muted-foreground text-xs">60%</span>
@@ -162,10 +159,7 @@ export default function Portfolio() {
                     <div className="group mt-4">
                       <div className="flex justify-between items-center mb-2 text-sm">
                         <span className="text-black font-bold flex items-center gap-2">
-                          <div
-                            className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: "#e34c26" }}
-                          ></div>
+                          <div className="w-3 h-3 rounded-full border border-current"></div>
                           HTML
                         </span>
                         <span className="text-muted-foreground text-xs">10%</span>
@@ -180,10 +174,7 @@ export default function Portfolio() {
                     <div className="group mt-4">
                       <div className="flex justify-between items-center mb-2 text-sm">
                         <span className="text-black font-bold flex items-center gap-2">
-                          <div
-                            className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: "#563d7c" }}
-                          ></div>
+                          <div className="w-3 h-3 rounded-full border border-current"></div>
                           CSS
                         </span>
                         <span className="text-muted-foreground text-xs">10%</span>
@@ -192,6 +183,21 @@ export default function Portfolio() {
                         <div
                           className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
                           style={{ width: "10%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="group mt-4">
+                      <div className="flex justify-between items-center mb-2 text-sm">
+                        <span className="text-black font-bold flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full border border-current"></div>
+                          LuaU
+                        </span>
+                        <span className="text-muted-foreground text-xs">15%</span>
+                      </div>
+                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div
+                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
+                          style={{ width: "15%" }}
                         ></div>
                       </div>
                     </div>
@@ -276,7 +282,7 @@ export default function Portfolio() {
         </BentoGrid>
 
         <footer className="mt-20 py-8 border-t border-white/5 text-center text-sm text-muted-foreground">
-          <p>© 2024 Angel. Designed with <span className="text-white">Bento</span> aesthetic.</p>
+          <p>© 2026 Angel. Designed with <span className="text-white">Bento</span> aesthetic.</p>
         </footer>
       </div>
     </div >
