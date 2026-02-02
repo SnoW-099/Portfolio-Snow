@@ -94,8 +94,13 @@ export default function Portfolio() {
                 <a href="/projects" className="px-6 py-2.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-opacity">
                   View Projects
                 </a>
-                <a href="mailto:contact@angel.dev" className="px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 font-medium hover:bg-white/10 transition-colors">
-                  Contact Me
+                <a
+                  href="https://github.com/SnoW-099/Rez"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 font-medium hover:bg-white/10 transition-colors"
+                >
+                  Rez Bot
                 </a>
               </div>
             </div>
