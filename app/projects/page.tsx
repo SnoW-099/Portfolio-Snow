@@ -1,39 +1,24 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import {
     Bot,
     Zap,
     Code2,
-    Terminal,
     ArrowLeft,
-    LayoutTemplate,
     Construction,
 } from "lucide-react"
 import { BentoGrid } from "@/components/BentoGrid"
 import { BentoCard } from "@/components/BentoCard"
-import { SnippetCarousel } from "@/components/SnippetCarousel"
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
 
 export default function ProjectsPage() {
-    // Shared background logic for consistency
     useEffect(() => {
         document.documentElement.classList.add("dark")
     }, [])
 
     return (
         <div className="min-h-screen bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background pb-20">
-            {/* 
-                --------------------------------------------------
-                PRESERVED BACKGROUND BLOBS & NOISE (Copied from Home)
-                --------------------------------------------------
-            */}
+            {/* Background Blobs & Noise */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute inset-0 bg-noise opacity-[0.4] bg-repeat z-10"></div>
                 <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/20 blur-[120px] animate-blob"></div>
@@ -51,9 +36,7 @@ export default function ProjectsPage() {
 
                 <BentoGrid className="animate-fade-in">
 
-
-
-                    {/* VIBE PROJECT */}
+                    {/* Vibe */}
                     <BentoCard colSpan={6} className="min-h-[350px] p-8 group/card">
                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
                         <div className="relative z-10 h-full flex flex-col">
@@ -83,7 +66,7 @@ export default function ProjectsPage() {
                         </div>
                     </BentoCard>
 
-                    {/* REZ BOT PROJECT */}
+                    {/* Rez Bot */}
                     <BentoCard
                         colSpan={6}
                         className="min-h-[350px] p-8 group/card"
@@ -116,7 +99,7 @@ export default function ProjectsPage() {
                         </div>
                     </BentoCard>
 
-                    {/* FUTURE PROJECT A */}
+                    {/* Placeholder A */}
                     <BentoCard colSpan={6} className="min-h-[250px] p-8 group/card border-dashed border-white/5 opacity-40 hover:opacity-100 transition-opacity">
                         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                             <Construction className="w-8 h-8 text-muted-foreground mb-4" />
@@ -125,7 +108,7 @@ export default function ProjectsPage() {
                         </div>
                     </BentoCard>
 
-                    {/* FUTURE PROJECT B */}
+                    {/* Placeholder B */}
                     <BentoCard colSpan={6} className="min-h-[250px] p-8 group/card border-dashed border-white/5 opacity-40 hover:opacity-100 transition-opacity">
                         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                             <Construction className="w-8 h-8 text-muted-foreground mb-4" />

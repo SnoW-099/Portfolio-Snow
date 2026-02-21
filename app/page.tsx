@@ -1,48 +1,27 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import {
   Github,
   MessageCircle,
-  Code2,
   Terminal,
   Cpu,
-  Bot,
   Zap,
-  ArrowRight,
   Mail,
   ExternalLink,
-  Database,
   Cloud,
 } from "lucide-react"
 import { BentoGrid } from "@/components/BentoGrid"
 import { BentoCard } from "@/components/BentoCard"
-import { GithubProfile } from "@/components/GithubProfile";
-import { GithubLanguages } from "@/components/GithubLanguages";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 
 export default function Portfolio() {
-  const [isLoaded, setIsLoaded] = useState(false)
-
   useEffect(() => {
-    setIsLoaded(true)
-    // Enforce dark mode for this premium look
     document.documentElement.classList.add("dark")
   }, [])
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background pb-20">
-      {/*
-        --------------------------------------------------
-        PRESERVED BACKGROUND BLOBS & NOISE
-        --------------------------------------------------
-      */}
+      {/* Background Blobs & Noise */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-noise opacity-[0.4] bg-repeat z-10"></div>
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-500/20 blur-[120px] animate-blob"></div>
@@ -67,7 +46,7 @@ export default function Portfolio() {
 
         <BentoGrid className="animate-fade-in">
 
-          {/* HERO CARD - Col Span 8 */}
+          {/* Hero */}
           <BentoCard colSpan={9} className="p-8 md:p-12 min-h-[400px] justify-center">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-blue-300 mb-6 w-fit">
@@ -96,7 +75,7 @@ export default function Portfolio() {
             </div>
           </BentoCard>
 
-          {/* CONTACT - Col Span 3 */}
+          {/* Contact */}
           <BentoCard colSpan={3} className="p-6 relative">
             <div className="h-full flex flex-col justify-between">
               <div>
@@ -126,7 +105,7 @@ export default function Portfolio() {
             </div>
           </BentoCard>
 
-          {/* SKILLS - Col Span 8 */}
+          {/* Skills */}
           <BentoCard colSpan={8} className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -258,7 +237,7 @@ export default function Portfolio() {
             </div>
           </BentoCard>
 
-          {/* WEB & OTHER - Col Span 4 */}
+          {/* Web & Automation */}
           <BentoCard colSpan={4} className="p-8 flex flex-col justify-center text-center">
             <div className="w-16 h-16 mx-auto rounded-full bg-green-500/10 flex items-center justify-center mb-6">
               <Terminal className="w-8 h-8 text-green-400" />
@@ -280,6 +259,6 @@ export default function Portfolio() {
           <p>© 2026 Angel. Designed with <span className="text-white">Bento</span> aesthetic.</p>
         </footer>
       </div>
-    </div >
+    </div>
   )
 }
