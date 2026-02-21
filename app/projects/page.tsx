@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import {
-    Gamepad2,
+    Bot,
+    Zap,
     Code2,
     Terminal,
     ArrowLeft,
@@ -52,31 +53,32 @@ export default function ProjectsPage() {
 
 
 
-                    {/* EXISTING PROJECT 2: Roblox Systems */}
+                    {/* VIBE PROJECT */}
                     <BentoCard colSpan={6} className="min-h-[350px] p-8 group/card">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
                         <div className="relative z-10 h-full flex flex-col">
                             <div className="mb-auto">
-                                <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mb-4 text-blue-400">
-                                    <Code2 className="w-6 h-6" />
+                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4 text-indigo-400">
+                                    <Zap className="w-6 h-6" />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2">Roblox Systems</h3>
-                                <p className="text-muted-foreground">High-performance combat and movement systems.</p>
+                                <h3 className="text-2xl font-bold mb-2">Vibe</h3>
+                                <p className="text-muted-foreground">A minimalist web terminal experience designed for focus and productivity.</p>
                             </div>
 
                             <div className="mt-8 flex items-center justify-between">
-                                <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-blue-300 border border-blue-500/20">LuaU</span>
-                                <Dialog>
-                                    <DialogTrigger asChild>
-                                        <button className="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 transition-colors">
-                                            <Terminal className="w-3.5 h-3.5" />
-                                            View Snippet
-                                        </button>
-                                    </DialogTrigger>
-                                    <DialogContent className="max-w-2xl bg-transparent border-none shadow-none p-0 overflow-hidden">
-                                        <SnippetCarousel />
-                                    </DialogContent>
-                                </Dialog>
+                                <div className="flex gap-2">
+                                    <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-indigo-300 border border-indigo-500/20">TypeScript</span>
+                                    <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-blue-300 border border-blue-500/20">Next.js</span>
+                                </div>
+                                <a
+                                    href="https://github.com/SnoW-099/vibe"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-foreground border border-white/10 transition-colors"
+                                >
+                                    <Code2 className="w-3.5 h-3.5" />
+                                    View Repository
+                                </a>
                             </div>
                         </div>
                     </BentoCard>
@@ -89,43 +91,46 @@ export default function ProjectsPage() {
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
                         <div className="relative z-10 h-full flex flex-col">
                             <div className="mb-auto">
-                                <div className="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center mb-4 text-purple-400">
-                                    <Gamepad2 className="w-6 h-6" />
+                                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4 text-purple-400">
+                                    <Bot className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-2xl font-bold mb-2">Rez Bot</h3>
-                                <p className="text-muted-foreground">Rez is a bot you can use in your Discord server for a lot of things like security, fun functions, etc.</p>
+                                <p className="text-muted-foreground">Comprehensive Discord automation bot with security and fun modules.</p>
                             </div>
 
                             <div className="mt-8 flex items-center justify-between">
-                                <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-purple-300 border border-purple-500/20">Python</span>
+                                <div className="flex gap-2">
+                                    <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-purple-300 border border-purple-500/20">Python</span>
+                                    <span className="text-xs font-mono bg-white/5 px-2 py-1 rounded text-muted-foreground border border-white/5">Discord.py</span>
+                                </div>
                                 <a
-                                  href="https://github.com/SnoW-099/Rez"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-xs flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 transition-colors"
+                                    href="https://github.com/SnoW-099/Rez"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-foreground border border-white/10 transition-colors"
                                 >
                                     <Code2 className="w-3.5 h-3.5" />
-                                    View on GitHub
+                                    View Repository
                                 </a>
                             </div>
                         </div>
                     </BentoCard>
 
-                    {/* TEMPLATE 2 */}
-                    <BentoCard colSpan={6} className="min-h-[250px] p-8 group/card border-dashed">
-                        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center opacity-50 group-hover/card:opacity-100 transition-opacity">
+                    {/* FUTURE PROJECT A */}
+                    <BentoCard colSpan={6} className="min-h-[250px] p-8 group/card border-dashed border-white/5 opacity-40 hover:opacity-100 transition-opacity">
+                        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                             <Construction className="w-8 h-8 text-muted-foreground mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">Project Template B</h3>
-                            <p className="text-xs text-muted-foreground">Reserved for tool or utility.</p>
+                            <h3 className="text-xl font-semibold mb-2">Upcoming Project</h3>
+                            <p className="text-xs text-muted-foreground">Detailed description of a new utility or web application.</p>
                         </div>
                     </BentoCard>
 
-                    {/* TEMPLATE 3 */}
-                    <BentoCard colSpan={6} className="min-h-[250px] p-8 group/card border-dashed">
-                        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center opacity-50 group-hover/card:opacity-100 transition-opacity">
+                    {/* FUTURE PROJECT B */}
+                    <BentoCard colSpan={6} className="min-h-[250px] p-8 group/card border-dashed border-white/5 opacity-40 hover:opacity-100 transition-opacity">
+                        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
                             <Construction className="w-8 h-8 text-muted-foreground mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">Project Template C</h3>
-                            <p className="text-xs text-muted-foreground">Reserved for web experiment.</p>
+                            <h3 className="text-xl font-semibold mb-2">Coming Soon</h3>
+                            <p className="text-xs text-muted-foreground">Reserved for an innovative digital experience.</p>
                         </div>
                     </BentoCard>
 

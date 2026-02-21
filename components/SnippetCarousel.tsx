@@ -4,17 +4,17 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight, Copy, Check } from "lucide-react"
 import { DialogClose } from "@/components/ui/dialog"
 
-// Simple manual syntax highlighting for Luau
+// Simple manual syntax highlighting for JS/TS
 const highlightCode = (code: string) => {
-    const keywords = ["local", "function", "return", "end", "if", "then", "else", "true", "false", "nil", "require", "self", "and", "or", "not"]
-    const globals = ["game", "workspace", "script", "math", "table", "string", "print", "warn", "error", "Enum", "Instance", "Vector3", "CFrame", "TweenInfo"]
+    const keywords = ["const", "let", "var", "function", "return", "if", "else", "import", "export", "from", "default", "async", "await", "try", "catch", "interface", "type", "class", "extends", "implements", "true", "false", "null", "undefined"]
+    const globals = ["console", "window", "document", "fetch", "Promise", "JSON", "Math", "Object", "Array", "String", "Number", "Boolean"]
 
     return code.split(/(\s+|[(){}[\].,;="'#])/g).map((token, i) => {
         if (keywords.includes(token)) return <span key={i} className="text-purple-400">{token}</span>
         if (globals.includes(token)) return <span key={i} className="text-blue-400">{token}</span>
         if (!isNaN(Number(token))) return <span key={i} className="text-orange-400">{token}</span>
-        if (token.startsWith('"') || token.startsWith("'")) return <span key={i} className="text-green-400">{token}</span>
-        if (token.startsWith("--")) return <span key={i} className="text-gray-500 italic">{token}</span>
+        if (token.startsWith('"') || token.startsWith("'") || token.startsWith("`")) return <span key={i} className="text-green-400">{token}</span>
+        if (token.startsWith("//") || token.startsWith("/*")) return <span key={i} className="text-gray-500 italic">{token}</span>
         if (token.match(/^[A-Z]\w+$/)) return <span key={i} className="text-yellow-200">{token}</span> // Probable Class/Type
         return <span key={i} className="text-[#e6edf3]">{token}</span>
     })
@@ -22,133 +22,79 @@ const highlightCode = (code: string) => {
 
 const snippets = [
     {
-        title: "SprintHandler.luau",
-        desc: "Efficient stamina-based sprint system.",
-        code: `local SprintHandler = {}
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
+        title: "useLocalStorage.ts",
+        desc: "Custom React hook for persistent state management.",
+        code: `import { useState, useEffect } from 'react';
 
-function SprintHandler:Init(player)
-    self.Player = player
-    self.Stamina = 100
-    self.IsSprinting = false
-    
-    UserInputService.InputBegan:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.LeftShift then
-            self:SetSprinting(true)
-        end
-    end)
-    
-    UserInputService.InputEnded:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.LeftShift then
-            self:SetSprinting(false)
-        end
-    end)
-end
+export function useLocalStorage<T>(key: string, initialValue: T) {
+  const [value, setValue] = useState<T>(() => {
+    if (typeof window === 'undefined') return initialValue;
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
 
-function SprintHandler:SetSprinting(active)
-    self.IsSprinting = active
-    local goal = active and 24 or 16
-    
-    local tween = TweenService:Create(
-        self.Player.Character.Humanoid,
-        TweenInfo.new(0.5),
-        {WalkSpeed = goal}
-    )
-    tween:Play()
-end
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
 
-return SprintHandler`
+  return [value, setValue] as const;
+}`
     },
     {
-        title: "DoubleJump.luau",
-        desc: "Physics-based multi-jump mechanic.",
-        code: `local DoubleJump = {}
-local UserInputService = game:GetService("UserInputService")
+        title: "AuthMiddleware.ts",
+        desc: "Robust JWT validation for backend routes.",
+        code: `import { NextRequest, NextResponse } from 'next/server';
+import { verifyToken } from '@/lib/auth';
 
-function DoubleJump:Start(char)
-    local humanoid = char:WaitForChild("Humanoid")
-    local canJump = false
-    local hasDoubleJumped = false
-    
-    humanoid.StateChanged:Connect(function(old, new)
-        if new == Enum.HumanoidStateType.Landed then
-            canJump = true
-            hasDoubleJumped = false
-        elseif new == Enum.HumanoidStateType.Jumping then
-            canJump = false
-        end
-    end)
-    
-    UserInputService.JumpRequest:Connect(function()
-        if not canJump and not hasDoubleJumped then
-            hasDoubleJumped = true
-            
-            -- Apply upward impulse
-            char.HumanoidRootPart:ApplyImpulse(Vector3.new(0, 500, 0))
-            
-            -- Play visual effect
-            self:PlayJumpEffect(char.HumanoidRootPart.Position)
-        end
-    end)
-end
+export async function middleware(req: NextRequest) {
+  const token = req.headers.get('Authorization')?.split(' ')[1];
 
-return DoubleJump`
+  if (!token) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  try {
+    const decoded = await verifyToken(token);
+    (req as any).user = decoded;
+    return NextResponse.next();
+  } catch (error) {
+    return NextResponse.json({ error: 'Invalid Token' }, { status: 403 });
+  }
+}`
     },
     {
-        title: "CombatHandler.luau",
-        desc: "Server-side hit validation with sanity checks.",
-        code: `local CombatHandler = {}
-CombatHandler.__index = CombatHandler
+        title: "PortfolioData.ts",
+        desc: "Strictly typed interface for project data.",
+        code: `interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  links: {
+    github?: string;
+    demo?: string;
+  };
+}
 
-function CombatHandler.new(player)
-    local self = setmetatable({}, CombatHandler)
-    self.Player = player
-    self.LastSwing = 0
-    return self
-end
+const projects: Project[] = [
+  {
+    id: "rez-bot",
+    title: "Rez Bot",
+    description: "Multipurpose Discord bot.",
+    tags: ["Python", "Discord.py", "MongoDB"],
+    links: {
+      github: "https://github.com/SnoW-099/Rez"
+    }
+  }
+];
 
-function CombatHandler:ValidateHit(target, weaponData)
-    local now = workspace:GetServerTimeNow()
-    local distance = (target.Position - self.Player.Character.HumanoidRootPart.Position).Magnitude
-    
-    -- Sanity Checks
-    if distance > weaponData.Range + 2 then return false end
-    if now - self.LastSwing < weaponData.Cooldown then return false end
-    
-    self.LastSwing = now
-    return true
-end
-
-return CombatHandler`
-    },
-    {
-        title: "DataManager.luau",
-        desc: "Robust ProfileService wrapper for safe data handling.",
-        code: `local DataManager = {}
-local ProfileService = require(game.ServerScriptService.ProfileService)
-
-local ProfileStore = ProfileService.GetProfileStore("Save_v1", {Cash=0})
-
-function DataManager.PlayerAdded(player)
-    local profile = ProfileStore:LoadProfileAsync("User_" .. player.UserId)
-    
-    if profile ~= nil then
-        profile:AddUserId(player.UserId)
-        profile:Reconcile()
-        profile:ListenToRelease(function() player:Kick() end)
-        
-        if player:IsDescendantOf(game.Players) then
-            return profile
-        else
-            profile:Release()
-        end
-    else
-        player:Kick("Failed to load data")
-    end
-end
-
-return DataManager`
+export type { Project };
+export { projects };`
     }
 ]
 

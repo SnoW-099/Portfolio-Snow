@@ -11,9 +11,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Angel | Code Developer",
-  description: "Young game developer crafting interactive experiences with Python, LuaU, Godot and Roblox Studio.",
+  description: "Young developer crafting interactive experiences with Python, JavaScript, and TypeScript.",
   generator: "Next.js",
-  keywords: ["Game Developer", "Roblox", "Godot", "LuaU", "Python", "Portfolio", "Web Development"],
+  keywords: ["Code Developer", "JavaScript", "TypeScript", "Python", "Portfolio", "Web Development"],
   authors: [{ name: "Angel" }],
   creator: "Angel",
   openGraph: {
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://portofolio-snow.netlify.app/",
     title: "Angel | Code Developer Portfolio",
-    description: "Explore my game development projects, from Roblox systems to Godot roguelikes.",
+    description: "Explore my development projects, from automation scripts to web experiences.",
     siteName: "Angel's Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Angel | Code Developer",
-    description: "Check out my game dev portfolio!",
+    description: "Check out my code portfolio!",
     creator: "@Snow_099",
   },
   icons: {

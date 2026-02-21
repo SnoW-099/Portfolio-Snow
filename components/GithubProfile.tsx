@@ -84,9 +84,9 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
           </div>
         )}
         {profileData.website && (
-          <a 
-            href={profileData.website} 
-            target="_blank" 
+          <a
+            href={profileData.website}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:text-foreground transition-colors"
           >
@@ -107,12 +107,12 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
           {languages.map((lang) => (
             <div key={lang.name} className="group">
               <div className="flex justify-between items-center mb-1 text-sm">
-                <span className="text-black font-bold">{lang.name}</span>
+                <span className="text-foreground/80 font-medium">{lang.name}</span>
                 <span className="text-muted-foreground text-xs">{lang.percentage}%</span>
               </div>
-              <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                <div 
-                  className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400" 
+              <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div
+                  className="h-full bg-blue-400/50 transition-all duration-1000 ease-out group-hover:bg-blue-400/80"
                   style={{ width: `${lang.percentage}%` }}
                 ></div>
               </div>
@@ -143,8 +143,8 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
               <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                 {repo.language && (
                   <span className="flex items-center gap-1">
-                    <div 
-                      className="w-3 h-3 rounded-full" 
+                    <div
+                      className="w-3 h-3 rounded-full"
                       style={{ backgroundColor: getLanguageColor(repo.language) }}
                     ></div>
                     {repo.language}
@@ -164,17 +164,17 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
       <div className="pt-4 border-t border-white/10">
         <h4 className="font-semibold mb-3">Contact</h4>
         <div className="space-y-2">
-          <a 
-            href={`https://github.com/${username}`} 
-            target="_blank" 
+          <a
+            href={`https://github.com/${username}`}
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
           >
             <Github className="w-4 h-4" />
             <span className="text-sm">GitHub Profile</span>
           </a>
-          <a 
-            href="mailto:ryze0950@gmail.com" 
+          <a
+            href="mailto:ryze0950@gmail.com"
             className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
           >
             <Mail className="w-4 h-4" />
@@ -221,6 +221,6 @@ const getLanguageColor = (language: string): string => {
     'JSON': '#858585',
     'YAML': '#cb171e',
   };
-  
+
   return colors[language] || '#858585'; // gris por defecto
 };

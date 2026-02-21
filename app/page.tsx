@@ -5,12 +5,8 @@ import {
   Github,
   MessageCircle,
   Code2,
-  Gamepad2,
-  Brain,
   Terminal,
   Cpu,
-  Palette,
-  Music,
   Bot,
   Zap,
   ArrowRight,
@@ -21,7 +17,6 @@ import {
 } from "lucide-react"
 import { BentoGrid } from "@/components/BentoGrid"
 import { BentoCard } from "@/components/BentoCard"
-import { robloxScript } from "@/components/roblox-script"
 import { GithubProfile } from "@/components/GithubProfile";
 import { GithubLanguages } from "@/components/GithubLanguages";
 import {
@@ -84,10 +79,10 @@ export default function Portfolio() {
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-tight">
-                Crafting worlds effectively.
+                Crafting digital experiences.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-lg">
-                Hi, I'm Angel, a person eager to learn new things. I have knowledge in video games, programming, UI, web design, and more.
+                Hi, I'm Angel, a person eager to learn new things. I have knowledge in programming, UI, web design, and more.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -143,61 +138,61 @@ export default function Portfolio() {
                   <div className="mt-4">
                     <div className="group">
                       <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-black font-bold flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full border border-current"></div>
+                        <span className="text-foreground/90 font-medium flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-blue-400/40"></div>
                           Python
                         </span>
-                        <span className="text-muted-foreground text-xs">60%</span>
+                        <span className="text-muted-foreground text-xs">65%</span>
                       </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
-                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
-                          style={{ width: "60%" }}
+                          className="h-full bg-blue-400/60 transition-all duration-1000 ease-out group-hover:bg-blue-400/80"
+                          style={{ width: "65%" }}
                         ></div>
                       </div>
                     </div>
                     <div className="group mt-4">
                       <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-black font-bold flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full border border-current"></div>
-                          HTML
+                        <span className="text-foreground/90 font-medium flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/40"></div>
+                          JavaScript
                         </span>
-                        <span className="text-muted-foreground text-xs">10%</span>
+                        <span className="text-muted-foreground text-xs">25%</span>
                       </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
-                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
-                          style={{ width: "10%" }}
+                          className="h-full bg-yellow-400/60 transition-all duration-1000 ease-out group-hover:bg-yellow-400/80"
+                          style={{ width: "25%" }}
                         ></div>
                       </div>
                     </div>
                     <div className="group mt-4">
                       <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-black font-bold flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full border border-current"></div>
-                          CSS
-                        </span>
-                        <span className="text-muted-foreground text-xs">10%</span>
-                      </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                        <div
-                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
-                          style={{ width: "10%" }}
-                        ></div>
-                      </div>
-                    </div>
-                    <div className="group mt-4">
-                      <div className="flex justify-between items-center mb-2 text-sm">
-                        <span className="text-black font-bold flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full border border-current"></div>
-                          LuaU
+                        <span className="text-foreground/90 font-medium flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-blue-500/40"></div>
+                          TypeScript
                         </span>
                         <span className="text-muted-foreground text-xs">15%</span>
                       </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
-                          className="h-full bg-white transition-all duration-1000 ease-out group-hover:bg-blue-400"
+                          className="h-full bg-blue-500/60 transition-all duration-1000 ease-out group-hover:bg-blue-500/80"
                           style={{ width: "15%" }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="group mt-4">
+                      <div className="flex justify-between items-center mb-2 text-sm">
+                        <span className="text-foreground/90 font-medium flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-orange-400/40"></div>
+                          HTML & CSS
+                        </span>
+                        <span className="text-muted-foreground text-xs">40%</span>
+                      </div>
+                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div
+                          className="h-full bg-orange-400/60 transition-all duration-1000 ease-out group-hover:bg-orange-400/80"
+                          style={{ width: "40%" }}
                         ></div>
                       </div>
                     </div>
@@ -250,11 +245,11 @@ export default function Portfolio() {
                   </h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400/40"></span>
                       Improving Python skills
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400/40"></span>
                       Learning backend concepts
                     </li>
                   </ul>
@@ -270,7 +265,7 @@ export default function Portfolio() {
             </div>
             <h3 className="text-xl font-bold mb-2">Web & Automation</h3>
             <p className="text-sm text-muted-foreground mb-6">
-              Beyond games, I build utilities and websites (like this one) using modern web tech and Python.
+              I build utilities and websites using modern web technologies and Python.
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               <span className="text-xs border border-white/10 px-2 py-1 rounded-md bg-white/5">Next.js 15</span>
