@@ -88,6 +88,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
@@ -106,10 +107,21 @@
 
 /* Ambient Bloom Animations */
 @keyframes blob-bounce {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+
+  66% {
+    transform: translate(-30px, 30px) scale(0.85);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
 }
 
 .animate-blob {
@@ -126,8 +138,17 @@
 
 /* Refined Apple-style animations */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 .animate-fade-in {
@@ -135,8 +156,17 @@
 }
 
 @keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.8; }
-  50% { transform: translateY(6px); opacity: 0.4; }
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(6px);
+    opacity: 0.4;
+  }
 }
 
 .animate-scroll-bounce {
@@ -144,8 +174,17 @@
 }
 
 @keyframes content-reveal {
-  from { opacity: 0; filter: blur(5px); transform: scale(0.98); }
-  to { opacity: 1; filter: blur(0); transform: scale(1); }
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
 }
 
 .animate-modal-spring-smooth {

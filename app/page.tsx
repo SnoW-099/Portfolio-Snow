@@ -10,6 +10,11 @@ import {
   Mail,
   ExternalLink,
   Cloud,
+  Atom,
+  Triangle,
+  Wind,
+  Hexagon,
+  Database
 } from "lucide-react"
 import { BentoGrid } from "@/components/BentoGrid"
 import { BentoCard } from "@/components/BentoCard"
@@ -20,7 +25,7 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background pb-20">
+    <div className="h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background">
       {/* Background Blobs & Noise */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-noise opacity-[0.4] bg-repeat z-10"></div>
@@ -29,25 +34,11 @@ export default function Portfolio() {
         <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-indigo-500/20 blur-[120px] animate-blob delay-4000"></div>
       </div>
 
-      <div className="relative z-10 px-4 pt-12 md:pt-20">
-        <header className="max-w-7xl mx-auto mb-12 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
-              <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
-            </div>
-            <span className="font-medium text-lg tracking-tight">Angel</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-            <a href="https://github.com/SnoW-099" target="_blank" className="hover:text-foreground transition-colors">GitHub</a>
-            <span className="w-px h-4 bg-white/20"></span>
-            <span className="text-foreground">Code Developer</span>
-          </nav>
-        </header>
-
-        <BentoGrid className="animate-fade-in">
+      <div className="relative z-10 h-full w-full flex items-center justify-center p-4">
+        <BentoGrid className="animate-fade-in w-full max-w-7xl max-h-full">
 
           {/* Hero */}
-          <BentoCard colSpan={9} className="p-8 md:p-12 min-h-[400px] justify-center">
+          <BentoCard colSpan={9} rowSpan={2} className="p-8 md:p-10 flex flex-col justify-center">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-blue-300 mb-6 w-fit">
                 <span className="relative flex h-2 w-2">
@@ -57,18 +48,21 @@ export default function Portfolio() {
                 Available for work
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-tight">
-                Crafting digital experiences.
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 leading-none">
+                Angel.
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-lg">
-                Hi, I'm Angel, a person eager to learn new things. I have knowledge in programming, UI, web design, and more.
+              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground/60 font-medium mb-6">
+                Crafting digital experiences.
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-8 max-w-lg">
+                A person eager to learn new things. I have knowledge in programming, UI, web design, and more.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a href="/projects" className="px-6 py-2.5 rounded-lg bg-foreground text-background font-medium hover:opacity-90 transition-opacity">
+                <a href="/projects" className="px-6 py-2.5 rounded-lg bg-foreground text-background font-medium hover:scale-105 transition-all shadow-lg shadow-foreground/20">
                   View Projects
                 </a>
-                <a href="mailto:contact@angel.dev" className="px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 font-medium hover:bg-white/10 transition-colors">
+                <a href="mailto:ryze0950@gmail.com" className="px-6 py-2.5 rounded-lg bg-transparent border-2 border-white/10 font-medium hover:bg-white/5 hover:border-white/20 transition-all">
                   Contact Me
                 </a>
               </div>
@@ -76,7 +70,7 @@ export default function Portfolio() {
           </BentoCard>
 
           {/* Contact */}
-          <BentoCard colSpan={3} className="p-6 relative">
+          <BentoCard colSpan={3} rowSpan={2} className="p-6 relative">
             <div className="h-full flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-semibold mb-1 flex items-center gap-2">
@@ -106,72 +100,72 @@ export default function Portfolio() {
           </BentoCard>
 
           {/* Skills */}
-          <BentoCard colSpan={8} className="p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
+          <BentoCard colSpan={8} rowSpan={2} className="p-6 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 h-full">
+              <div className="flex flex-col justify-center">
                 <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
                   <Cpu className="w-5 h-5 text-muted-foreground" />
                   Languages & Technologies
                 </h3>
-                <div className="space-y-5">
+                <div className="space-y-4 md:space-y-5">
                   <div className="mt-4">
                     <div className="group">
-                      <div className="flex justify-between items-center mb-2 text-sm">
+                      <div className="flex justify-between items-center mb-1 md:mb-2 text-xs md:text-sm">
                         <span className="text-foreground/90 font-medium flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full bg-blue-400/40"></div>
+                          <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-blue-400/40"></div>
                           Python
                         </span>
-                        <span className="text-muted-foreground text-xs">65%</span>
+                        <span className="text-muted-foreground text-[10px] md:text-xs">Mid Level</span>
                       </div>
-                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1 md:h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
                           className="h-full bg-blue-400/60 transition-all duration-1000 ease-out group-hover:bg-blue-400/80"
-                          style={{ width: "65%" }}
+                          style={{ width: "50%" }}
                         ></div>
                       </div>
                     </div>
-                    <div className="group mt-4">
-                      <div className="flex justify-between items-center mb-2 text-sm">
+                    <div className="group mt-3 md:mt-4">
+                      <div className="flex justify-between items-center mb-1 md:mb-2 text-xs md:text-sm">
                         <span className="text-foreground/90 font-medium flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/40"></div>
+                          <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-yellow-400/40"></div>
                           JavaScript
                         </span>
-                        <span className="text-muted-foreground text-xs">25%</span>
+                        <span className="text-muted-foreground text-[10px] md:text-xs">Junior</span>
                       </div>
-                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1 md:h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
                           className="h-full bg-yellow-400/60 transition-all duration-1000 ease-out group-hover:bg-yellow-400/80"
                           style={{ width: "25%" }}
                         ></div>
                       </div>
                     </div>
-                    <div className="group mt-4">
-                      <div className="flex justify-between items-center mb-2 text-sm">
+                    <div className="group mt-3 md:mt-4">
+                      <div className="flex justify-between items-center mb-1 md:mb-2 text-xs md:text-sm">
                         <span className="text-foreground/90 font-medium flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full bg-blue-500/40"></div>
+                          <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-blue-500/40"></div>
                           TypeScript
                         </span>
-                        <span className="text-muted-foreground text-xs">15%</span>
+                        <span className="text-muted-foreground text-[10px] md:text-xs">Junior</span>
                       </div>
-                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1 md:h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
                           className="h-full bg-blue-500/60 transition-all duration-1000 ease-out group-hover:bg-blue-500/80"
-                          style={{ width: "15%" }}
+                          style={{ width: "25%" }}
                         ></div>
                       </div>
                     </div>
-                    <div className="group mt-4">
-                      <div className="flex justify-between items-center mb-2 text-sm">
+                    <div className="group mt-3 md:mt-4">
+                      <div className="flex justify-between items-center mb-1 md:mb-2 text-xs md:text-sm">
                         <span className="text-foreground/90 font-medium flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full bg-orange-400/40"></div>
+                          <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-orange-400/40"></div>
                           HTML & CSS
                         </span>
-                        <span className="text-muted-foreground text-xs">40%</span>
+                        <span className="text-muted-foreground text-[10px] md:text-xs">Junior</span>
                       </div>
-                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div className="h-1 md:h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                         <div
                           className="h-full bg-orange-400/60 transition-all duration-1000 ease-out group-hover:bg-orange-400/80"
-                          style={{ width: "40%" }}
+                          style={{ width: "25%" }}
                         ></div>
                       </div>
                     </div>
@@ -179,40 +173,36 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              <div className="flex flex-col h-full justify-between">
+              <div className="flex flex-col justify-center gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                     <Terminal className="w-5 h-5 text-muted-foreground" />
-                    Tools & Platforms
+                    Tools & Utils
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
-                      <Github className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                      <div>
-                        <div className="text-sm font-medium">GitHub</div>
-                        <div className="text-xs text-muted-foreground">Version Control</div>
-                      </div>
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-white/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Github className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div className="text-[10px] font-medium">Git & GitHub</div>
                     </div>
-                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
-                      <Terminal className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                      <div>
-                        <div className="text-sm font-medium">VS Code</div>
-                        <div className="text-xs text-muted-foreground">Editor</div>
-                      </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#007ACC]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Terminal className="w-4 h-4 text-muted-foreground group-hover:text-[#007ACC] transition-colors" />
+                      <div className="text-[10px] font-medium">VS Code</div>
                     </div>
-                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
-                      <Zap className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                      <div>
-                        <div className="text-sm font-medium">Vercel</div>
-                        <div className="text-xs text-muted-foreground">Deployment</div>
-                      </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-white/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Zap className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div className="text-[10px] font-medium">Vercel</div>
                     </div>
-                    <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-start gap-3">
-                      <Cloud className="w-5 h-5 mt-0.5 text-muted-foreground" />
-                      <div>
-                        <div className="text-sm font-medium">Netlify</div>
-                        <div className="text-xs text-muted-foreground">Deployment</div>
-                      </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#00C7B7]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Cloud className="w-4 h-4 text-muted-foreground group-hover:text-[#00C7B7] transition-colors" />
+                      <div className="text-[10px] font-medium">Netlify</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#3FCF8E]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <div className="w-4 h-4 rounded-full border border-muted-foreground flex items-center justify-center text-[8px] font-bold text-muted-foreground group-hover:border-[#3FCF8E] group-hover:text-[#3FCF8E] transition-colors">S</div>
+                      <div className="text-[10px] font-medium">Supabase</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#47A248]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <div className="w-4 h-4 rounded-full border border-muted-foreground flex items-center justify-center text-[8px] font-bold text-muted-foreground group-hover:border-[#47A248] group-hover:text-[#47A248] transition-colors">M</div>
+                      <div className="text-[10px] font-medium">MongoDB</div>
                     </div>
                   </div>
                 </div>
@@ -220,44 +210,52 @@ export default function Portfolio() {
                 <div>
                   <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                     <Zap className="w-5 h-5 text-muted-foreground" />
-                    Currently Focused On
+                    Frameworks & Libraries
                   </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400/40"></span>
-                      Improving Python skills
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400/40"></span>
-                      Learning backend concepts
-                    </li>
-                  </ul>
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-2">
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#61DAFB]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Atom className="w-4 h-4 text-muted-foreground group-hover:text-[#61DAFB] transition-colors" />
+                      <div className="text-[10px] font-medium">React</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-white/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Triangle className="w-4 h-4 text-muted-foreground group-hover:text-white transition-colors" />
+                      <div className="text-[10px] font-medium">Next.js</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#06B6D4]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Wind className="w-4 h-4 text-muted-foreground group-hover:text-[#06B6D4] transition-colors" />
+                      <div className="text-[10px] font-medium">Tailwind</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#339933]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Hexagon className="w-4 h-4 text-muted-foreground group-hover:text-[#339933] transition-colors" />
+                      <div className="text-[10px] font-medium">Node.js</div>
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-[#44B78B]/50 transition-all flex flex-col justify-center items-center text-center gap-1.5 group">
+                      <Database className="w-4 h-4 text-muted-foreground group-hover:text-[#44B78B] transition-colors" />
+                      <div className="text-[10px] font-medium">Django</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </BentoCard>
 
           {/* Web & Automation */}
-          <BentoCard colSpan={4} className="p-8 flex flex-col justify-center text-center">
-            <div className="w-16 h-16 mx-auto rounded-full bg-green-500/10 flex items-center justify-center mb-6">
-              <Terminal className="w-8 h-8 text-green-400" />
+          <BentoCard colSpan={4} rowSpan={2} className="p-6 md:p-8 flex flex-col justify-center text-center">
+            <div className="w-12 h-12 md:w-16 md:h-16 mx-auto rounded-full bg-green-500/10 flex items-center justify-center mb-4 md:mb-6">
+              <Terminal className="w-6 h-6 md:w-8 md:h-8 text-green-400" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Web & Automation</h3>
-            <p className="text-sm text-muted-foreground mb-6">
+            <h3 className="text-lg md:text-xl font-bold mb-2">Web & Automation</h3>
+            <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6">
               I build utilities and websites using modern web technologies and Python.
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              <span className="text-xs border border-white/10 px-2 py-1 rounded-md bg-white/5">Next.js 15</span>
-              <span className="text-xs border border-white/10 px-2 py-1 rounded-md bg-white/5">Python</span>
-              <span className="text-xs border border-white/10 px-2 py-1 rounded-md bg-white/5">Tailwind</span>
+              <span className="text-[10px] md:text-xs border border-white/10 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all">Next.js 15</span>
+              <span className="text-[10px] md:text-xs border border-white/10 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all">Python</span>
+              <span className="text-[10px] md:text-xs border border-white/10 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all">Tailwind</span>
             </div>
           </BentoCard>
 
         </BentoGrid>
-
-        <footer className="mt-20 py-8 border-t border-white/5 text-center text-sm text-muted-foreground">
-          <p>© 2026 Angel. Designed with <span className="text-white">Bento</span> aesthetic.</p>
-        </footer>
       </div>
     </div>
   )

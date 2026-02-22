@@ -1,7 +1,10 @@
+"use client"
+
 import type { ReactNode } from "react"
+import React, { useRef } from "react"
 import { cn } from "@/lib/utils"
-// Adjust the import path if your ArrowRight icon is located elsewhere or use lucide-react
 import { ArrowRight } from "lucide-react"
+import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion"
 
 interface BentoCardProps {
     children: ReactNode
@@ -12,7 +15,40 @@ interface BentoCardProps {
 }
 
 export const BentoCard = ({ children, className, colSpan = 3, rowSpan = 1, href }: BentoCardProps) => {
-    const Component = href ? "a" : "div"
+    const ref = useRef<HTMLDivElement>(null)
+
+    const x = useMotionValue(0)
+    const y = useMotionValue(0)
+
+    const springConfig = { stiffness: 150, damping: 20, mass: 0.5 }
+    const mouseXSpring = useSpring(x, springConfig)
+    const mouseYSpring = useSpring(y, springConfig)
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["2deg", "-2deg"])
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-2deg", "2deg"])
+
+    const handleMouseMove = (e: React.MouseEvent<any>) => {
+        if (!ref.current) return
+
+        const rect = ref.current.getBoundingClientRect()
+
+        const width = rect.width
+        const height = rect.height
+
+        const mouseX = e.clientX - rect.left
+        const mouseY = e.clientY - rect.top
+
+        const xPct = mouseX / width - 0.5
+        const yPct = mouseY / height - 0.5
+
+        x.set(xPct)
+        y.set(yPct)
+    }
+
+    const handleMouseLeave = () => {
+        x.set(0)
+        y.set(0)
+    }
 
     const colSpanClass = {
         1: "md:col-span-1",
@@ -35,22 +71,34 @@ export const BentoCard = ({ children, className, colSpan = 3, rowSpan = 1, href 
         5: "row-span-5",
     }[rowSpan]
 
+    const Component = href ? motion.a : motion.div
+
     return (
         <Component
+            ref={ref as any}
             href={href}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformPerspective: 1000,
+            }}
             className={cn(
                 "group relative flex flex-col justify-between overflow-hidden rounded-xl",
                 // Glassmorphism and Monochromatic Styling
                 "bg-white/5 backdrop-blur-xl border border-white/10",
-                "hover:border-white/20 hover:bg-white/10 transition-all duration-300",
+                "hover:border-white/20 hover:bg-white/10 transition-colors duration-300",
                 // Shadow for depth
-                "shadow-sm hover:shadow-md",
+                "shadow-sm hover:shadow-xl hover:shadow-foreground/5",
                 colSpanClass,
                 rowSpanClass,
                 className,
             )}
         >
-            {children}
+            <div className="w-full h-full flex flex-col">
+                {children}
+            </div>
 
             {/* Optional: Add a subtle arrow indicator if it's a link */}
             {href && (
