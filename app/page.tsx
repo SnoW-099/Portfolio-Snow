@@ -25,7 +25,7 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <div className="h-[100dvh] w-full overflow-hidden bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background">
+    <div className="min-h-screen w-full bg-background text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background pb-20">
       {/* Background Blobs & Noise */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-noise opacity-[0.4] bg-repeat z-10"></div>
@@ -34,8 +34,8 @@ export default function Portfolio() {
         <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-indigo-500/20 blur-[120px] animate-blob delay-4000"></div>
       </div>
 
-      <div className="relative z-10 h-full w-full flex items-center justify-center p-4">
-        <BentoGrid className="animate-fade-in w-full max-w-7xl max-h-full">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-8 md:pt-16">
+        <BentoGrid className="animate-fade-in">
 
           {/* Hero */}
           <BentoCard colSpan={9} rowSpan={2} className="p-8 md:p-10 flex flex-col justify-center">
@@ -48,7 +48,7 @@ export default function Portfolio() {
                 Available for work
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 leading-none">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 leading-none">
                 Angel.
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground/60 font-medium mb-6">
@@ -256,6 +256,10 @@ export default function Portfolio() {
           </BentoCard>
 
         </BentoGrid>
+
+        <footer className="mt-16 py-8 border-t border-white/5 text-center text-sm text-muted-foreground">
+          <p>© 2025 Angel. Designed with <span className="text-foreground">Bento</span> aesthetic.</p>
+        </footer>
       </div>
     </div>
   )
