@@ -18,12 +18,12 @@ function WireframeShape() {
   return (
     <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
       <mesh ref={meshRef}>
-        <icosahedronGeometry args={[2.5, 1]} />
+        <icosahedronGeometry args={[1.8, 1]} />
         <meshBasicMaterial
           color="#6366f1"
           wireframe
           transparent
-          opacity={0.08}
+          opacity={0.04}
         />
       </mesh>
     </Float>
@@ -34,7 +34,7 @@ export default function BackgroundGeometry() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 45 }}
+        camera={{ position: [0, 0, 10], fov: 45 }}
         style={{ background: "transparent" }}
         gl={{ alpha: true, antialias: true }}
       >

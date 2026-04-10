@@ -28,33 +28,24 @@ export default function HeroSection() {
       })
 
       // Name shrinks and moves up
-      tl.fromTo(
-        nameRef.current,
-        { fontSize: "18vw", opacity: 1, y: 0 },
-        { fontSize: "3.5rem", y: -50, opacity: 1, duration: 1 }
-      )
+      tl.to(nameRef.current, { fontSize: "3.5rem", y: -80, duration: 1 })
 
-      // Badge fades in
-      tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: -50, duration: 0.5 },
-        "-=0.5"
-      )
+      // Badge moves up with name
+      tl.to(badgeRef.current, { y: -80, duration: 1 }, "<")
 
       // Tagline fades in
       tl.fromTo(
         taglineRef.current,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: -30, duration: 0.5 },
-        "-=0.3"
+        { opacity: 1, y: -60, duration: 0.5 },
+        "-=0.5"
       )
 
       // Bio fades in
       tl.fromTo(
         bioRef.current,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: -20, duration: 0.5 },
+        { opacity: 1, y: -50, duration: 0.5 },
         "-=0.2"
       )
 
@@ -62,7 +53,7 @@ export default function HeroSection() {
       tl.fromTo(
         ctaRef.current,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: -10, duration: 0.5 },
+        { opacity: 1, y: -40, duration: 0.5 },
         "-=0.2"
       )
     }, sectionRef)
@@ -82,7 +73,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center max-w-4xl px-4">
         {/* Badge */}
-        <div ref={badgeRef} className="opacity-0 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-blue-300 mb-8">
+        <div ref={badgeRef} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-blue-300 mb-8">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
@@ -93,7 +84,7 @@ export default function HeroSection() {
         {/* Giant name */}
         <h1
           ref={nameRef}
-          className="font-bold tracking-tighter leading-none text-foreground"
+          className="font-bold tracking-tighter leading-none text-white"
           style={{ fontSize: "18vw" }}
         >
           Angel.
