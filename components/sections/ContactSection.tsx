@@ -87,10 +87,10 @@ export default function ContactSection() {
       </div>
 
       <div className="relative z-10 text-center max-w-lg px-6">
-        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-4 opacity-0">
+        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-4 opacity-0 text-white">
           Get in touch.
         </h2>
-        <p className="text-muted-foreground mb-10 text-sm md:text-base">
+        <p className="text-white/40 mb-10 text-sm md:text-base">
           Feel free to reach out — I'm always open to new opportunities.
         </p>
 

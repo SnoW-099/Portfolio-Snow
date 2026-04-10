@@ -65,7 +65,7 @@ export default function SummarySection() {
       </div>
 
       <div className="relative z-10 w-full max-w-4xl px-6 md:px-8 text-center">
-        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-4 opacity-0">
+        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-4 opacity-0 text-white">
           At a glance.
         </h2>
         <p className="text-muted-foreground text-sm md:text-base mb-12">
@@ -78,9 +78,9 @@ export default function SummarySection() {
               key={stat.label}
               className="stat-card p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors"
             >
-              <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-              <div className="text-sm font-medium text-foreground/80 mb-2">{stat.label}</div>
-              <div className="text-[11px] text-muted-foreground leading-relaxed">{stat.detail}</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-sm font-medium text-white/80 mb-2">{stat.label}</div>
+              <div className="text-[11px] text-white/40 leading-relaxed">{stat.detail}</div>
             </div>
           ))}
         </div>

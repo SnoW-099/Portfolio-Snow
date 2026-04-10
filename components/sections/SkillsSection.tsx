@@ -98,14 +98,14 @@ export default function SkillsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-5xl px-6 md:px-8">
-        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-12 md:mb-16 text-center opacity-0">
+        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-12 md:mb-16 text-center opacity-0 text-white">
           Skills & Tools
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           {/* Languages */}
           <div>
-            <h3 className="text-sm uppercase tracking-widest text-muted-foreground/50 font-medium mb-6 flex items-center gap-2">
+            <h3 className="text-sm uppercase tracking-widest text-white/30 font-medium mb-6 flex items-center gap-2">
               <Cpu className="w-4 h-4" />
               Languages
             </h3>
@@ -113,11 +113,11 @@ export default function SkillsSection() {
               {languages.map((lang) => (
                 <div key={lang.name} className="skill-bar-item">
                   <div className="flex justify-between items-center mb-2 text-sm">
-                    <span className="text-foreground/90 font-medium flex items-center gap-2">
+                    <span className="text-white/90 font-medium flex items-center gap-2">
                       <div className={`w-2.5 h-2.5 rounded-full ${lang.dot}`} />
                       {lang.name}
                     </span>
-                    <span className="text-muted-foreground text-xs">{lang.level}</span>
+                    <span className="text-white/40 text-xs">{lang.level}</span>
                   </div>
                   <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
                     <div className={`skill-bar-fill h-full ${lang.color} rounded-full`} style={{ width: "0%" }} />
@@ -131,7 +131,7 @@ export default function SkillsSection() {
           <div className="space-y-8">
             {/* Tools */}
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-muted-foreground/50 font-medium mb-4 flex items-center gap-2">
+              <h3 className="text-sm uppercase tracking-widest text-white/30 font-medium mb-4 flex items-center gap-2">
                 <Terminal className="w-4 h-4" />
                 Tools & Utils
               </h3>
@@ -142,8 +142,8 @@ export default function SkillsSection() {
                     className="tool-card p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-center gap-3 group cursor-default"
                     style={{ perspective: "600px" }}
                   >
-                    <tool.icon className={`w-4 h-4 text-muted-foreground ${tool.hoverColor} transition-colors`} />
-                    <span className="text-xs font-medium">{tool.name}</span>
+                    <tool.icon className={`w-4 h-4 text-white/30 ${tool.hoverColor} transition-colors`} />
+                    <span className="text-xs font-medium text-white/70">{tool.name}</span>
                   </div>
                 ))}
               </div>
@@ -151,7 +151,7 @@ export default function SkillsSection() {
 
             {/* Frameworks */}
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-muted-foreground/50 font-medium mb-4 flex items-center gap-2">
+              <h3 className="text-sm uppercase tracking-widest text-white/30 font-medium mb-4 flex items-center gap-2">
                 <Zap className="w-4 h-4" />
                 Frameworks
               </h3>
@@ -162,8 +162,8 @@ export default function SkillsSection() {
                     className={`fw-card p-3 rounded-xl bg-white/5 border border-white/5 ${fw.borderColor} transition-all flex items-center gap-3 group cursor-default`}
                     style={{ perspective: "600px" }}
                   >
-                    <fw.icon className={`w-4 h-4 text-muted-foreground ${fw.hoverColor} transition-colors`} />
-                    <span className="text-xs font-medium">{fw.name}</span>
+                    <fw.icon className={`w-4 h-4 text-white/30 ${fw.hoverColor} transition-colors`} />
+                    <span className="text-xs font-medium text-white/70">{fw.name}</span>
                   </div>
                 ))}
               </div>

@@ -77,7 +77,7 @@ export default function ProjectsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-5xl px-6 md:px-8">
-        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-12 md:mb-16 text-center opacity-0">
+        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-12 md:mb-16 text-center opacity-0 text-white">
           Projects
         </h2>
 
@@ -95,8 +95,8 @@ export default function ProjectsSection() {
                   <div className={`w-12 h-12 rounded-xl ${project.iconColor} border flex items-center justify-center mb-5`}>
                     <project.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                  <h3 className="text-2xl font-bold mb-2 text-white">{project.name}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{project.description}</p>
                 </div>
 
                 <div className="mt-8 flex items-center justify-between">
