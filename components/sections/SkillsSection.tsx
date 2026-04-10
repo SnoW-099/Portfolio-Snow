@@ -53,34 +53,43 @@ export default function SkillsSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=200%",
-          scrub: 1,
+          end: "+=300%",
+          scrub: 2,
           pin: true,
           pinSpacing: true,
         },
       })
 
       // Title fades in
-      tl.fromTo(titleRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3 })
+      tl.fromTo(titleRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
+
+      // Pause
+      tl.to({}, { duration: 0.2 })
 
       // Language bars fill
       if (barsRef.current) {
         const bars = barsRef.current.querySelectorAll(".skill-bar-fill")
         const barItems = barsRef.current.querySelectorAll(".skill-bar-item")
-        tl.fromTo(barItems, { opacity: 0, x: -40 }, { opacity: 1, x: 0, stagger: 0.08, duration: 0.3 }, "-=0.1")
-        tl.fromTo(bars, { width: "0%" }, { width: (i: number) => languages[i]?.width || "0%", stagger: 0.08, duration: 0.4 }, "-=0.3")
+        tl.fromTo(barItems, { opacity: 0, x: -30 }, { opacity: 1, x: 0, stagger: 0.1, duration: 0.5, ease: "power2.out" })
+        tl.fromTo(bars, { width: "0%" }, { width: (i: number) => languages[i]?.width || "0%", stagger: 0.1, duration: 0.6, ease: "power2.out" }, "-=0.4")
       }
+
+      // Pause
+      tl.to({}, { duration: 0.2 })
 
       // Tools stagger in
       if (toolsRef.current) {
         const toolCards = toolsRef.current.querySelectorAll(".tool-card")
-        tl.fromTo(toolCards, { opacity: 0, y: 30, rotateY: 45 }, { opacity: 1, y: 0, rotateY: 0, stagger: 0.06, duration: 0.3 }, "-=0.2")
+        tl.fromTo(toolCards, { opacity: 0, y: 20, rotateY: 30 }, { opacity: 1, y: 0, rotateY: 0, stagger: 0.08, duration: 0.5, ease: "power2.out" })
       }
+
+      // Pause
+      tl.to({}, { duration: 0.2 })
 
       // Frameworks rotate in
       if (frameworksRef.current) {
         const fwCards = frameworksRef.current.querySelectorAll(".fw-card")
-        tl.fromTo(fwCards, { opacity: 0, scale: 0.8, rotateY: -45 }, { opacity: 1, scale: 1, rotateY: 0, stagger: 0.06, duration: 0.3 }, "-=0.2")
+        tl.fromTo(fwCards, { opacity: 0, scale: 0.9, rotateY: -30 }, { opacity: 1, scale: 1, rotateY: 0, stagger: 0.08, duration: 0.5, ease: "power2.out" })
       }
     }, sectionRef)
 
@@ -92,7 +101,6 @@ export default function SkillsSection() {
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-indigo-500/8 blur-[150px]" />
       </div>

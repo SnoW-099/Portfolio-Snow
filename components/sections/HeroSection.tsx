@@ -20,41 +20,43 @@ export default function HeroSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom top",
-          scrub: 1,
+          end: "+=250%",
+          scrub: 2,
           pin: true,
           pinSpacing: true,
         },
       })
 
-      // Name shrinks and moves up
-      tl.to(nameRef.current, { fontSize: "3.5rem", y: -80, duration: 1 })
+      // Name shrinks and moves up — slow and cinematic
+      tl.to(nameRef.current, { fontSize: "3.5rem", y: -100, duration: 1.5, ease: "power2.inOut" })
 
       // Badge moves up with name
-      tl.to(badgeRef.current, { y: -80, duration: 1 }, "<")
+      tl.to(badgeRef.current, { y: -100, duration: 1.5, ease: "power2.inOut" }, "<")
+
+      // Pause moment
+      tl.to({}, { duration: 0.3 })
 
       // Tagline fades in
       tl.fromTo(
         taglineRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: -60, duration: 0.5 },
-        "-=0.5"
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: -70, duration: 0.8, ease: "power2.out" },
       )
 
       // Bio fades in
       tl.fromTo(
         bioRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: -50, duration: 0.5 },
-        "-=0.2"
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: -60, duration: 0.8, ease: "power2.out" },
+        "-=0.4"
       )
 
       // CTA buttons slide up
       tl.fromTo(
         ctaRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: -40, duration: 0.5 },
-        "-=0.2"
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: -50, duration: 0.8, ease: "power2.out" },
+        "-=0.4"
       )
     }, sectionRef)
 
@@ -93,7 +95,7 @@ export default function HeroSection() {
         {/* Tagline */}
         <p
           ref={taglineRef}
-          className="opacity-0 text-xl md:text-2xl lg:text-3xl text-muted-foreground/50 font-medium mt-6"
+          className="opacity-0 text-xl md:text-2xl lg:text-3xl text-white/40 font-medium mt-6"
         >
           Crafting digital experiences.
         </p>
@@ -101,7 +103,7 @@ export default function HeroSection() {
         {/* Bio */}
         <p
           ref={bioRef}
-          className="opacity-0 text-sm md:text-base text-muted-foreground mt-4 max-w-md mx-auto leading-relaxed"
+          className="opacity-0 text-sm md:text-base text-white/50 mt-4 max-w-md mx-auto leading-relaxed"
         >
           A person eager to learn new things. I have knowledge in programming, UI, web design, and more.
         </p>
@@ -110,13 +112,13 @@ export default function HeroSection() {
         <div ref={ctaRef} className="opacity-0 flex flex-wrap justify-center gap-4 mt-8">
           <a
             href="/projects"
-            className="px-8 py-3 rounded-full bg-foreground text-background font-medium hover:scale-105 transition-transform shadow-lg shadow-foreground/10"
+            className="px-8 py-3 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform shadow-lg shadow-white/10"
           >
             View Projects
           </a>
           <a
             href="mailto:ryze0950@gmail.com"
-            className="px-8 py-3 rounded-full border border-white/15 font-medium hover:bg-white/5 transition-all"
+            className="px-8 py-3 rounded-full border border-white/15 font-medium text-white hover:bg-white/5 transition-all"
           >
             Contact Me
           </a>

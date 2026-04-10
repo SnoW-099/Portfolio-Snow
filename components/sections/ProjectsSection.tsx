@@ -22,7 +22,7 @@ const projects = [
     name: "Rez Bot",
     description: "Comprehensive Discord automation bot with security and fun modules.",
     tags: ["Python", "Discord.py"],
-    tagColors: ["text-purple-300 border-purple-500/20", "text-muted-foreground border-white/5"],
+    tagColors: ["text-purple-300 border-purple-500/20", "text-white/40 border-white/5"],
     accent: "from-purple-500/15",
     icon: Bot,
     iconColor: "text-purple-400 bg-purple-500/10 border-purple-500/20",
@@ -41,24 +41,26 @@ export default function ProjectsSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=150%",
-          scrub: 1,
+          end: "+=250%",
+          scrub: 2,
           pin: true,
           pinSpacing: true,
         },
       })
 
       // Title
-      tl.fromTo(titleRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3 })
+      tl.fromTo(titleRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
 
-      // Cards fly in with 3D rotation
+      // Pause
+      tl.to({}, { duration: 0.3 })
+
+      // Cards fly in one by one
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll(".project-card")
         tl.fromTo(
           cards,
-          { opacity: 0, rotateY: 35, x: 100, scale: 0.9 },
-          { opacity: 1, rotateY: 0, x: 0, scale: 1, stagger: 0.15, duration: 0.5 },
-          "-=0.1"
+          { opacity: 0, rotateY: 25, x: 80, scale: 0.95 },
+          { opacity: 1, rotateY: 0, x: 0, scale: 1, stagger: 0.2, duration: 0.8, ease: "power2.out" },
         )
       }
     }, sectionRef)
@@ -71,7 +73,6 @@ export default function ProjectsSection() {
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] rounded-full bg-purple-500/8 blur-[150px]" />
       </div>
@@ -87,7 +88,6 @@ export default function ProjectsSection() {
               key={project.name}
               className="project-card relative rounded-2xl bg-white/[0.03] backdrop-blur-sm border border-white/10 p-8 hover:border-white/20 transition-colors group overflow-hidden"
             >
-              {/* Gradient overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
               <div className="relative z-10 h-full flex flex-col">
@@ -111,7 +111,7 @@ export default function ProjectsSection() {
                     href={project.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-foreground border border-white/10 transition-colors"
+                    className="text-xs flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70 border border-white/10 transition-colors"
                   >
                     <Code2 className="w-3.5 h-3.5" />
                     View Repo

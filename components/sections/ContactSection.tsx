@@ -12,7 +12,8 @@ const contacts = [
     name: "GitHub",
     icon: Github,
     href: "https://github.com/SnoW-099",
-    style: "bg-white/5 hover:bg-white/10 border-white/5",
+    style: "bg-white/5 hover:bg-white/10 border-white/10",
+    iconColor: "text-white/50 group-hover:text-white",
     external: true,
   },
   {
@@ -26,7 +27,8 @@ const contacts = [
     name: "Email",
     icon: Mail,
     href: "mailto:ryze0950@gmail.com",
-    style: "bg-white/5 hover:bg-white/10 border-white/5",
+    style: "bg-white/5 hover:bg-white/10 border-white/10",
+    iconColor: "text-white/50 group-hover:text-white",
   },
 ]
 
@@ -37,37 +39,37 @@ export default function ContactSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title
       gsap.fromTo(
         titleRef.current,
         { opacity: 0, y: 50 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: "power3.out",
+          duration: 1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 70%",
+            toggleActions: "play none none reverse",
           },
         }
       )
 
-      // Links stagger
       if (linksRef.current) {
         const links = linksRef.current.querySelectorAll(".contact-link")
         gsap.fromTo(
           links,
-          { opacity: 0, y: 40 },
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            stagger: 0.12,
-            duration: 0.6,
-            ease: "power3.out",
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top 60%",
+              toggleActions: "play none none reverse",
             },
           }
         )
@@ -105,11 +107,11 @@ export default function ContactSection() {
                 onClick={contact.value ? () => navigator.clipboard.writeText(contact.value!) : undefined}
                 className={`contact-link w-full flex items-center gap-4 p-4 rounded-xl border transition-all group ${contact.style}`}
               >
-                <contact.icon className={`w-5 h-5 ${contact.iconColor || "text-muted-foreground group-hover:text-foreground"} transition-colors`} />
-                <span className="text-sm font-medium">{contact.name}</span>
-                {contact.external && <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-40" />}
+                <contact.icon className={`w-5 h-5 ${contact.iconColor} transition-colors`} />
+                <span className="text-sm font-medium text-white/80">{contact.name}</span>
+                {contact.external && <ExternalLink className="w-3.5 h-3.5 ml-auto text-white/20" />}
                 {contact.value && (
-                  <span className="text-xs ml-auto opacity-50 bg-[#5865F2]/20 px-2.5 py-1 rounded">{contact.value}</span>
+                  <span className="text-xs ml-auto text-white/30 bg-[#5865F2]/20 px-2.5 py-1 rounded">{contact.value}</span>
                 )}
               </Component>
             )

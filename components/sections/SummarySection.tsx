@@ -25,8 +25,8 @@ export default function SummarySection() {
         titleRef.current,
         { opacity: 0, y: 40 },
         {
-          opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 70%" },
+          opacity: 1, y: 0, duration: 1, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 70%", toggleActions: "play none none reverse" },
         }
       )
 
@@ -36,8 +36,8 @@ export default function SummarySection() {
           cards,
           { opacity: 0, y: 30, scale: 0.95 },
           {
-            opacity: 1, y: 0, scale: 1, stagger: 0.1, duration: 0.5, ease: "power3.out",
-            scrollTrigger: { trigger: statsRef.current, start: "top 75%" },
+            opacity: 1, y: 0, scale: 1, stagger: 0.12, duration: 0.7, ease: "power2.out",
+            scrollTrigger: { trigger: statsRef.current, start: "top 75%", toggleActions: "play none none reverse" },
           }
         )
       }
@@ -46,8 +46,8 @@ export default function SummarySection() {
         footerRef.current,
         { opacity: 0 },
         {
-          opacity: 1, duration: 0.8,
-          scrollTrigger: { trigger: footerRef.current, start: "top 90%" },
+          opacity: 1, duration: 1,
+          scrollTrigger: { trigger: footerRef.current, start: "top 90%", toggleActions: "play none none reverse" },
         }
       )
     }, sectionRef)
@@ -68,7 +68,7 @@ export default function SummarySection() {
         <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-4 opacity-0 text-white">
           At a glance.
         </h2>
-        <p className="text-muted-foreground text-sm md:text-base mb-12">
+        <p className="text-white/40 text-sm md:text-base mb-12">
           A quick summary of what I bring to the table.
         </p>
 
@@ -88,8 +88,8 @@ export default function SummarySection() {
 
       {/* Footer */}
       <div ref={footerRef} className="relative z-10 mt-20 opacity-0">
-        <p className="text-sm text-muted-foreground">
-          © 2025 Angel. Designed with <span className="text-foreground">immersive</span> scroll.
+        <p className="text-sm text-white/30">
+          © 2025 Angel. Designed with <span className="text-white/60">immersive</span> scroll.
         </p>
       </div>
     </section>

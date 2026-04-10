@@ -13,7 +13,6 @@ export default function AboutSection() {
   useEffect(() => {
     if (!textRef.current) return
 
-    // Split text into individual words wrapped in spans
     const text = textRef.current.innerText
     textRef.current.innerHTML = text
       .split(" ")
@@ -27,15 +26,15 @@ export default function AboutSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom top",
-          scrub: 1,
+          end: "+=200%",
+          scrub: 2,
           pin: true,
           pinSpacing: true,
         },
       }).to(words, {
         color: "rgba(255, 255, 255, 0.95)",
-        stagger: 0.05,
-        duration: 0.3,
+        stagger: 0.03,
+        duration: 0.5,
       })
     }, sectionRef)
 
@@ -47,7 +46,6 @@ export default function AboutSection() {
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-purple-500/8 blur-[150px]" />
       </div>

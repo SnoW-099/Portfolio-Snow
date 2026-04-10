@@ -85,7 +85,12 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+/* GPU acceleration for smooth GSAP animations */
+.pin-spacer > * {
+  will-change: transform;
 }
 
 @layer base {
