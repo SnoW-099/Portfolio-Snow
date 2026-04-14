@@ -5,6 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { Float } from "@react-three/drei"
 import * as THREE from "three"
 
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
 const vertexShader = `
 uniform float time;
 varying vec2 vUv;
@@ -141,7 +146,7 @@ function NoisePlane() {
 
   return (
     <mesh ref={mesh} position={[0, -2, -5]} rotation={[-Math.PI / 3, 0, 0]}>
-      <planeGeometry args={[25, 25, 128, 128]} />
+      <planeGeometry args={[35, 35, 128, 128]} />
       <shaderMaterial
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
@@ -155,8 +160,29 @@ function NoisePlane() {
 }
 
 export default function BackgroundGeometry() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Add scroll parallax + zoom effect on the container
+    const ctx = gsap.context(() => {
+      gsap.to(containerRef.current, {
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.5,
+        },
+        scale: 1.6, // Zoom into the noise mesh as you scroll
+        y: 150,     // Move the container slightly down for an extra parallax effect
+        ease: "none",
+      })
+    })
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
+    <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none w-full h-full transform-gpu">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
         style={{ background: "transparent" }}
