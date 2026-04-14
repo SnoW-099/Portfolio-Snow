@@ -21,7 +21,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
     textRef.current.textContent = ""
 
-    // Typewriter
+    
     const typeTimer = setInterval(() => {
       if (!textRef.current) return
       if (i < phrase.length) {
@@ -32,7 +32,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       }
     }, 55)
 
-    // Progress bar fills, then exit
+    
     gsap.fromTo(
       barRef.current,
       { scaleX: 0 },
@@ -43,7 +43,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         ease: "power2.inOut",
         transformOrigin: "left center",
         onComplete: () => {
-          // Wipe upward exit
+          
           gsap.to(containerRef.current, {
             yPercent: -100,
             duration: 0.75,
@@ -68,13 +68,13 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       ref={containerRef}
       className="fixed inset-0 z-[9998] bg-[#050505] flex flex-col items-center justify-center gap-10"
     >
-      {/* Code-style name */}
+      {}
       <div className="font-mono tracking-widest text-white/90 select-none" style={{ fontSize: "clamp(1.25rem, 4vw, 2.5rem)" }}>
         <span ref={textRef} />
         <span className="text-blue-200 animate-pulse">_</span>
       </div>
 
-      {/* Progress bar */}
+      {}
       <div className="w-40 h-px bg-white/10 relative overflow-hidden">
         <div
           ref={barRef}
@@ -83,7 +83,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         />
       </div>
 
-      {/* Subtle label */}
+      {}
       <p className="text-[10px] font-mono text-white/20 tracking-[0.3em] uppercase">
         Loading portfolio
       </p>

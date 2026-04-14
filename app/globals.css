@@ -29,7 +29,7 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
-  /* Signature icy-blue accent */
+  
   --accent-blue: 214 100% 88%;
 }
 
@@ -91,7 +91,7 @@ html {
   scroll-behavior: auto;
 }
 
-/* GPU acceleration for smooth GSAP animations */
+
 .pin-spacer > * {
   will-change: transform;
 }
@@ -108,19 +108,19 @@ html {
   }
 }
 
-/* ─── Utilities ─────────────────────────────────────────────────── */
+
 
 .bg-noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* Dot-grid decorative backgrounds */
+
 .bg-dot-grid {
   background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* Icy blue-white gradient text */
+
 .text-gradient-amber {
   background: linear-gradient(135deg, #BFDBFE 0%, #DBEAFE 30%, #FFFFFF 65%);
   -webkit-background-clip: text;
@@ -132,7 +132,7 @@ html {
   text-wrap: balance;
 }
 
-/* ─── Keyframes ──────────────────────────────────────────────────── */
+
 
 @keyframes blob-bounce {
   0%   { transform: translate(0px, 0px) scale(1); }
@@ -148,7 +148,7 @@ html {
 .delay-2000 { animation-delay: 2s; }
 .delay-4000 { animation-delay: 4s; }
 
-/* Shimmer — glowing moving border */
+
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }
@@ -163,7 +163,7 @@ html {
   animation: shimmer 3s linear infinite;
 }
 
-/* Glow border hover — icy blue */
+
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 0px rgba(191, 219, 254, 0); }
   50%       { box-shadow: 0 0 22px rgba(191, 219, 254, 0.13); }
@@ -173,7 +173,7 @@ html {
   animation: glow-pulse 2s ease-in-out infinite;
 }
 
-/* Fade-in utility */
+
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
   to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
@@ -183,7 +183,7 @@ html {
   animation: fade-in-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Marquee */
+
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -194,7 +194,7 @@ html {
   white-space: nowrap;
 }
 
-/* Scroll bounce indicator */
+
 @keyframes scroll-bounce {
   0%, 100% { transform: translateY(0); opacity: 0.8; }
   50%       { transform: translateY(6px); opacity: 0.4; }
@@ -204,7 +204,7 @@ html {
   animation: scroll-bounce 2s ease-in-out infinite;
 }
 
-/* Modal */
+
 @keyframes content-reveal {
   from { opacity: 0; filter: blur(5px); transform: scale(0.98); }
   to   { opacity: 1; filter: blur(0);   transform: scale(1); }
@@ -214,12 +214,12 @@ html {
   animation: content-reveal 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Smooth scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+
 ::-webkit-scrollbar        { width: 6px; }
 ::-webkit-scrollbar-track  { background: #050505; }
 ::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.06); border-radius: 10px; }

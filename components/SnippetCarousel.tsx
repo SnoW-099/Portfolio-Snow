@@ -4,18 +4,12 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight, Copy, Check } from "lucide-react"
 import { DialogClose } from "@/components/ui/dialog"
 
-/**
- * Simple manual syntax highlighter for JavaScript and TypeScript.
- * Uses regex-based tokenization to apply consistent monochromatic-friendly colors.
- * 
- * @param code - The raw string of code to be highlighted
- * @returns A React mapped array of tokens with specific styling
- */
+
 const highlightCode = (code: string) => {
-    // Reserved language keywords for primary highlighting
+    
     const keywords = ["const", "let", "var", "function", "return", "if", "else", "import", "export", "from", "default", "async", "await", "try", "catch", "interface", "type", "class", "extends", "implements", "true", "false", "null", "undefined"]
 
-    // Standard built-in global objects for secondary highlighting
+    
     const globals = ["console", "window", "document", "fetch", "Promise", "JSON", "Math", "Object", "Array", "String", "Number", "Boolean"]
 
     return code.split(/(\s+|[(){}[\].,;="'#])/g).map((token, i) => {
@@ -142,11 +136,11 @@ export function SnippetCarousel() {
 
     return (
         <div className="relative w-full overflow-hidden rounded-xl bg-[#0d1117] border border-white/10 shadow-2xl font-mono text-sm group">
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-[#161b22]">
                 <div className="flex items-center gap-3">
                     <div className="flex gap-1.5 group-hover:opacity-100 transition-opacity">
-                        {/* Close Button (Red) - Wired to DialogClose */}
+                        {}
                         <DialogClose asChild>
                             <button className="w-3 h-3 rounded-full bg-[#ff5f56] hover:bg-[#ff5f56]/80 flex items-center justify-center group/close cursor-pointer">
                                 <span className="opacity-0 group-hover/close:opacity-100 text-[8px] text-black/50 font-bold leading-none">x</span>
@@ -171,9 +165,9 @@ export function SnippetCarousel() {
                 </div>
             </div>
 
-            {/* Code Area */}
+            {}
             <div className="relative p-0 bg-[#0d1117] min-h-[320px] max-h-[400px] flex flex-col group/code">
-                {/* Scrollbar hidden via CSS utility classes */}
+                {}
                 <div className="absolute inset-0 overflow-auto p-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
                     <pre className="text-[13px] leading-6 tab-4 font-normal">
                         <code>
@@ -182,11 +176,11 @@ export function SnippetCarousel() {
                     </pre>
                 </div>
 
-                {/* Subtle Fade at bottom to indicate scroll if needed (optional decoration) */}
+                {}
                 <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0d1117] to-transparent pointer-events-none"></div>
             </div>
 
-            {/* Footer / Controls */}
+            {}
             <div className="px-4 py-3 border-t border-white/5 bg-[#161b22] flex items-center justify-between">
                 <div className="text-[11px] text-[#8b949e] w-2/3 truncate">
                     {snippets[currentIndex].desc}

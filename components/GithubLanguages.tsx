@@ -28,10 +28,10 @@ export const GithubLanguages = ({ username }: GithubLanguagesProps) => {
     );
   }
 
-  // Get top 6 languages
+  
   const topLanguages = Object.entries(languages).slice(0, 6);
 
-  // Calcular porcentaje total de bytes para calcular proporciones
+  
   const totalBytes = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
 
   return (
@@ -67,7 +67,7 @@ export const GithubLanguages = ({ username }: GithubLanguagesProps) => {
   );
 };
 
-// Función para obtener colores de lenguajes
+
 const getLanguageColor = (language: string): string => {
   const colors: Record<string, string> = {
     'TypeScript': '#3178c6',
@@ -103,5 +103,5 @@ const getLanguageColor = (language: string): string => {
     'YAML': '#cb171e',
   };
   
-  return colors[language] || '#858585'; // gris por defecto
+  return colors[language] || '#858585'; 
 };

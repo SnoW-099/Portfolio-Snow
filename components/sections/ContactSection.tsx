@@ -77,16 +77,16 @@ export default function ContactSection() {
       ref={sectionRef}
       className="min-h-[80vh] w-full flex items-center justify-center relative overflow-hidden"
     >
-      {/* Dot grid background */}
+      {}
       <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 
-      {/* Ambient glow */}
+      {}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[400px] rounded-full bg-blue-200/4 blur-[160px]" />
       </div>
 
       <div className="relative z-10 text-center max-w-md px-6 w-full">
-        {/* Title with amber gradient */}
+        {}
         <h2
           ref={titleRef}
           className="text-4xl md:text-6xl font-bold tracking-tight mb-3 opacity-0 text-gradient-amber"

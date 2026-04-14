@@ -31,11 +31,11 @@ export default function CustomCursor() {
     }
 
     const tick = () => {
-      // Dot follows instantly
+      
       dotX += (mouseX - dotX) * 0.85
       dotY += (mouseY - dotY) * 0.85
 
-      // Ring lags behind (smooth lerp)
+      
       ringX += (mouseX - ringX) * 0.1
       ringY += (mouseY - ringY) * 0.1
 
@@ -57,7 +57,7 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", onMove)
 
-    // MutationObserver to reattach listeners on dynamic DOM changes
+    
     const observer = new MutationObserver(attachHoverListeners)
     observer.observe(document.body, { childList: true, subtree: true })
     attachHoverListeners()
@@ -73,13 +73,13 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Solid dot — snappy */}
+      {}
       <div
         ref={dotRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full bg-white mix-blend-difference transition-opacity duration-150"
         style={{ width: 6, height: 6 }}
       />
-      {/* Ring — lagging, mix-blend */}
+      {}
       <div
         ref={ringRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full border border-white/70 mix-blend-difference transition-[width,height] duration-200 ease-out"

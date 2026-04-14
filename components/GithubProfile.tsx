@@ -7,7 +7,7 @@ interface GithubProfileProps {
 }
 
 export const GithubProfile = ({ username }: GithubProfileProps) => {
-  // Datos fijos para mostrar
+  
   const profileData = {
     name: "SnoW-099",
     displayName: "ryzee",
@@ -17,14 +17,14 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
     website: "https://github.com/SnoW-099"
   };
 
-  // Lenguajes fijos
+  
   const languages = [
     { name: "Python", percentage: 60 },
     { name: "HTML", percentage: 10 },
     { name: "CSS", percentage: 10 }
   ];
 
-  // Proyectos recientes fijos
+  
   const repos = [
     {
       id: 1,
@@ -39,12 +39,19 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
       description: "Rez is a bot you can use in your Discord server for a lot of things like security, fun functions, etc.",
       language: "Python",
       stars: 0
+    },
+    {
+      id: 3,
+      name: "",
+      description: "",
+      language: "",
+      stars: 0
     }
   ];
 
   return (
     <div className="space-y-6">
-      {/* Profile Header */}
+      {}
       <div className="flex items-start gap-4">
         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-2 border-white/10 flex items-center justify-center">
           <Github className="w-8 h-8 text-white/80" />
@@ -56,7 +63,7 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
         </div>
       </div>
 
-      {/* Stats */}
+      {}
       <div className="grid grid-cols-3 gap-4">
         <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
           <div className="text-lg font-bold">3</div>
@@ -72,7 +79,7 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
         </div>
       </div>
 
-      {/* Location and Website */}
+      {}
       <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
         {profileData.location && (
           <div className="flex items-center gap-1">
@@ -100,7 +107,7 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
         )}
       </div>
 
-      {/* Top Languages */}
+      {}
       <div>
         <h4 className="font-semibold mb-2">Top Languages</h4>
         <div className="space-y-3">
@@ -121,7 +128,7 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
         </div>
       </div>
 
-      {/* Recent Repositories */}
+      {}
       <div>
         <h4 className="font-semibold mb-2">Recent Projects</h4>
         <div className="space-y-3">
@@ -160,7 +167,7 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
         </div>
       </div>
 
-      {/* Contact Section */}
+      {}
       <div className="pt-4 border-t border-white/10">
         <h4 className="font-semibold mb-3">Contact</h4>
         <div className="space-y-2">
@@ -186,7 +193,7 @@ export const GithubProfile = ({ username }: GithubProfileProps) => {
   );
 };
 
-// Función para obtener colores de lenguajes
+
 const getLanguageColor = (language: string): string => {
   const colors: Record<string, string> = {
     'TypeScript': '#3178c6',
@@ -222,5 +229,5 @@ const getLanguageColor = (language: string): string => {
     'YAML': '#cb171e',
   };
 
-  return colors[language] || '#858585'; // gris por defecto
+  return colors[language] || '#858585'; 
 };

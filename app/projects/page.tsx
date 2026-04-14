@@ -37,7 +37,7 @@ export default function ProjectsPage() {
 
     return (
         <div className="min-h-screen bg-[#050505] text-foreground transition-colors duration-500 relative selection:bg-foreground selection:text-background pb-20">
-            {/* Background Blobs & Noise */}
+            {}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute inset-0 bg-noise opacity-[0.4] bg-repeat z-10"></div>
                 <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-500/10 blur-[150px] animate-blob"></div>
@@ -56,26 +56,26 @@ export default function ProjectsPage() {
                 </header>
 
                 <BentoGrid className="max-w-6xl mx-auto animate-fade-in grid grid-cols-1 md:grid-cols-12 gap-6">
-                    {/* Projects Mapping */}
+                    {}
                     {projects.map((project) => (
                         <div
                         key={project.name}
                         className={`project-card ${project.colSpan} relative rounded-3xl bg-white/[0.015] backdrop-blur-xl border border-white/[0.05] box-border ${project.borderHover} transition-all duration-700 group overflow-hidden`}
                         style={{ "--glow": project.glow } as React.CSSProperties}
                         >
-                        {/* Hover glow */}
+                        {}
                         <div
                             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-screen"
                             style={{ background: `radial-gradient(circle at center, ${project.glow}, transparent 70%)` }}
                         />
 
-                        {/* Large decorative number */}
+                        {}
                         <div className="absolute top-6 right-8 text-[6rem] font-black text-white/[0.02] leading-none select-none pointer-events-none tabular-nums">
                             {project.num}
                         </div>
 
                         <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[280px]">
-                            {/* Name */}
+                            {}
                             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
                             {project.name}
                             </h3>
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
                             {project.description}
                             </p>
 
-                            {/* Footer */}
+                            {}
                             <div className="mt-10 flex items-center justify-between">
                             <div className="flex gap-2 flex-wrap">
                                 {project.tags.map((tag, i) => (
@@ -110,7 +110,7 @@ export default function ProjectsPage() {
                         </div>
                     ))}
 
-                    {/* Coming soon placeholder */}
+                    {}
                     <div className="md:col-span-12 relative rounded-2xl border border-dashed border-white/[0.05] p-8 flex items-center justify-center min-h-[150px]">
                         <p className="text-xs text-white/20 font-mono tracking-widest uppercase">
                         More architecture in progress ·&thinsp;·&thinsp;·

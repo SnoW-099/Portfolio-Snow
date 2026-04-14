@@ -21,7 +21,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ── Ensure hero starts correctly (fix the lateral-glitch bug) ──────────
+      
       gsap.set([nameRef.current, badgeRef.current], { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" })
       gsap.set([taglineRef.current, bioRef.current, scrollRef.current], { opacity: 0 })
 
@@ -34,12 +34,12 @@ export default function HeroSection() {
           pin: true,
           pinSpacing: true,
           invalidateOnRefresh: true,
-          // ← KEY: immediately render the correct state for any scroll position
+          
           immediateRender: false,
         },
       })
 
-      // Name: fade + scale up
+      
       tl.to(nameRef.current, {
         opacity: 0,
         scale: 1.08,
@@ -56,13 +56,13 @@ export default function HeroSection() {
 
       tl.to({}, { duration: 0.1 })
 
-      // Tagline slides in from below
+      
       tl.fromTo(
         taglineRef.current,
         { opacity: 0, y: 30, filter: "blur(4px)" },
         { opacity: 1, y: 0,  filter: "blur(0px)", duration: 0.5, ease: "power2.out" },
       )
-      // Bio
+      
       tl.fromTo(
         bioRef.current,
         { opacity: 0, y: 20 },
@@ -81,14 +81,14 @@ export default function HeroSection() {
       ref={sectionRef}
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {/* Ambient glow */}
+      {}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue-200/5 blur-[200px]" />
         <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-indigo-300/5 blur-[160px]" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl px-4 w-full">
-        {/* Badge */}
+        {}
         <div
           ref={badgeRef}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-200/10 border border-blue-200/25 text-xs font-medium text-blue-200/90 mb-8 tracking-wide"
@@ -100,7 +100,7 @@ export default function HeroSection() {
           Available for work
         </div>
 
-        {/* Giant name — amber-to-white gradient text */}
+        {}
         <h1
           ref={nameRef}
           className="font-bold tracking-tighter leading-none text-gradient-amber select-none"
@@ -109,7 +109,7 @@ export default function HeroSection() {
           Angel.
         </h1>
 
-        {/* Tagline — revealed on scroll */}
+        {}
         <p
           ref={taglineRef}
           className="text-3xl md:text-5xl lg:text-7xl text-white/80 font-medium mt-12 tracking-tight opacity-0"
@@ -117,7 +117,7 @@ export default function HeroSection() {
           Crafting digital experiences.
         </p>
 
-        {/* Bio */}
+        {}
         <p
           ref={bioRef}
           className="text-base md:text-lg lg:text-2xl text-white/40 mt-6 max-w-3xl mx-auto leading-relaxed opacity-0 font-light"
@@ -128,7 +128,7 @@ export default function HeroSection() {
 
       </div>
 
-      {/* Tech marquee ticker at bottom */}
+      {}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-5 border-t border-white/[0.05]">
         <div className="flex animate-marquee gap-8">
           {marquee.map((item, i) => (
@@ -144,7 +144,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll hint */}
+      {}
       <div
         ref={scrollRef}
         className="opacity-0 absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"

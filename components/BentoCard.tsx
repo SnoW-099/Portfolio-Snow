@@ -86,10 +86,10 @@ export const BentoCard = ({ children, className, colSpan = 3, rowSpan = 1, href 
             }}
             className={cn(
                 "group relative flex flex-col justify-between overflow-hidden rounded-xl",
-                // Glassmorphism and Monochromatic Styling
+                
                 "bg-white/5 backdrop-blur-xl border border-white/10",
                 "hover:border-white/20 hover:bg-white/10 transition-colors duration-300",
-                // Shadow for depth
+                
                 "shadow-sm hover:shadow-xl hover:shadow-foreground/5",
                 colSpanClass,
                 rowSpanClass,
@@ -100,7 +100,7 @@ export const BentoCard = ({ children, className, colSpan = 3, rowSpan = 1, href 
                 {children}
             </div>
 
-            {/* Optional: Add a subtle arrow indicator if it's a link */}
+            {}
             {href && (
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-50 transition-opacity duration-300">
                     <ArrowRight className="w-4 h-4 text-white" />

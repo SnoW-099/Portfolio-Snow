@@ -125,7 +125,7 @@ function NoisePlane() {
 
   useFrame(({ clock }) => {
     if (mesh.current) {
-      // Rotating the entire geometric structure
+      
       mesh.current.rotation.z = Math.sin(clock.elapsedTime * 0.05) * 0.15
       
       const material = mesh.current.material as THREE.ShaderMaterial;
@@ -142,7 +142,7 @@ function NoisePlane() {
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}
-        wireframe={true} // Bring back the beloved geometric wireframe
+        wireframe={true} 
         transparent={true}
         depthWrite={false}
       />
@@ -166,16 +166,16 @@ function CameraRig() {
   }, [])
 
   useFrame((state) => {
-    // DRAMATIC ZOOM: Fly deeply into the geometry mesh 
-    // Start at Z = 6. As scrollY goes to 1, we fly 10 units deep (Z = -4)
+    
+    
     const targetZ = 6 - (scrollY * 10)
-    // Move slightly down as well
+    
     const targetY = 1 - (scrollY * 3)
     
     state.camera.position.z = THREE.MathUtils.lerp(state.camera.position.z, targetZ, 0.05)
     state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, targetY, 0.05)
     
-    // Tilt camera up slightly to look outward as we dive in
+    
     const targetRotX = (scrollY * 0.3)
     state.camera.rotation.x = THREE.MathUtils.lerp(state.camera.rotation.x, targetRotX, 0.05)
   })
@@ -194,13 +194,13 @@ export default function BackgroundGeometry() {
         <ambientLight intensity={0.5} />
         <CameraRig />
         
-        {/* Float adds a gentle continuous movement independent of scroll */}
+        {}
         <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
             <NoisePlane />
         </Float>
       </Canvas>
       
-      {/* Optional overylay noise/vignette for premium feel */}
+      {}
       <div className="absolute inset-0 bg-noise opacity-[0.25] pointer-events-none mix-blend-overlay"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030305]/50 to-[#030305] pointer-events-none"></div>
     </div>

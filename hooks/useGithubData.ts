@@ -48,14 +48,14 @@ export const useGithubData = (username: string) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch user data
+        
         const userResponse = await fetch(`https://api.github.com/users/${username}`);
         if (!userResponse.ok) {
           throw new Error('Failed to fetch user data');
         }
         const userData: User = await userResponse.json();
 
-        // Fetch user repos
+        
         const reposResponse = await fetch(
           `https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=10`
         );
@@ -64,10 +64,10 @@ export const useGithubData = (username: string) => {
         }
         const reposData: Repo[] = await reposResponse.json();
 
-        // Filter out forks and get top repos
+        
         const originalRepos = reposData.filter(repo => !repo.fork);
 
-        // Calculate language stats by fetching languages for each repo
+        
         const languageStats: LanguageStats = {};
         for (const repo of originalRepos) {
           try {
@@ -75,20 +75,20 @@ export const useGithubData = (username: string) => {
             if (repoLangResponse.ok) {
               const repoLanguages: Record<string, number> = await repoLangResponse.json();
 
-              // Sum up language bytes across all repos
+              
               for (const [lang, bytes] of Object.entries(repoLanguages)) {
                 languageStats[lang] = (languageStats[lang] || 0) + bytes;
               }
             }
           } catch (err) {
-            // If we can't fetch repo languages, fall back to the primary language
+            
             if (repo.language) {
-              languageStats[repo.language] = (languageStats[repo.language] || 0) + 100; // Assign some default value
+              languageStats[repo.language] = (languageStats[repo.language] || 0) + 100; 
             }
           }
         }
 
-        // Sort languages by total bytes
+        
         const sortedLanguages: LanguageStats = {};
         Object.entries(languageStats)
           .sort(([, a], [, b]) => b - a)
