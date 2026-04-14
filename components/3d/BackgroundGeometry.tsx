@@ -101,18 +101,18 @@ varying vec2 vUv;
 varying vec3 vPosition;
 
 void main() {
-  vec3 colorA = vec3(0.05, 0.4, 1.0); // Vibrant electric blue
-  vec3 colorB = vec3(0.4, 0.1, 0.8);  // Purple/Indigo
-  vec3 colorC = vec3(0.9, 0.6, 0.1);  // Glowing amber
+  vec3 colorA = vec3(0.15, 0.15, 0.15); // Dark gray base
+  vec3 colorB = vec3(0.30, 0.30, 0.32); // Lighter gray for peaks
+  vec3 colorC = vec3(0.20, 0.20, 0.22); // Mid gray
 
-  // Color logic mapping for wireframe lines
+  // Subtle height-based gradient
   float mixValue = smoothstep(0.0, 1.0, (vPosition.z * 1.5) + 0.5);
   
   vec3 finalColor = mix(colorA, colorB, mixValue);
-  finalColor = mix(finalColor, colorC, vUv.x * 0.5);
+  finalColor = mix(finalColor, colorC, vUv.x * 0.3);
   
-  // Make lines quite visible
-  gl_FragColor = vec4(finalColor, 0.35); // 0.35 opacity so the geometric lines pop beautifully
+  // Minimal, understated lines
+  gl_FragColor = vec4(finalColor, 0.18);
 }
 `
 
