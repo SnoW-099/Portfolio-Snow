@@ -1,14 +1,9 @@
 "use client"
 
-import { useRef, useMemo, useEffect } from "react"
+import { useRef, useMemo, useEffect, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Float } from "@react-three/drei"
 import * as THREE from "three"
-
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
 
 const vertexShader = `
 uniform float time;
@@ -91,9 +86,9 @@ float cnoise(vec3 P){
 void main() {
   vUv = uv;
   vec3 pos = position;
-  float noiseFreq = 1.5;
-  float noiseAmp = 0.5;
-  vec3 noisePos = vec3(pos.x * noiseFreq + time * 0.1, pos.y * noiseFreq + time * 0.2, pos.z);
+  float noiseFreq = 1.2;
+  float noiseAmp = 0.8;
+  vec3 noisePos = vec3(pos.x * noiseFreq + time * 0.05, pos.y * noiseFreq + time * 0.08, pos.z);
   pos.z += cnoise(noisePos) * noiseAmp;
   vPosition = pos;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
@@ -106,18 +101,19 @@ varying vec2 vUv;
 varying vec3 vPosition;
 
 void main() {
-  vec3 colorA = vec3(0.0, 0.0, 0.0); // Black background
-  vec3 colorB = vec3(0.04, 0.06, 0.12); // Deep blue, barely visible
-  vec3 colorC = vec3(0.08, 0.05, 0.02); // Deep amber, barely visible
+  vec3 colorA = vec3(0.015, 0.02, 0.04); // Deep dark blue background
+  vec3 colorB = vec3(0.12, 0.15, 0.35); // Rich vibrant blue for peaks
+  vec3 colorC = vec3(0.2, 0.1, 0.05); // Deep amber for accents
 
-  // Mix based on Z height (which was displaced by noise) and UV coordinates
-  float mixValue = (vPosition.z * 1.5) + 0.5;
+  // Map Z height to a smooth mix value
+  float mixValue = (vPosition.z * 1.2) + 0.5;
+  mixValue = smoothstep(0.0, 1.0, mixValue);
   
-  vec3 finalColor = mix(colorA, colorB, mixValue);
-  finalColor = mix(finalColor, colorC, vUv.x * vUv.y);
+  vec3 finalColor = mix(colorA, colorB, mixValue * 0.6);
+  finalColor = mix(finalColor, colorC, smoothstep(0.4, 1.0, mixValue) * 0.3 * (sin(vUv.x * 10.0 + time) * 0.5 + 0.5));
   
-  // Add some pulsing based on time
-  finalColor += vec3(0.01) * sin(time);
+  // Add subtle pulsing
+  finalColor += vec3(0.01) * sin(time * 2.0);
 
   gl_FragColor = vec4(finalColor, 1.0);
 }
@@ -132,68 +128,87 @@ function NoisePlane() {
 
   useFrame(({ clock }) => {
     if (mesh.current) {
-      // Rotate the plane slightly slowly over time for a 3D effect
-      mesh.current.rotation.x = -Math.PI / 3 + Math.sin(clock.elapsedTime * 0.05) * 0.1
-      mesh.current.rotation.y = Math.cos(clock.elapsedTime * 0.05) * 0.1
+      // Very slow, subtle rotation for extra depth
+      mesh.current.rotation.z = Math.sin(clock.elapsedTime * 0.02) * 0.05
       
-      // Update uniform for shader animation
       const material = mesh.current.material as THREE.ShaderMaterial;
       if (material && material.uniforms) {
-          material.uniforms.time.value = clock.elapsedTime * 0.5;
+          material.uniforms.time.value = clock.elapsedTime * 0.4;
       }
     }
   })
 
   return (
-    <mesh ref={mesh} position={[0, -2, -5]} rotation={[-Math.PI / 3, 0, 0]}>
-      <planeGeometry args={[35, 35, 128, 128]} />
+    <mesh ref={mesh} position={[0, -3, -8]} rotation={[-Math.PI / 2.5, 0, 0]}>
+      <planeGeometry args={[50, 50, 128, 128]} />
       <shaderMaterial
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}
-        wireframe={true} // Set to true for a techy wireframe look, false for smooth gradient
+        wireframe={false} // Solid beautiful surface instead of wireframe
         transparent={true}
-        opacity={0.15} // Very subtle
+        opacity={0.8}
+        side={THREE.DoubleSide}
       />
     </mesh>
   )
 }
 
-export default function BackgroundGeometry() {
-  const containerRef = useRef<HTMLDivElement>(null)
+function CameraRig() {
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
-    // Add scroll parallax + zoom effect on the container
-    const ctx = gsap.context(() => {
-      gsap.to(containerRef.current, {
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1.5,
-        },
-        scale: 1.6, // Zoom into the noise mesh as you scroll
-        y: 150,     // Move the container slightly down for an extra parallax effect
-        ease: "none",
-      })
-    })
-
-    return () => ctx.revert()
+    const handleScroll = () => {
+      // Calculate scroll progress (0 to 1)
+      const maxScroll = document.body.scrollHeight - window.innerHeight
+      if (maxScroll > 0) {
+        setScrollY(window.scrollY / maxScroll)
+      }
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useFrame((state) => {
+    // Determine target camera position based on scroll progress (0 to 1)
+    // Start Z at 5, zoom in to Z 1 as we scroll
+    const targetZ = 5 - (scrollY * 4)
+    // Start Y at 0, move down to -1 as we scroll
+    const targetY = 0 - (scrollY * 1)
+    
+    // Smoothly interpolate the camera's position
+    state.camera.position.z = THREE.MathUtils.lerp(state.camera.position.z, targetZ, 0.05)
+    state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, targetY, 0.05)
+    
+    // Slight look-down tilt as we scroll
+    const targetRotX = -(scrollY * 0.2)
+    state.camera.rotation.x = THREE.MathUtils.lerp(state.camera.rotation.x, targetRotX, 0.05)
+  })
+
+  return null
+}
+
+export default function BackgroundGeometry() {
   return (
-    <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none w-full h-full transform-gpu">
+    <div className="fixed inset-0 z-0 pointer-events-none w-screen h-screen bg-[#030305]">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
         style={{ background: "transparent" }}
         gl={{ alpha: true, antialias: true }}
       >
         <ambientLight intensity={0.5} />
-        {/* We keep Float to add a gentle up/down bobbing to the whole plane */}
-        <Float speed={1} rotationIntensity={0.1} floatIntensity={0.5}>
+        <CameraRig />
+        
+        {/* Float adds a gentle continuous movement independent of scroll */}
+        <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
             <NoisePlane />
         </Float>
       </Canvas>
+      
+      {/* Optional overylay noise/vignette for premium feel */}
+      <div className="absolute inset-0 bg-noise opacity-[0.25] pointer-events-none mix-blend-overlay"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030305]/50 to-[#030305] pointer-events-none"></div>
     </div>
   )
 }
