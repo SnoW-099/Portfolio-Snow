@@ -3,49 +3,39 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import {
-  Github,
-  Terminal,
-  Zap,
-  Cloud,
-  Cpu,
-  Atom,
-  Triangle,
-  Wind,
-  Hexagon,
-  Database,
-} from "lucide-react"
+import { Github, Terminal, Zap, Cloud, Atom, Triangle, Wind, Hexagon, Database, Cpu } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
 const languages = [
-  { name: "Python", level: "Mid Level", width: "50%", color: "bg-blue-400/60", dot: "bg-blue-400/40" },
-  { name: "JavaScript", level: "Junior", width: "25%", color: "bg-yellow-400/60", dot: "bg-yellow-400/40" },
-  { name: "TypeScript", level: "Junior", width: "25%", color: "bg-blue-500/60", dot: "bg-blue-500/40" },
-  { name: "HTML & CSS", level: "Junior", width: "25%", color: "bg-orange-400/60", dot: "bg-orange-400/40" },
+  { name: "Python",      level: "Mid Level", pct: 50, from: "#3b82f6", to: "#6366f1" },
+  { name: "JavaScript",  level: "Junior",    pct: 25, from: "#f59e0b", to: "#fbbf24" },
+  { name: "TypeScript",  level: "Junior",    pct: 25, from: "#6366f1", to: "#8b5cf6" },
+  { name: "HTML & CSS",  level: "Junior",    pct: 25, from: "#f97316", to: "#ef4444" },
 ]
 
 const tools = [
-  { name: "Git & GitHub", icon: Github, hoverColor: "group-hover:text-white" },
-  { name: "VS Code", icon: Terminal, hoverColor: "group-hover:text-[#007ACC]" },
-  { name: "Vercel", icon: Zap, hoverColor: "group-hover:text-white" },
-  { name: "Netlify", icon: Cloud, hoverColor: "group-hover:text-[#00C7B7]" },
+  { name: "Git & GitHub", icon: Github,   glow: "group-hover:border-white/30 group-hover:text-white"  },
+  { name: "VS Code",      icon: Terminal,  glow: "group-hover:border-[#007ACC]/50 group-hover:text-[#007ACC]" },
+  { name: "Vercel",       icon: Zap,       glow: "group-hover:border-white/30 group-hover:text-white"  },
+  { name: "Netlify",      icon: Cloud,     glow: "group-hover:border-[#00C7B7]/50 group-hover:text-[#00C7B7]" },
 ]
 
 const frameworks = [
-  { name: "React", icon: Atom, hoverColor: "group-hover:text-[#61DAFB]", borderColor: "hover:border-[#61DAFB]/50" },
-  { name: "Next.js", icon: Triangle, hoverColor: "group-hover:text-white", borderColor: "hover:border-white/50" },
-  { name: "Tailwind", icon: Wind, hoverColor: "group-hover:text-[#06B6D4]", borderColor: "hover:border-[#06B6D4]/50" },
-  { name: "Node.js", icon: Hexagon, hoverColor: "group-hover:text-[#339933]", borderColor: "hover:border-[#339933]/50" },
-  { name: "Django", icon: Database, hoverColor: "group-hover:text-[#44B78B]", borderColor: "hover:border-[#44B78B]/50" },
+  { name: "React",    icon: Atom,     glow: "group-hover:border-[#61DAFB]/40 group-hover:text-[#61DAFB]" },
+  { name: "Next.js",  icon: Triangle, glow: "group-hover:border-white/40 group-hover:text-white"  },
+  { name: "Tailwind", icon: Wind,     glow: "group-hover:border-[#06B6D4]/40 group-hover:text-[#06B6D4]" },
+  { name: "Node.js",  icon: Hexagon,  glow: "group-hover:border-[#339933]/40 group-hover:text-[#339933]" },
+  { name: "Django",   icon: Database, glow: "group-hover:border-[#44B78B]/40 group-hover:text-[#44B78B]" },
 ]
 
 export default function SkillsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const barsRef = useRef<HTMLDivElement>(null)
-  const toolsRef = useRef<HTMLDivElement>(null)
-  const frameworksRef = useRef<HTMLDivElement>(null)
+  const sectionRef     = useRef<HTMLDivElement>(null)
+  const titleRef       = useRef<HTMLHeadingElement>(null)
+  const subtitleRef    = useRef<HTMLParagraphElement>(null)
+  const barsRef        = useRef<HTMLDivElement>(null)
+  const toolsRef       = useRef<HTMLDivElement>(null)
+  const frameworksRef  = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -53,43 +43,40 @@ export default function SkillsSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=300%",
+          end: "+=310%",
           scrub: 2,
           pin: true,
           pinSpacing: true,
+          invalidateOnRefresh: true,
         },
       })
 
-      // Title fades in
-      tl.fromTo(titleRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
+      tl.fromTo(
+        [titleRef.current, subtitleRef.current],
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.35, ease: "power2.out" },
+      )
+      tl.to({}, { duration: 0.1 })
 
-      // Pause
-      tl.to({}, { duration: 0.2 })
-
-      // Language bars fill
       if (barsRef.current) {
-        const bars = barsRef.current.querySelectorAll(".skill-bar-fill")
-        const barItems = barsRef.current.querySelectorAll(".skill-bar-item")
-        tl.fromTo(barItems, { opacity: 0, x: -30 }, { opacity: 1, x: 0, stagger: 0.1, duration: 0.5, ease: "power2.out" })
-        tl.fromTo(bars, { width: "0%" }, { width: (i: number) => languages[i]?.width || "0%", stagger: 0.1, duration: 0.6, ease: "power2.out" }, "-=0.4")
+        const items = barsRef.current.querySelectorAll(".skill-item")
+        const fills = barsRef.current.querySelectorAll<HTMLElement>(".skill-fill")
+        tl.fromTo(items, { opacity: 0, x: -24 }, { opacity: 1, x: 0, stagger: 0.08, duration: 0.3, ease: "power2.out" })
+        tl.fromTo(fills, { width: "0%" }, { width: (i) => `${languages[i]?.pct ?? 0}%`, stagger: 0.08, duration: 0.45, ease: "power2.out" }, "-=0.2")
       }
 
-      // Pause
-      tl.to({}, { duration: 0.2 })
+      tl.to({}, { duration: 0.1 })
 
-      // Tools stagger in
       if (toolsRef.current) {
-        const toolCards = toolsRef.current.querySelectorAll(".tool-card")
-        tl.fromTo(toolCards, { opacity: 0, y: 20, rotateY: 30 }, { opacity: 1, y: 0, rotateY: 0, stagger: 0.08, duration: 0.5, ease: "power2.out" })
+        const cards = toolsRef.current.querySelectorAll(".tool-card")
+        tl.fromTo(cards, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, stagger: 0.05, duration: 0.3, ease: "power2.out" })
       }
 
-      // Pause
-      tl.to({}, { duration: 0.2 })
+      tl.to({}, { duration: 0.1 })
 
-      // Frameworks rotate in
       if (frameworksRef.current) {
-        const fwCards = frameworksRef.current.querySelectorAll(".fw-card")
-        tl.fromTo(fwCards, { opacity: 0, scale: 0.9, rotateY: -30 }, { opacity: 1, scale: 1, rotateY: 0, stagger: 0.08, duration: 0.5, ease: "power2.out" })
+        const cards = frameworksRef.current.querySelectorAll(".fw-card")
+        tl.fromTo(cards, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, stagger: 0.07, duration: 0.45, ease: "power2.out" })
       }
     }, sectionRef)
 
@@ -102,56 +89,71 @@ export default function SkillsSection() {
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-indigo-500/8 blur-[150px]" />
+        <div className="absolute bottom-1/3 left-1/4 w-[550px] h-[550px] rounded-full bg-indigo-500/6 blur-[160px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-5xl px-6 md:px-8">
-        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-12 md:mb-16 text-center opacity-0 text-white">
-          Skills & Tools
-        </h2>
+      <div className="relative z-10 w-full max-w-5xl px-6 md:px-10">
+        {/* Title */}
+        <div className="mb-12 md:mb-14">
+          <h2
+            ref={titleRef}
+            className="text-3xl md:text-5xl font-bold tracking-tight text-white opacity-0"
+          >
+            What I build with.
+          </h2>
+          <p
+            ref={subtitleRef}
+            className="text-white/30 text-sm mt-2 opacity-0"
+          >
+            Languages, frameworks & tools in my daily stack.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {/* Languages */}
+          {/* ── Languages ── */}
           <div>
-            <h3 className="text-sm uppercase tracking-widest text-white/30 font-medium mb-6 flex items-center gap-2">
-              <Cpu className="w-4 h-4" />
-              Languages
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-5 flex items-center gap-2">
+              <Cpu className="w-3.5 h-3.5" /> Languages
             </h3>
             <div ref={barsRef} className="space-y-5">
               {languages.map((lang) => (
-                <div key={lang.name} className="skill-bar-item">
-                  <div className="flex justify-between items-center mb-2 text-sm">
-                    <span className="text-white/90 font-medium flex items-center gap-2">
-                      <div className={`w-2.5 h-2.5 rounded-full ${lang.dot}`} />
-                      {lang.name}
-                    </span>
-                    <span className="text-white/40 text-xs">{lang.level}</span>
+                <div key={lang.name} className="skill-item">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-medium text-white/85">{lang.name}</span>
+                    <span className="text-xs text-white/30">{lang.level}</span>
                   </div>
-                  <div className="h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
-                    <div className={`skill-bar-fill h-full ${lang.color} rounded-full`} style={{ width: "0%" }} />
+                  <div className="h-[3px] bg-white/5 rounded-full overflow-hidden">
+                    <div
+                      className="skill-fill h-full rounded-full"
+                      style={{
+                        width: "0%",
+                        background: `linear-gradient(90deg, ${lang.from}, ${lang.to})`,
+                      }}
+                    />
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right column */}
+          {/* ── Right column ── */}
           <div className="space-y-8">
             {/* Tools */}
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-white/30 font-medium mb-4 flex items-center gap-2">
-                <Terminal className="w-4 h-4" />
-                Tools & Utils
+              <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
+                <Terminal className="w-3.5 h-3.5" /> Tools
               </h3>
               <div ref={toolsRef} className="grid grid-cols-2 gap-2">
-                {tools.map((tool) => (
+                {tools.map((t) => (
                   <div
-                    key={tool.name}
-                    className="tool-card p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/20 transition-all flex items-center gap-3 group cursor-default"
-                    style={{ perspective: "600px" }}
+                    key={t.name}
+                    data-cursor-hover
+                    className={`tool-card flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/8 transition-all duration-300 group ${t.glow}`}
                   >
-                    <tool.icon className={`w-4 h-4 text-white/30 ${tool.hoverColor} transition-colors`} />
-                    <span className="text-xs font-medium text-white/70">{tool.name}</span>
+                    <t.icon className="w-4 h-4 text-white/25 transition-colors duration-300" />
+                    <span className="text-xs font-medium text-white/60 group-hover:text-inherit transition-colors duration-300">
+                      {t.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -159,19 +161,20 @@ export default function SkillsSection() {
 
             {/* Frameworks */}
             <div>
-              <h3 className="text-sm uppercase tracking-widest text-white/30 font-medium mb-4 flex items-center gap-2">
-                <Zap className="w-4 h-4" />
-                Frameworks
+              <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
+                <Zap className="w-3.5 h-3.5" /> Frameworks
               </h3>
               <div ref={frameworksRef} className="grid grid-cols-2 gap-2">
                 {frameworks.map((fw) => (
                   <div
                     key={fw.name}
-                    className={`fw-card p-3 rounded-xl bg-white/5 border border-white/5 ${fw.borderColor} transition-all flex items-center gap-3 group cursor-default`}
-                    style={{ perspective: "600px" }}
+                    data-cursor-hover
+                    className={`fw-card flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/8 transition-all duration-300 group ${fw.glow}`}
                   >
-                    <fw.icon className={`w-4 h-4 text-white/30 ${fw.hoverColor} transition-colors`} />
-                    <span className="text-xs font-medium text-white/70">{fw.name}</span>
+                    <fw.icon className="w-4 h-4 text-white/25 transition-colors duration-300" />
+                    <span className="text-xs font-medium text-white/60 group-hover:text-inherit transition-colors duration-300">
+                      {fw.name}
+                    </span>
                   </div>
                 ))}
               </div>

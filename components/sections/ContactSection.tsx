@@ -3,75 +3,68 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Github, MessageCircle, Mail, ExternalLink } from "lucide-react"
+import { Github, MessageCircle, Mail, ExternalLink, Copy } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
 const contacts = [
   {
     name: "GitHub",
+    label: "github.com/SnoW-099",
     icon: Github,
     href: "https://github.com/SnoW-099",
-    style: "bg-white/5 hover:bg-white/10 border-white/10",
-    iconColor: "text-white/50 group-hover:text-white",
+    glow: "hover:border-white/25 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]",
     external: true,
   },
   {
     name: "Discord",
+    label: ".snow_xd",
     icon: MessageCircle,
     value: ".snow_xd",
-    style: "bg-[#5865F2]/10 hover:bg-[#5865F2]/20 border-[#5865F2]/20",
+    glow: "hover:border-[#5865F2]/40 hover:shadow-[0_0_20px_rgba(88,101,242,0.1)]",
     iconColor: "text-[#5865F2]",
   },
   {
     name: "Email",
+    label: "ryze0950@gmail.com",
     icon: Mail,
     href: "mailto:ryze0950@gmail.com",
-    style: "bg-white/5 hover:bg-white/10 border-white/10",
-    iconColor: "text-white/50 group-hover:text-white",
+    glow: "hover:border-amber-500/30 hover:shadow-[0_0_20px_rgba(251,191,36,0.08)]",
   },
 ]
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const linksRef = useRef<HTMLDivElement>(null)
+  const titleRef   = useRef<HTMLHeadingElement>(null)
+  const subRef     = useRef<HTMLParagraphElement>(null)
+  const linksRef   = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 50 },
+        [titleRef.current, subRef.current],
+        { opacity: 0, y: 30 },
         {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
+          opacity: 1, y: 0, stagger: 0.1, duration: 0.5, ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 70%",
+            start: "top 68%",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       )
-
       if (linksRef.current) {
-        const links = linksRef.current.querySelectorAll(".contact-link")
         gsap.fromTo(
-          links,
-          { opacity: 0, y: 30 },
+          linksRef.current.querySelectorAll(".contact-link"),
+          { opacity: 0, y: 20 },
           {
-            opacity: 1,
-            y: 0,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: "power2.out",
+            opacity: 1, y: 0, stagger: 0.1, duration: 0.45, ease: "power2.out",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 60%",
+              start: "top 58%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         )
       }
     }, sectionRef)
@@ -82,38 +75,62 @@ export default function ContactSection() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-[70vh] w-full flex items-center justify-center relative overflow-hidden"
+      className="min-h-[80vh] w-full flex items-center justify-center relative overflow-hidden"
     >
+      {/* Dot grid background */}
+      <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
+
+      {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] rounded-full bg-blue-500/8 blur-[150px]" />
+        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[400px] rounded-full bg-blue-200/4 blur-[160px]" />
       </div>
 
-      <div className="relative z-10 text-center max-w-lg px-6">
-        <h2 ref={titleRef} className="text-3xl md:text-5xl font-bold tracking-tight mb-4 opacity-0 text-white">
-          Get in touch.
+      <div className="relative z-10 text-center max-w-md px-6 w-full">
+        {/* Title with amber gradient */}
+        <h2
+          ref={titleRef}
+          className="text-4xl md:text-6xl font-bold tracking-tight mb-3 opacity-0 text-gradient-amber"
+        >
+          Let's talk.
         </h2>
-        <p className="text-white/40 mb-10 text-sm md:text-base">
-          Feel free to reach out — I'm always open to new opportunities.
+        <p
+          ref={subRef}
+          className="text-white/35 mb-10 text-sm opacity-0"
+        >
+          Open to opportunities, collabs, and interesting conversations.
         </p>
 
         <div ref={linksRef} className="space-y-3">
           {contacts.map((contact) => {
-            const Component = contact.href ? "a" : "button"
+            const isClickable = !!contact.value || !!contact.href
+            const Tag = contact.href ? "a" : "button"
+
             return (
-              <Component
+              <Tag
                 key={contact.name}
                 href={contact.href}
                 target={contact.external ? "_blank" : undefined}
-                onClick={contact.value ? () => navigator.clipboard.writeText(contact.value!) : undefined}
-                className={`contact-link w-full flex items-center gap-4 p-4 rounded-xl border transition-all group ${contact.style}`}
+                rel={contact.external ? "noopener noreferrer" : undefined}
+                onClick={
+                  contact.value
+                    ? () => navigator.clipboard.writeText(contact.value!)
+                    : undefined
+                }
+                data-cursor-hover
+                className={`contact-link w-full flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/8 transition-all duration-300 group text-left ${contact.glow}`}
               >
-                <contact.icon className={`w-5 h-5 ${contact.iconColor} transition-colors`} />
-                <span className="text-sm font-medium text-white/80">{contact.name}</span>
-                {contact.external && <ExternalLink className="w-3.5 h-3.5 ml-auto text-white/20" />}
-                {contact.value && (
-                  <span className="text-xs ml-auto text-white/30 bg-[#5865F2]/20 px-2.5 py-1 rounded">{contact.value}</span>
-                )}
-              </Component>
+                <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0">
+                  <contact.icon className={`w-4 h-4 ${contact.iconColor ?? "text-white/50"} group-hover:text-white transition-colors`} />
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="text-[11px] text-white/30 uppercase tracking-wider mb-0.5">{contact.name}</div>
+                  <div className="text-sm font-medium text-white/75 truncate">{contact.label}</div>
+                </div>
+
+                {contact.external && <ExternalLink className="w-3.5 h-3.5 text-white/20 flex-shrink-0" />}
+                {contact.value   && <Copy className="w-3.5 h-3.5 text-white/20 flex-shrink-0 group-hover:text-white/40 transition-colors" />}
+              </Tag>
             )
           })}
         </div>

@@ -1,71 +1,63 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect } from "react";
-import { Home, ExternalLink, User, MessageCircle, Code2 } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { motion } from "framer-motion"
+import { House, Folders, Mail } from "lucide-react"
+
+const items = [
+  { label: "Home",     href: "/",        icon: House   },
+  { label: "Projects", href: "/projects", icon: Folders },
+  { label: "Contact",  href: "mailto:ryze0950@gmail.com", icon: Mail, external: true },
+]
 
 export function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const pathname = usePathname();
+  const pathname = usePathname()
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
+  return (
+    <motion.div
+      className="fixed bottom-7 inset-x-0 z-50 flex justify-center pointer-events-none"
+      initial={{ y: 120, opacity: 0 }}
+      animate={{ y: 0,   opacity: 1 }}
+      transition={{ delay: 2.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <nav className="pointer-events-auto flex items-center gap-1 p-2 rounded-2xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/60">
+        {items.map((item) => {
+          const isActive = !item.external && pathname === item.href
+          const Tag = item.external ? "a" : Link
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const navItems = [
-        { name: "Home", href: "/", icon: Home },
-        { name: "Projects", href: "/projects", icon: Code2 },
-    ];
-
-    return (
-        <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
-            <nav
-                className={cn(
-                    "pointer-events-auto flex items-center gap-2 p-2 rounded-2xl transition-all duration-300",
-                    scrolled
-                        ? "bg-background/40 backdrop-blur-xl border border-white/10 shadow-lg shadow-black/20"
-                        : "bg-transparent border border-transparent"
-                )}
+          return (
+            <Tag
+              key={item.href}
+              href={item.href}
+              {...(item.external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              data-cursor-hover
             >
-                {navItems.map((item) => {
-                    const isActive = pathname === item.href;
-                    return (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={cn(
-                                "group relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2",
-                                isActive
-                                    ? "text-foreground"
-                                    : "text-muted-foreground hover:text-foreground"
-                            )}
-                        >
-                            {isActive && (
-                                <span className="absolute inset-0 bg-white/5 border border-white/5 rounded-xl z-0" />
-                            )}
-                            <item.icon className="w-4 h-4 relative z-10" />
-                            <span className="relative z-10 hidden sm:inline-block">{item.name}</span>
-                        </Link>
-                    );
-                })}
-
-                <div className="w-px h-6 bg-white/10 mx-2 hidden sm:block"></div>
-
-                <a
-                    href="mailto:contact@angel.dev"
-                    className="group relative px-4 py-2 rounded-xl text-sm font-medium text-foreground transition-all duration-300 flex items-center gap-2 hover:bg-white/5"
-                >
-                    <MessageCircle className="w-4 h-4" />
-                    <span className="hidden sm:inline-block">Contact</span>
-                </a>
-            </nav>
-        </div>
-    );
+              <motion.div
+                whileHover={{ scale: 1.25, y: -5 }}
+                whileTap={{ scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                className={`relative flex flex-col items-center gap-1.5 px-4 py-2.5 rounded-xl transition-colors ${
+                  isActive
+                    ? "bg-white/8 text-white"
+                    : "text-white/50 hover:text-white/80"
+                }`}
+              >
+                <item.icon className="w-[18px] h-[18px]" />
+                <span className="text-[10px] font-medium tracking-wide leading-none">
+                  {item.label}
+                </span>
+                {/* Active dot */}
+                {isActive && (
+                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-200" />
+                )}
+              </motion.div>
+            </Tag>
+          )
+        })}
+      </nav>
+    </motion.div>
+  )
 }
