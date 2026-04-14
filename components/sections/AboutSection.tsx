@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 // Words that get the amber highlight when illuminated
-const AMBER_WORDS = new Set(["developer", "clean", "interfaces,", "automating", "ideas", "real", "products."])
+const AMBER_WORDS = new Set(["full-stack", "architecting", "high-performance", "ecosystems.", "scalable", "solutions,", "polished", "products."])
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -83,7 +83,7 @@ export default function AboutSection() {
           ref={textRef}
           className="text-2xl md:text-4xl lg:text-[2.6rem] font-semibold leading-[1.35] tracking-tight"
         >
-          I'm a developer who loves building clean interfaces, automating workflows, and learning new technologies. From Discord bots to full-stack web apps — I enjoy turning ideas into real products.
+          I'm a full-stack engineer architecting high-performance digital ecosystems. From complex Discord automation to scalable web apps — I thrive on building polished products.
         </p>
       </div>
     </section>

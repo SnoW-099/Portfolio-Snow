@@ -122,7 +122,7 @@ export default function HeroSection() {
           ref={bioRef}
           className="text-sm md:text-base text-white/35 mt-4 max-w-md mx-auto leading-relaxed opacity-0"
         >
-          A developer who loves building clean interfaces, automating workflows, and turning ideas into real products.
+          Full-stack engineer architecting high-performance digital ecosystems. Passionate about scalable solutions, automated workflows, and turning complex ideas into polished products.
         </p>
 
 
