@@ -22,11 +22,13 @@ export default function AboutSection() {
       .split(" ")
       .map((word) => {
         const isAmber = AMBER_WORDS.has(word.toLowerCase())
-        return `<span class="inline-block leading-snug" style="color: rgba(255,255,255,0.08)" data-amber="${isAmber}">${word}</span>`
+        // Apply special color to amber words immediately, but keep them all hidden initially
+        const colorClass = isAmber ? "text-[#BFDBFE]" : "text-white/90"
+        return `<span class="inline-block overflow-hidden align-bottom leading-tight pb-1 -mb-1"><span class="inline-block ${colorClass} opacity-0 translate-y-full blur-sm will-change-[opacity,transform,filter]">${word}</span></span>`
       })
       .join(" ")
 
-    const words = textRef.current.querySelectorAll<HTMLSpanElement>("span")
+    const words = textRef.current.querySelectorAll<HTMLSpanElement>("span > span")
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -34,7 +36,7 @@ export default function AboutSection() {
           trigger: sectionRef.current,
           start: "top top",
           end: "+=220%",
-          scrub: 2,
+          scrub: 1.5,
           pin: true,
           pinSpacing: true,
           invalidateOnRefresh: true,
@@ -48,15 +50,15 @@ export default function AboutSection() {
         { scaleY: 1, opacity: 1, duration: 0.25, ease: "power2.out" },
       )
 
-      // Words illuminate — amber words glow their special color
-      words.forEach((word) => {
-        const isAmber = word.dataset.amber === "true"
-        tl.to(word, {
-          color: isAmber ? "#BFDBFE" : "rgba(255,255,255,0.92)",
-          duration: 0.02,
-          ease: "none",
-        }, "<0.005")
-      })
+      // Words butter-smooth blur and slide up
+      tl.to(words, {
+        y: 0,
+        opacity: 1,
+        filter: "blur(0px)",
+        stagger: 0.05,
+        duration: 1,
+        ease: "power3.out",
+      }, "<")
     }, sectionRef)
 
     return () => ctx.revert()

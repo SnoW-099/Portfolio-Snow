@@ -112,7 +112,7 @@ export default function HeroSection() {
         {/* Tagline — revealed on scroll */}
         <p
           ref={taglineRef}
-          className="text-xl md:text-3xl text-white/50 font-light mt-8 tracking-tight opacity-0"
+          className="text-3xl md:text-5xl lg:text-7xl text-white/80 font-medium mt-12 tracking-tight opacity-0"
         >
           Crafting digital experiences.
         </p>
@@ -120,7 +120,7 @@ export default function HeroSection() {
         {/* Bio */}
         <p
           ref={bioRef}
-          className="text-sm md:text-base text-white/35 mt-4 max-w-md mx-auto leading-relaxed opacity-0"
+          className="text-base md:text-lg lg:text-2xl text-white/40 mt-6 max-w-3xl mx-auto leading-relaxed opacity-0 font-light"
         >
           Full-stack engineer architecting high-performance digital ecosystems. Passionate about scalable solutions, automated workflows, and turning complex ideas into polished products.
         </p>
