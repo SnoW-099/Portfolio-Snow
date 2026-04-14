@@ -100,7 +100,7 @@ export const BentoCard = ({ children, className, colSpan = 3, rowSpan = 1, href 
                 {children}
             </div>
 
-            {}
+            
             {href && (
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-50 transition-opacity duration-300">
                     <ArrowRight className="w-4 h-4 text-white" />

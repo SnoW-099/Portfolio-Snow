@@ -69,13 +69,13 @@ export default function AboutSection() {
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
-      {}
+      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full bg-blue-200/4 blur-[180px]" />
       </div>
 
       <div className="relative z-10 max-w-3xl px-8 md:px-12 flex gap-6 md:gap-10 items-start">
-        {}
+        
         <div
           ref={lineRef}
           className="hidden md:block flex-shrink-0 w-px h-28 bg-gradient-to-b from-blue-200/60 to-transparent mt-3 origin-top"

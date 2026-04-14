@@ -194,13 +194,13 @@ export default function BackgroundGeometry() {
         <ambientLight intensity={0.5} />
         <CameraRig />
         
-        {}
+        
         <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
             <NoisePlane />
         </Float>
       </Canvas>
       
-      {}
+      
       <div className="absolute inset-0 bg-noise opacity-[0.25] pointer-events-none mix-blend-overlay"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030305]/50 to-[#030305] pointer-events-none"></div>
     </div>

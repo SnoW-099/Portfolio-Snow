@@ -56,7 +56,7 @@ export default function SkillsSection() {
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, stagger: 0.1, duration: 0.35, ease: "power2.out" },
       )
-      tl.to({}, { duration: 0.1 })
+      tl.to(, { duration: 0.1 })
 
       if (barsRef.current) {
         const items = barsRef.current.querySelectorAll(".skill-item")
@@ -65,14 +65,14 @@ export default function SkillsSection() {
         tl.fromTo(fills, { width: "0%" }, { width: (i) => `${languages[i]?.pct ?? 0}%`, stagger: 0.08, duration: 0.45, ease: "power2.out" }, "-=0.2")
       }
 
-      tl.to({}, { duration: 0.1 })
+      tl.to(, { duration: 0.1 })
 
       if (toolsRef.current) {
         const cards = toolsRef.current.querySelectorAll(".tool-card")
         tl.fromTo(cards, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, stagger: 0.05, duration: 0.3, ease: "power2.out" })
       }
 
-      tl.to({}, { duration: 0.1 })
+      tl.to(, { duration: 0.1 })
 
       if (frameworksRef.current) {
         const cards = frameworksRef.current.querySelectorAll(".fw-card")
@@ -93,7 +93,7 @@ export default function SkillsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-5xl px-6 md:px-10">
-        {}
+        
         <div className="mb-12 md:mb-14">
           <h2
             ref={titleRef}
@@ -110,7 +110,7 @@ export default function SkillsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {}
+          
           <div>
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-5 flex items-center gap-2">
               <Cpu className="w-3.5 h-3.5" /> Languages
@@ -136,9 +136,9 @@ export default function SkillsSection() {
             </div>
           </div>
 
-          {}
+          
           <div className="space-y-8">
-            {}
+            
             <div>
               <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
                 <Terminal className="w-3.5 h-3.5" /> Tools
@@ -159,7 +159,7 @@ export default function SkillsSection() {
               </div>
             </div>
 
-            {}
+            
             <div>
               <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
                 <Zap className="w-3.5 h-3.5" /> Frameworks

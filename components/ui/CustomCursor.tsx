@@ -73,13 +73,13 @@ export default function CustomCursor() {
 
   return (
     <>
-      {}
+      
       <div
         ref={dotRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full bg-white mix-blend-difference transition-opacity duration-150"
         style={{ width: 6, height: 6 }}
       />
-      {}
+      
       <div
         ref={ringRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full border border-white/70 mix-blend-difference transition-[width,height] duration-200 ease-out"

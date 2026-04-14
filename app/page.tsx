@@ -25,19 +25,19 @@ export default function Portfolio() {
 
   return (
     <div className="bg-[#050505] text-foreground relative selection:bg-foreground selection:text-background">
-      {}
+      
       <ScrollProgress />
 
-      {}
+      
       <Navbar />
 
-      {}
+      
       <BackgroundGeometry />
 
-      {}
+      
       <div className="fixed inset-0 z-[1] pointer-events-none bg-noise opacity-[0.3] bg-repeat" />
 
-      {}
+      
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />

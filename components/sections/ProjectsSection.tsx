@@ -52,7 +52,7 @@ export default function ProjectsSection() {
       })
 
       tl.fromTo(titleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" })
-      tl.to({}, { duration: 0.15 })
+      tl.to(, { duration: 0.15 })
 
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll(".project-card")
@@ -77,7 +77,7 @@ export default function ProjectsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-6xl px-6 md:px-10">
-        {}
+        
         <div className="mb-14 opacity-0 flex flex-col items-center text-center" ref={titleRef}>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
             Selected work.
@@ -87,7 +87,7 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        {}
+        
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {projects.map((project) => (
             <div
@@ -95,19 +95,19 @@ export default function ProjectsSection() {
               className={`project-card ${project.colSpan} relative rounded-3xl bg-white/[0.015] backdrop-blur-xl border border-white/[0.05] box-border ${project.borderHover} transition-all duration-700 group overflow-hidden`}
               style={{ "--glow": project.glow } as React.CSSProperties}
             >
-              {}
+              
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-screen"
                 style={{ background: `radial-gradient(circle at center, ${project.glow}, transparent 70%)` }}
               />
 
-              {}
+              
               <div className="absolute top-6 right-8 text-[6rem] font-black text-white/[0.02] leading-none select-none pointer-events-none tabular-nums">
                 {project.num}
               </div>
 
               <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[280px]">
-                {}
+                
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
                   {project.name}
                 </h3>
@@ -115,7 +115,7 @@ export default function ProjectsSection() {
                   {project.description}
                 </p>
 
-                {}
+                
                 <div className="mt-10 flex items-center justify-between">
                   <div className="flex gap-2 flex-wrap">
                     {project.tags.map((tag, i) => (
@@ -143,7 +143,7 @@ export default function ProjectsSection() {
             </div>
           ))}
 
-          {}
+          
           <div className="project-card md:col-span-12 relative rounded-2xl border border-dashed border-white/[0.05] p-8 flex items-center justify-center">
             <p className="text-xs text-white/20 font-mono tracking-widest uppercase">
               More architecture in progress ·&thinsp;·&thinsp;·

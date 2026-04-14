@@ -32,7 +32,7 @@ export function Navbar() {
               href={item.href}
               {...(item.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
+                : )}
               data-cursor-hover
             >
               <motion.div
@@ -49,7 +49,7 @@ export function Navbar() {
                 <span className="text-[10px] font-medium tracking-wide leading-none">
                   {item.label}
                 </span>
-                {}
+                
                 {isActive && (
                   <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-200" />
                 )}

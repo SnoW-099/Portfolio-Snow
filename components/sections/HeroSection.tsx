@@ -54,7 +54,7 @@ export default function HeroSection() {
         ease: "power2.inOut",
       }, "<")
 
-      tl.to({}, { duration: 0.1 })
+      tl.to(, { duration: 0.1 })
 
       
       tl.fromTo(
@@ -81,14 +81,14 @@ export default function HeroSection() {
       ref={sectionRef}
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
     >
-      {}
+      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue-200/5 blur-[200px]" />
         <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-indigo-300/5 blur-[160px]" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl px-4 w-full">
-        {}
+        
         <div
           ref={badgeRef}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-200/10 border border-blue-200/25 text-xs font-medium text-blue-200/90 mb-8 tracking-wide"
@@ -100,7 +100,7 @@ export default function HeroSection() {
           Available for work
         </div>
 
-        {}
+        
         <h1
           ref={nameRef}
           className="font-bold tracking-tighter leading-none text-gradient-amber select-none"
@@ -109,7 +109,7 @@ export default function HeroSection() {
           Angel.
         </h1>
 
-        {}
+        
         <p
           ref={taglineRef}
           className="text-3xl md:text-5xl lg:text-7xl text-white/80 font-medium mt-12 tracking-tight opacity-0"
@@ -117,7 +117,7 @@ export default function HeroSection() {
           Crafting digital experiences.
         </p>
 
-        {}
+        
         <p
           ref={bioRef}
           className="text-base md:text-lg lg:text-2xl text-white/40 mt-6 max-w-3xl mx-auto leading-relaxed opacity-0 font-light"
@@ -128,7 +128,7 @@ export default function HeroSection() {
 
       </div>
 
-      {}
+      
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-5 border-t border-white/[0.05]">
         <div className="flex animate-marquee gap-8">
           {marquee.map((item, i) => (
@@ -144,7 +144,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {}
+      
       <div
         ref={scrollRef}
         className="opacity-0 absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
