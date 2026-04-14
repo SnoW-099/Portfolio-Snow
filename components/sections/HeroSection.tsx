@@ -54,7 +54,7 @@ export default function HeroSection() {
         ease: "power2.inOut",
       }, "<")
 
-      tl.to(, { duration: 0.1 })
+      tl.to({}, { duration: 0.1 })
 
       
       tl.fromTo(

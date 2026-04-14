@@ -56,7 +56,7 @@ export default function SkillsSection() {
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, stagger: 0.1, duration: 0.35, ease: "power2.out" },
       )
-      tl.to(, { duration: 0.1 })
+      tl.to({}, { duration: 0.1 })
 
       if (barsRef.current) {
         const items = barsRef.current.querySelectorAll(".skill-item")
@@ -65,14 +65,14 @@ export default function SkillsSection() {
         tl.fromTo(fills, { width: "0%" }, { width: (i) => `${languages[i]?.pct ?? 0}%`, stagger: 0.08, duration: 0.45, ease: "power2.out" }, "-=0.2")
       }
 
-      tl.to(, { duration: 0.1 })
+      tl.to({}, { duration: 0.1 })
 
       if (toolsRef.current) {
         const cards = toolsRef.current.querySelectorAll(".tool-card")
         tl.fromTo(cards, { opacity: 0, y: 18, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, stagger: 0.05, duration: 0.3, ease: "power2.out" })
       }
 
-      tl.to(, { duration: 0.1 })
+      tl.to({}, { duration: 0.1 })
 
       if (frameworksRef.current) {
         const cards = frameworksRef.current.querySelectorAll(".fw-card")

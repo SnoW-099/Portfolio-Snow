@@ -52,7 +52,7 @@ export default function ProjectsSection() {
       })
 
       tl.fromTo(titleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" })
-      tl.to(, { duration: 0.15 })
+      tl.to({}, { duration: 0.15 })
 
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll(".project-card")

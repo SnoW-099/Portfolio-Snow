@@ -32,7 +32,7 @@ export function Navbar() {
               href={item.href}
               {...(item.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
-                : )}
+                : {})}
               data-cursor-hover
             >
               <motion.div
