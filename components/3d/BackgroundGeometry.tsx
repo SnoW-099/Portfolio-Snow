@@ -101,21 +101,18 @@ varying vec2 vUv;
 varying vec3 vPosition;
 
 void main() {
-  vec3 colorA = vec3(0.015, 0.02, 0.04); // Deep dark blue background
-  vec3 colorB = vec3(0.12, 0.15, 0.35); // Rich vibrant blue for peaks
-  vec3 colorC = vec3(0.2, 0.1, 0.05); // Deep amber for accents
+  vec3 colorA = vec3(0.05, 0.4, 1.0); // Vibrant electric blue
+  vec3 colorB = vec3(0.4, 0.1, 0.8);  // Purple/Indigo
+  vec3 colorC = vec3(0.9, 0.6, 0.1);  // Glowing amber
 
-  // Map Z height to a smooth mix value
-  float mixValue = (vPosition.z * 1.2) + 0.5;
-  mixValue = smoothstep(0.0, 1.0, mixValue);
+  // Color logic mapping for wireframe lines
+  float mixValue = smoothstep(0.0, 1.0, (vPosition.z * 1.5) + 0.5);
   
-  vec3 finalColor = mix(colorA, colorB, mixValue * 0.6);
-  finalColor = mix(finalColor, colorC, smoothstep(0.4, 1.0, mixValue) * 0.3 * (sin(vUv.x * 10.0 + time) * 0.5 + 0.5));
+  vec3 finalColor = mix(colorA, colorB, mixValue);
+  finalColor = mix(finalColor, colorC, vUv.x * 0.5);
   
-  // Add subtle pulsing
-  finalColor += vec3(0.01) * sin(time * 2.0);
-
-  gl_FragColor = vec4(finalColor, 1.0);
+  // Make lines quite visible
+  gl_FragColor = vec4(finalColor, 0.35); // 0.35 opacity so the geometric lines pop beautifully
 }
 `
 
@@ -128,8 +125,8 @@ function NoisePlane() {
 
   useFrame(({ clock }) => {
     if (mesh.current) {
-      // Very slow, subtle rotation for extra depth
-      mesh.current.rotation.z = Math.sin(clock.elapsedTime * 0.02) * 0.05
+      // Rotating the entire geometric structure
+      mesh.current.rotation.z = Math.sin(clock.elapsedTime * 0.05) * 0.15
       
       const material = mesh.current.material as THREE.ShaderMaterial;
       if (material && material.uniforms) {
@@ -139,16 +136,15 @@ function NoisePlane() {
   })
 
   return (
-    <mesh ref={mesh} position={[0, -3, -8]} rotation={[-Math.PI / 2.5, 0, 0]}>
-      <planeGeometry args={[50, 50, 128, 128]} />
+    <mesh ref={mesh} position={[0, -2, -5]} rotation={[-Math.PI / 2.5, 0, 0]}>
+      <planeGeometry args={[60, 60, 100, 100]} />
       <shaderMaterial
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}
-        wireframe={false} // Solid beautiful surface instead of wireframe
+        wireframe={true} // Bring back the beloved geometric wireframe
         transparent={true}
-        opacity={0.8}
-        side={THREE.DoubleSide}
+        depthWrite={false}
       />
     </mesh>
   )
@@ -159,7 +155,6 @@ function CameraRig() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate scroll progress (0 to 1)
       const maxScroll = document.body.scrollHeight - window.innerHeight
       if (maxScroll > 0) {
         setScrollY(window.scrollY / maxScroll)
@@ -171,18 +166,17 @@ function CameraRig() {
   }, [])
 
   useFrame((state) => {
-    // Determine target camera position based on scroll progress (0 to 1)
-    // Start Z at 5, zoom in to Z 1 as we scroll
-    const targetZ = 5 - (scrollY * 4)
-    // Start Y at 0, move down to -1 as we scroll
-    const targetY = 0 - (scrollY * 1)
+    // DRAMATIC ZOOM: Fly deeply into the geometry mesh 
+    // Start at Z = 6. As scrollY goes to 1, we fly 10 units deep (Z = -4)
+    const targetZ = 6 - (scrollY * 10)
+    // Move slightly down as well
+    const targetY = 1 - (scrollY * 3)
     
-    // Smoothly interpolate the camera's position
     state.camera.position.z = THREE.MathUtils.lerp(state.camera.position.z, targetZ, 0.05)
     state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, targetY, 0.05)
     
-    // Slight look-down tilt as we scroll
-    const targetRotX = -(scrollY * 0.2)
+    // Tilt camera up slightly to look outward as we dive in
+    const targetRotX = (scrollY * 0.3)
     state.camera.rotation.x = THREE.MathUtils.lerp(state.camera.rotation.x, targetRotX, 0.05)
   })
 
