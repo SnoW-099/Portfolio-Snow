@@ -11,7 +11,8 @@ const projects = [
   {
     num: "01",
     name: "Vibe",
-    description: "A minimalist web terminal experience designed for deep focus and productivity. Clean, fast, distraction-free.",
+    description: "A minimalist web terminal built for deep-focus productivity — zero distractions, instant load, keyboard-first UX.",
+    highlights: ["SSR with Next.js App Router", "Custom CLI parser", "< 50ms TTI"],
     tags: ["TypeScript", "Next.js"],
     tagColors: ["text-indigo-300/80 border-indigo-500/20 bg-indigo-500/5", "text-blue-300/80 border-blue-500/20 bg-blue-500/5"],
     glow: "rgba(99,102,241,0.15)",
@@ -22,7 +23,8 @@ const projects = [
   {
     num: "02",
     name: "Rez Bot",
-    description: "Comprehensive Discord automation bot with security modules, giveaways, levelling, moderation and more.",
+    description: "Full-featured Discord bot serving 500+ users — automated moderation, XP levelling, giveaways, and real-time security alerts.",
+    highlights: ["Async event-driven architecture", "Slash commands + REST API", "SQLite persistence layer"],
     tags: ["Python", "Discord.py"],
     tagColors: ["text-purple-300/80 border-purple-500/20 bg-purple-500/5", "text-white/30 border-white/8 bg-white/3"],
     glow: "rgba(168,85,247,0.15)",
@@ -114,6 +116,18 @@ export default function ProjectsSection() {
                 <p className="text-white/50 text-base leading-relaxed flex-1 max-w-md">
                   {project.description}
                 </p>
+                {project.highlights && (
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.highlights.map((h) => (
+                      <span
+                        key={h}
+                        className="text-[10px] font-mono tracking-wide text-white/40 border border-white/[0.06] bg-white/[0.02] px-2.5 py-1 rounded-md"
+                      >
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 
                 <div className="mt-10 flex items-center justify-between">

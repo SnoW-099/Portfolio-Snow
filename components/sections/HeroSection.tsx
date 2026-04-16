@@ -104,7 +104,7 @@ export default function HeroSection() {
         <h1
           ref={nameRef}
           className="font-bold tracking-tighter leading-none text-gradient-amber select-none"
-          style={{ fontSize: "clamp(4rem, 17vw, 18rem)" }}
+          style={{ fontSize: "clamp(4rem, 15vw, 14rem)" }}
         >
           Angel.
         </h1>
