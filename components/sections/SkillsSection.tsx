@@ -8,10 +8,10 @@ import { Github, Terminal, Zap, Cloud, Atom, Triangle, Wind, Hexagon, Database, 
 gsap.registerPlugin(ScrollTrigger)
 
 const languages = [
-  { name: "Python", level: "Mid Level", pct: 50, from: "#3b82f6", to: "#6366f1" },
-  { name: "JavaScript", level: "Junior", pct: 25, from: "#f59e0b", to: "#fbbf24" },
-  { name: "TypeScript", level: "Junior", pct: 25, from: "#6366f1", to: "#8b5cf6" },
-  { name: "HTML & CSS", level: "Junior", pct: 25, from: "#f97316", to: "#ef4444" },
+  { name: "Python", level: "Junior+", },
+  { name: "JavaScript", level: "Planned", },
+  { name: "TypeScript", level: "Planned", },
+  { name: "HTML & CSS", level: "Learning(Basisc)", },
 ]
 
 const tools = [
@@ -19,7 +19,6 @@ const tools = [
   { name: "VS Code", icon: Terminal, glow: "group-hover:border-[#007ACC]/50 group-hover:text-[#007ACC]" },
   { name: "Vercel", icon: Zap, glow: "group-hover:border-white/30 group-hover:text-white" },
   { name: "Netlify", icon: Cloud, glow: "group-hover:border-[#00C7B7]/50 group-hover:text-[#00C7B7]" },
-  { name: "VScode", icon: Terminal, glow: "group-hover:border-white/30 group-hover:text-white" }
 ]
 
 const frameworks = [
