@@ -2,15 +2,17 @@
 
 import dynamic from "next/dynamic"
 import { useState, useEffect } from "react"
-import HeroSection     from "@/components/sections/HeroSection"
-import AboutSection    from "@/components/sections/AboutSection"
-import SkillsSection   from "@/components/sections/SkillsSection"
-import ProjectsSection from "@/components/sections/ProjectsSection"
-import ContactSection  from "@/components/sections/ContactSection"
-import SummarySection  from "@/components/sections/SummarySection"
-import ScrollProgress  from "@/components/ui/ScrollProgress"
-import { Navbar }      from "@/components/Navbar"
-import Preloader       from "@/components/Preloader"
+import HeroSection      from "@/components/sections/HeroSection"
+import AboutSection     from "@/components/sections/AboutSection"
+import SkillsSection    from "@/components/sections/SkillsSection"
+import ProjectsSection  from "@/components/sections/ProjectsSection"
+import BuildingSection  from "@/components/sections/BuildingSection"
+import ContactSection   from "@/components/sections/ContactSection"
+import SummarySection   from "@/components/sections/SummarySection"
+import ScrollProgress   from "@/components/ui/ScrollProgress"
+import { Navbar }       from "@/components/Navbar"
+import Preloader        from "@/components/Preloader"
+import EasterEgg        from "@/components/EasterEgg"
 
 
 const BackgroundGeometry = dynamic(
@@ -43,9 +45,12 @@ export default function Portfolio() {
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
+        <BuildingSection />
         <ContactSection />
         <SummarySection />
       </main>
+
+      <EasterEgg />
     </div>
   )
 }

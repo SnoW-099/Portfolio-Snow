@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ExternalLink, Code2 } from "lucide-react"
+import { ExternalLink, Code2, FileText } from "lucide-react"
+import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,6 +12,7 @@ const projects = [
   {
     num: "01",
     name: "Vibe",
+    slug: "vibe",
     description: "A minimalist web terminal built for deep-focus productivity — zero distractions, instant load, keyboard-first UX.",
     highlights: ["SSR with Next.js App Router", "Custom CLI parser", "< 50ms TTI"],
     tags: ["TypeScript", "Next.js"],
@@ -23,6 +25,7 @@ const projects = [
   {
     num: "02",
     name: "Rez Bot",
+    slug: "rez-bot",
     description: "Full-featured Discord bot serving 500+ users — automated moderation, XP levelling, giveaways, and real-time security alerts.",
     highlights: ["Async event-driven architecture", "Slash commands + REST API", "SQLite persistence layer"],
     tags: ["Python", "Discord.py"],
@@ -152,6 +155,14 @@ export default function ProjectsSection() {
                     <span className="font-medium">Repository</span>
                     <ExternalLink className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
                   </a>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    data-cursor-hover
+                    className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span className="font-medium">Case Study</span>
+                  </Link>
                 </div>
               </div>
             </div>
