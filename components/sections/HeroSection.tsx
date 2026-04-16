@@ -79,7 +79,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
+      className="h-screen w-full flex flex-col items-center justify-center relative overflow-visible"
     >
       
       <div className="absolute inset-0 pointer-events-none">
@@ -104,7 +104,7 @@ export default function HeroSection() {
         <h1
           ref={nameRef}
           className="font-bold tracking-tighter leading-none text-gradient-amber select-none"
-          style={{ fontSize: "clamp(4rem, 12vw, 11rem)" }}
+          style={{ fontSize: "clamp(4rem, 17vw, 18rem)" }}
         >
           Angel.
         </h1>
