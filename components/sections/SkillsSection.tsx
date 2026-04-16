@@ -8,34 +8,35 @@ import { Github, Terminal, Zap, Cloud, Atom, Triangle, Wind, Hexagon, Database, 
 gsap.registerPlugin(ScrollTrigger)
 
 const languages = [
-  { name: "Python",      level: "Mid Level", pct: 50, from: "#3b82f6", to: "#6366f1" },
-  { name: "JavaScript",  level: "Junior",    pct: 25, from: "#f59e0b", to: "#fbbf24" },
-  { name: "TypeScript",  level: "Junior",    pct: 25, from: "#6366f1", to: "#8b5cf6" },
-  { name: "HTML & CSS",  level: "Junior",    pct: 25, from: "#f97316", to: "#ef4444" },
+  { name: "Python", level: "Mid Level", pct: 50, from: "#3b82f6", to: "#6366f1" },
+  { name: "JavaScript", level: "Junior", pct: 25, from: "#f59e0b", to: "#fbbf24" },
+  { name: "TypeScript", level: "Junior", pct: 25, from: "#6366f1", to: "#8b5cf6" },
+  { name: "HTML & CSS", level: "Junior", pct: 25, from: "#f97316", to: "#ef4444" },
 ]
 
 const tools = [
-  { name: "Git & GitHub", icon: Github,   glow: "group-hover:border-white/30 group-hover:text-white"  },
-  { name: "VS Code",      icon: Terminal,  glow: "group-hover:border-[#007ACC]/50 group-hover:text-[#007ACC]" },
-  { name: "Vercel",       icon: Zap,       glow: "group-hover:border-white/30 group-hover:text-white"  },
-  { name: "Netlify",      icon: Cloud,     glow: "group-hover:border-[#00C7B7]/50 group-hover:text-[#00C7B7]" },
+  { name: "Git & GitHub", icon: Github, glow: "group-hover:border-white/30 group-hover:text-white" },
+  { name: "VS Code", icon: Terminal, glow: "group-hover:border-[#007ACC]/50 group-hover:text-[#007ACC]" },
+  { name: "Vercel", icon: Zap, glow: "group-hover:border-white/30 group-hover:text-white" },
+  { name: "Netlify", icon: Cloud, glow: "group-hover:border-[#00C7B7]/50 group-hover:text-[#00C7B7]" },
+  { name: "VScode", icon: Terminal, glow: "group-hover:border-white/30 group-hover:text-white" }
 ]
 
 const frameworks = [
-  { name: "React",    icon: Atom,     glow: "group-hover:border-[#61DAFB]/40 group-hover:text-[#61DAFB]" },
-  { name: "Next.js",  icon: Triangle, glow: "group-hover:border-white/40 group-hover:text-white"  },
-  { name: "Tailwind", icon: Wind,     glow: "group-hover:border-[#06B6D4]/40 group-hover:text-[#06B6D4]" },
-  { name: "Node.js",  icon: Hexagon,  glow: "group-hover:border-[#339933]/40 group-hover:text-[#339933]" },
-  { name: "Django",   icon: Database, glow: "group-hover:border-[#44B78B]/40 group-hover:text-[#44B78B]" },
+  { name: "React", icon: Atom, glow: "group-hover:border-[#61DAFB]/40 group-hover:text-[#61DAFB]" },
+  { name: "Next.js", icon: Triangle, glow: "group-hover:border-white/40 group-hover:text-white" },
+  { name: "Tailwind", icon: Wind, glow: "group-hover:border-[#06B6D4]/40 group-hover:text-[#06B6D4]" },
+  { name: "Node.js", icon: Hexagon, glow: "group-hover:border-[#339933]/40 group-hover:text-[#339933]" },
+  { name: "Django", icon: Database, glow: "group-hover:border-[#44B78B]/40 group-hover:text-[#44B78B]" },
 ]
 
 export default function SkillsSection() {
-  const sectionRef     = useRef<HTMLDivElement>(null)
-  const titleRef       = useRef<HTMLHeadingElement>(null)
-  const subtitleRef    = useRef<HTMLParagraphElement>(null)
-  const barsRef        = useRef<HTMLDivElement>(null)
-  const toolsRef       = useRef<HTMLDivElement>(null)
-  const frameworksRef  = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const subtitleRef = useRef<HTMLParagraphElement>(null)
+  const barsRef = useRef<HTMLDivElement>(null)
+  const toolsRef = useRef<HTMLDivElement>(null)
+  const frameworksRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -93,7 +94,7 @@ export default function SkillsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-5xl px-6 md:px-10">
-        
+
         <div className="mb-12 md:mb-14">
           <h2
             ref={titleRef}
@@ -110,7 +111,7 @@ export default function SkillsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          
+
           <div>
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-5 flex items-center gap-2">
               <Cpu className="w-3.5 h-3.5" /> Languages
@@ -136,9 +137,9 @@ export default function SkillsSection() {
             </div>
           </div>
 
-          
+
           <div className="space-y-8">
-            
+
             <div>
               <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
                 <Terminal className="w-3.5 h-3.5" /> Tools
@@ -159,7 +160,7 @@ export default function SkillsSection() {
               </div>
             </div>
 
-            
+
             <div>
               <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
                 <Zap className="w-3.5 h-3.5" /> Frameworks
