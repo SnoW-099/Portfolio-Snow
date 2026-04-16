@@ -122,7 +122,7 @@ export default function HeroSection() {
           ref={bioRef}
           className="text-base md:text-lg lg:text-2xl text-white/40 mt-6 max-w-3xl mx-auto leading-relaxed opacity-0 font-light"
         >
-          Full-stack engineer architecting high-performance digital ecosystems. Passionate about scalable solutions, automated workflows, and turning complex ideas into polished products.
+          Aspiring developer building real projects with Python, TypeScript, and React. Always learning, always shipping.
         </p>
 
 

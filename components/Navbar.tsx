@@ -6,9 +6,8 @@ import { motion } from "framer-motion"
 import { House, Folders, Mail } from "lucide-react"
 
 const items = [
-  { label: "Home",     href: "/",        icon: House   },
-  { label: "Projects", href: "/projects", icon: Folders },
-  { label: "Contact",  href: "mailto:ryze0950@gmail.com", icon: Mail, external: true },
+  { label: "Home",    href: "/",                        icon: House },
+  { label: "Contact", href: "mailto:ryze0950@gmail.com", icon: Mail, external: true },
 ]
 
 export function Navbar() {

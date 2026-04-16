@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Angel | Code Developer",
-  description: "Young developer crafting interactive experiences with Python, JavaScript, and TypeScript.",
+  description: "Developer building real projects with Python, JavaScript, and TypeScript.",
   generator: "Next.js",
   keywords: ["Code Developer", "JavaScript", "TypeScript", "Python", "Portfolio", "Web Development"],
   authors: [{ name: "Angel" }],

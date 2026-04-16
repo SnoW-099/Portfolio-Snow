@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 
-const AMBER_WORDS = new Set(["full-stack", "architecting", "high-performance", "ecosystems.", "scalable", "solutions,", "polished", "products."])
+const AMBER_WORDS = new Set(["developer", "passionate", "discord", "web", "real", "projects.", "learning", "building"])
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -85,7 +85,7 @@ export default function AboutSection() {
           ref={textRef}
           className="text-2xl md:text-4xl lg:text-[2.6rem] font-semibold leading-[1.35] tracking-tight"
         >
-          I'm a full-stack engineer architecting high-performance digital ecosystems. From complex Discord automation to scalable web apps — I thrive on building polished products.
+          I'm a passionate developer who loves turning ideas into real projects. From Discord bots to web apps — I'm always learning new things and building something cool.
         </p>
       </div>
     </section>
