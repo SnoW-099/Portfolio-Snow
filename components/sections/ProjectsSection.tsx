@@ -26,7 +26,7 @@ const projects = [
     num: "02",
     name: "Rez Bot",
     slug: "rez-bot",
-    description: "Full-featured Discord bot serving 500+ users — automated moderation, XP levelling, giveaways, and real-time security alerts.",
+    description: "Full-featured Discord bot with automated moderation, XP levelling, giveaways, and real-time security alerts.",
     highlights: ["Async event-driven architecture", "Slash commands + REST API", "SQLite persistence layer"],
     tags: ["Python", "Discord.py"],
     tagColors: ["text-purple-300/80 border-purple-500/20 bg-purple-500/5", "text-white/30 border-white/8 bg-white/3"],

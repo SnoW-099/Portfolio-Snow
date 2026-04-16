@@ -9,10 +9,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 const building = [
   {
-    name: "EduCat",
-    description: "Interactive learning platform for Catalan students — adaptive exercises, real-time progress tracking, and teacher dashboards.",
+    name: "ZyreHub",
+    description: "A quality-of-life GitHub extension — automated commits, quick fixes, and streamlined workflows to speed up your dev routine.",
     stage: "MVP",
-    tags: ["Next.js", "Supabase", "TypeScript"],
+    tags: ["TypeScript", "GitHub API", "Chrome Extension"],
     progress: 65,
   },
   {

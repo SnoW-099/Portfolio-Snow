@@ -44,7 +44,7 @@ const projectDetails: Record<string, {
   },
   "rez-bot": {
     name: "Rez Bot",
-    tagline: "Full-featured Discord bot for community management at scale.",
+    tagline: "Full-featured Discord bot for community management.",
     description:
       "Rez is a comprehensive Discord automation bot built to handle everything a growing server needs — from security and moderation to engagement features like giveaways and XP levelling.",
     motivation:
