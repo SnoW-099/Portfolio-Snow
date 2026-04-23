@@ -17,12 +17,11 @@ const projects = [
     highlights: ["Bento Grid UI", "React & Vite Setup", "Vanilla CSS Styling"],
     tags: ["React", "Vite"],
     tagColors: ["text-indigo-300/80 border-indigo-500/20 bg-indigo-500/5", "text-blue-300/80 border-blue-500/20 bg-blue-500/5"],
-    glow: "rgba(99,102,241,0.15)",
+    glow: "rgba(99,102,241,0.2)",
     borderHover: "hover:border-indigo-500/40",
     href: "https://github.com/SnoW-099/vibe",
-    colSpan: "md:col-span-7",
+    colSpan: "md:col-span-12",
     image: "/vibe.png",
-    imageClass: "right-[-25%] top-[15%] w-[80%]",
   },
   {
     num: "02",
@@ -32,18 +31,17 @@ const projects = [
     highlights: ["Async Event-Driven Core", "Flask Backend Gateway", "Hybrid Persistence (SQL/NoSQL)"],
     tags: ["Python", "Flask", "Disnake"],
     tagColors: ["text-purple-300/80 border-purple-500/20 bg-purple-500/5", "text-emerald-300/80 border-emerald-500/20 bg-emerald-500/5", "text-white/30 border-white/8 bg-white/3"],
-    glow: "rgba(168,85,247,0.15)",
+    glow: "rgba(168,85,247,0.2)",
     borderHover: "hover:border-purple-500/40",
     href: "https://github.com/SnoW-099/Rez",
-    colSpan: "md:col-span-5",
+    colSpan: "md:col-span-12",
     image: "/rez.png",
-    imageClass: "right-[-10%] top-[15%] w-[55%]",
   },
 ]
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -52,7 +50,7 @@ export default function ProjectsSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=260%",
+          end: "+=350%",
           scrub: 2,
           pin: true,
           pinSpacing: true,
@@ -60,16 +58,19 @@ export default function ProjectsSection() {
         },
       })
 
-      tl.fromTo(titleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" })
-      tl.to({}, { duration: 0.15 })
+      tl.fromTo(titleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
+      tl.to({}, { duration: 0.2 })
 
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll(".project-card")
-        tl.fromTo(
-          cards,
-          { opacity: 0, y: 50, scale: 0.95 },
-          { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 0.6, ease: "power3.out" },
-        )
+        cards.forEach((card, i) => {
+          tl.fromTo(
+            card,
+            { opacity: 0, scale: 0.9, y: 100 },
+            { opacity: 1, scale: 1, y: 0, duration: 1, ease: "slow(0.7, 0.7, false)" },
+            i === 0 ? undefined : "-=0.5"
+          )
+        })
       }
     }, sectionRef)
 
@@ -83,114 +84,101 @@ export default function ProjectsSection() {
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] rounded-full bg-indigo-500/5 blur-[200px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-500/5 blur-[250px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl px-6 md:px-10">
-        <div className="mb-14 opacity-0 flex flex-col items-center text-center" ref={titleRef}>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
+      <div className="relative z-10 w-full max-w-6xl px-6 md:px-10 h-full flex flex-col justify-center py-20">
+        <div className="mb-16 opacity-0 text-center md:text-left" ref={titleRef}>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white">
             Selected work.
           </h2>
-          <p className="text-white/40 text-base mt-4 max-w-lg">
-            A collection of projects I&apos;ve built and shipped.
+          <p className="text-white/40 text-lg mt-4 max-w-xl">
+            Building digital infrastructures and beautiful interfaces.
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div ref={cardsRef} className="space-y-12">
           {projects.map((project) => (
             <div
               key={project.name}
-              className={`project-card ${project.colSpan} relative rounded-3xl bg-white/[0.015] backdrop-blur-xl border border-white/[0.05] box-border ${project.borderHover} transition-all duration-700 group overflow-hidden`}
-              style={{ "--glow": project.glow } as React.CSSProperties}
+              className="project-card relative rounded-[2.5rem] bg-white/[0.01] backdrop-blur-3xl border border-white/[0.08] group overflow-hidden transition-all duration-700 hover:border-white/[0.15]"
             >
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-screen"
-                style={{ background: `radial-gradient(circle at center, ${project.glow}, transparent 70%)` }}
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"
+                style={{ background: `radial-gradient(1200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${project.glow}, transparent 80%)` }}
               />
 
-              {/* Decorative Number */}
-              <div className="absolute top-6 right-8 text-[6rem] font-black text-white/[0.02] leading-none select-none pointer-events-none tabular-nums z-0">
-                {project.num}
-              </div>
-
-              {/* 3D Floating Mockup */}
-              {project.image && (
-                <div className={`absolute ${project.imageClass} z-0 pointer-events-none hidden md:block opacity-40 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 group-hover:-translate-x-2`} style={{ perspective: "1200px" }}>
-                  <div className="relative transform rotate-y-[-12deg] rotate-x-[8deg] group-hover:rotate-y-[-5deg] group-hover:rotate-x-[4deg] transition-transform duration-700 shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-xl">
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-auto rounded-xl border border-white/[0.08]"
-                      style={{ maskImage: "linear-gradient(to left, black 80%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, black 80%, transparent 100%)" }}
-                    />
+              <div className="relative z-10 flex flex-col md:flex-row min-h-[400px]">
+                <div className="flex-1 p-8 md:p-12 flex flex-col justify-center">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-5xl font-black text-white/5 tabular-nums">
+                      {project.num}
+                    </span>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                      {project.name}
+                    </h3>
                   </div>
-                </div>
-              )}
 
-              <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[340px]">
-                <div className="flex-1 lg:max-w-[55%]">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
-                    {project.name}
-                  </h3>
-                  <p className="text-white/50 text-base leading-relaxed mb-6">
+                  <p className="text-white/50 text-lg leading-relaxed mb-8 max-w-lg">
                     {project.description}
                   </p>
-                  {project.highlights && (
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.highlights.map((h) => (
-                        <span
-                          key={h}
-                          className="text-[10px] font-mono tracking-wide text-white/40 border border-white/[0.06] bg-white/[0.02] px-2.5 py-1 rounded-md"
-                        >
-                          {h}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
 
-                <div className="mt-auto flex items-center justify-between relative z-20 pt-4 bg-gradient-to-t from-[#09090b] via-[#09090b]/80 to-transparent -mx-8 -mb-8 px-8 pb-8 md:-mx-10 md:-mb-10 md:px-10 md:pb-10">
-                  <div className="flex gap-2 flex-wrap">
-                    {project.tags.map((tag, i) => (
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {project.highlights.map((h) => (
                       <span
-                        key={tag}
-                        className={`text-xs font-medium tracking-wide px-3 py-1.5 rounded-lg border ${project.tagColors[i]} shadow-inner bg-[#09090b]`}
+                        key={h}
+                        className="text-[11px] font-mono tracking-wider text-white/30 border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 rounded-full"
                       >
-                        {tag}
+                        {h}
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center gap-6">
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-cursor-hover
-                      className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
-                    >
-                      <Code2 className="w-4 h-4" />
-                      <span className="font-medium hidden sm:block">Repo</span>
-                      <ExternalLink className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 hidden sm:block" />
-                    </a>
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      data-cursor-hover
-                      className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
-                    >
-                      <FileText className="w-4 h-4" />
-                      <span className="font-medium">Case Study</span>
-                    </Link>
+
+                  <div className="mt-auto flex items-center gap-8">
+                    <div className="flex gap-2">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={tag}
+                          className={`text-xs font-semibold px-4 py-2 rounded-xl border ${project.tagColors[i]}`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full bg-white/5 border border-white/10 text-white/40 hover:text-white hover:bg-white/10 transition-all hover:scale-110"
+                        title="Repository"
+                      >
+                        <Code2 className="w-5 h-5" />
+                      </a>
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="p-3 rounded-full bg-white/5 border border-white/10 text-white/40 hover:text-white hover:bg-white/10 transition-all hover:scale-110"
+                        title="Case Study"
+                      >
+                        <FileText className="w-5 h-5" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hidden md:flex flex-1 relative items-center justify-center p-12 bg-white/[0.01]">
+                  <div className="relative w-full aspect-video group-hover:scale-105 transition-transform duration-700 flex justify-center items-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl" />
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-[90%] h-auto rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 object-contain"
+                    />
                   </div>
                 </div>
               </div>
             </div>
           ))}
-
-          <div className="project-card md:col-span-12 relative rounded-2xl border border-dashed border-white/[0.05] p-8 flex items-center justify-center">
-            <p className="text-xs text-white/20 font-mono tracking-widest uppercase">
-              More projects in progress &thinsp;·&thinsp;·&thinsp;·
-            </p>
-          </div>
         </div>
       </div>
     </section>
