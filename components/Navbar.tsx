@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { House, User, Wrench, Folders, Mail } from "lucide-react"
+import Magnetic from "./Magnetic"
 
 const items = [
   { label: "Home", href: "#hero", icon: House },
@@ -27,24 +28,25 @@ export function Navbar() {
     >
       <nav className="pointer-events-auto flex items-center gap-1 p-2 rounded-2xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/60">
         {items.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={(e) => handleClick(e, item.href)}
-            data-cursor-hover
-          >
-            <motion.div
-              whileHover={{ scale: 1.25, y: -5 }}
-              whileTap={{ scale: 0.92 }}
-              transition={{ type: "spring", stiffness: 500, damping: 28 }}
-              className="relative flex flex-col items-center gap-1.5 px-4 py-2.5 rounded-xl transition-colors text-white/50 hover:text-white/80"
+          <Magnetic key={item.href}>
+            <a
+              href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
+              data-cursor-hover
             >
-              <item.icon className="w-[18px] h-[18px]" />
-              <span className="text-[10px] font-medium tracking-wide leading-none">
-                {item.label}
-              </span>
-            </motion.div>
-          </a>
+              <motion.div
+                whileHover={{ scale: 1.25 }}
+                whileTap={{ scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 500, damping: 28 }}
+                className="relative flex flex-col items-center gap-1.5 px-4 py-2.5 rounded-xl transition-colors text-white/50 hover:text-white/80"
+              >
+                <item.icon className="w-[18px] h-[18px]" />
+                <span className="text-[10px] font-medium tracking-wide leading-none">
+                  {item.label}
+                </span>
+              </motion.div>
+            </a>
+          </Magnetic>
         ))}
       </nav>
     </motion.div>

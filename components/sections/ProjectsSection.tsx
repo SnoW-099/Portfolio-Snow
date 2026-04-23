@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ExternalLink, Code2, FileText } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -172,10 +173,12 @@ export default function ProjectsSection() {
 
                 <div className="hidden md:flex flex-1 relative items-center justify-center p-12">
                   <div className="relative w-full aspect-video group-hover:scale-105 transition-transform duration-700 flex justify-center items-center">
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.name}
-                      className="w-[90%] h-auto rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] object-contain"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="w-[90%] !h-auto !static rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] object-contain"
                     />
                   </div>
                 </div>

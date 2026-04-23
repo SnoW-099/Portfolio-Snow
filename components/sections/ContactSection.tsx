@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Github, MessageCircle, Mail, ExternalLink, Copy } from "lucide-react"
+import Magnetic from "../Magnetic"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -102,11 +103,31 @@ export default function ContactSection() {
           {contacts.map((contact) => {
             if (contact.href) {
               return (
-                <a
-                  key={contact.name}
-                  href={contact.href}
-                  target={contact.external ? "_blank" : undefined}
-                  rel={contact.external ? "noopener noreferrer" : undefined}
+                <Magnetic key={contact.name}>
+                  <a
+                    href={contact.href}
+                    target={contact.external ? "_blank" : undefined}
+                    rel={contact.external ? "noopener noreferrer" : undefined}
+                    data-cursor-hover
+                    className={`contact-link w-full flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/8 transition-all duration-300 group text-left ${contact.glow}`}
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0">
+                      <contact.icon className={`w-4 h-4 ${contact.iconColor ?? "text-white/50"} group-hover:text-white transition-colors`} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[11px] text-white/30 uppercase tracking-wider mb-0.5">{contact.name}</div>
+                      <div className="text-sm font-medium text-white/75 truncate">{contact.label}</div>
+                    </div>
+                    {contact.external && <ExternalLink className="w-3.5 h-3.5 text-white/20 flex-shrink-0" />}
+                  </a>
+                </Magnetic>
+              )
+            }
+
+            return (
+              <Magnetic key={contact.name}>
+                <button
+                  onClick={() => navigator.clipboard.writeText(contact.value!)}
                   data-cursor-hover
                   className={`contact-link w-full flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/8 transition-all duration-300 group text-left ${contact.glow}`}
                 >
@@ -117,27 +138,9 @@ export default function ContactSection() {
                     <div className="text-[11px] text-white/30 uppercase tracking-wider mb-0.5">{contact.name}</div>
                     <div className="text-sm font-medium text-white/75 truncate">{contact.label}</div>
                   </div>
-                  {contact.external && <ExternalLink className="w-3.5 h-3.5 text-white/20 flex-shrink-0" />}
-                </a>
-              )
-            }
-
-            return (
-              <button
-                key={contact.name}
-                onClick={() => navigator.clipboard.writeText(contact.value!)}
-                data-cursor-hover
-                className={`contact-link w-full flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/8 transition-all duration-300 group text-left ${contact.glow}`}
-              >
-                <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0">
-                  <contact.icon className={`w-4 h-4 ${contact.iconColor ?? "text-white/50"} group-hover:text-white transition-colors`} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-[11px] text-white/30 uppercase tracking-wider mb-0.5">{contact.name}</div>
-                  <div className="text-sm font-medium text-white/75 truncate">{contact.label}</div>
-                </div>
-                <Copy className="w-3.5 h-3.5 text-white/20 flex-shrink-0 group-hover:text-white/40 transition-colors" />
-              </button>
+                  <Copy className="w-3.5 h-3.5 text-white/20 flex-shrink-0 group-hover:text-white/40 transition-colors" />
+                </button>
+              </Magnetic>
             )
           })}
         </div>
