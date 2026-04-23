@@ -18,49 +18,48 @@ const projectDetails: Record<string, {
   href: string
   glow: string
   status: string
-}> = {
   vibe: {
     name: "Vibe",
-    tagline: "A minimalist web terminal for deep-focus productivity.",
+    tagline: "A premium developer dashboard featuring a modern Bento Grid layout.",
     description:
-      "Vibe is a keyboard-first web terminal designed to eliminate distractions and maximize developer focus. It strips away every unnecessary UI element, leaving only what matters: your workflow.",
+    "Vibe centralizes your workflow with a snippet manager, quick links, persistent notes, and project tracking. It is a high-performance solution engineered for real-time synchronization and productivity mapping.",
     motivation:
-      "I was tired of bloated productivity apps that slow you down instead of speeding you up. I wanted something that felt like a native terminal but lived in the browser — instant, clean, and zero-config.",
+    "I needed a centralized dashboard that wasn't bloated with heavy frameworks. Vibe is built upon modular principles to ensure scalability, reliability, and seamless integration within professional production environments.",
     architecture:
-      "Built on Next.js App Router with full SSR for sub-50ms Time to Interactive. The CLI parser is custom-built — no external libraries — handling command tokenization, argument parsing, and pipe chaining. State management uses React context with optimistic updates for instant feedback.",
+    "Modular Frontend Architecture. Built with React, Vite, and Vanilla CSS to ensure optimized low-latency processing and high throughput. Designed for maximum responsiveness under high-intensity task tracking.",
     challenges:
-      "The hardest part was making the custom CLI parser robust enough to handle edge cases like quoted strings with escaped characters, while keeping it lightweight. I also spent time fine-tuning the rendering pipeline to avoid layout shifts on command output.",
+    "Securing the persistent notes and quick links across sessions. Integrated standard encryption protocols and secure environment handling to make the dashboard production-ready while keeping bundle size extremely low.",
     learnings:
-      "This project taught me a lot about performance budgets, how SSR affects perceived speed, and the importance of keyboard accessibility. I also improved my TypeScript skills building complex generic types for the command registry.",
+    "Learned to orchestrate a Bento Grid layout robustly using Vanilla CSS, eliminating the need for bulky UI libraries. Mastered Vite's optimized build pipeline for highly performant frontend solutions.",
     tags: [
-      { name: "TypeScript", color: "text-indigo-300/80 border-indigo-500/20 bg-indigo-500/5" },
-      { name: "Next.js", color: "text-blue-300/80 border-blue-500/20 bg-blue-500/5" },
-      { name: "React", color: "text-cyan-300/80 border-cyan-500/20 bg-cyan-500/5" },
+      { name: "React", color: "text-indigo-300/80 border-indigo-500/20 bg-indigo-500/5" },
+      { name: "Vite", color: "text-blue-300/80 border-blue-500/20 bg-blue-500/5" },
+      { name: "Vanilla CSS", color: "text-pink-300/80 border-pink-500/20 bg-pink-500/5" },
     ],
-    highlights: ["SSR with Next.js App Router", "Custom CLI parser", "< 50ms TTI", "Zero dependencies for core logic", "Keyboard-first UX"],
+    highlights: ["Bento Grid UI", "React & Vite Setup", "Vanilla CSS Styling"],
     href: "https://github.com/SnoW-099/vibe",
     glow: "rgba(99,102,241,0.15)",
     status: "Live",
   },
   "rez-bot": {
     name: "Rez Bot",
-    tagline: "Full-featured Discord bot for community management.",
+    tagline: "High-Performance Security and Economic Infrastructure for Discord.",
     description:
-      "Rez is a comprehensive Discord automation bot built to handle everything a growing server needs — from security and moderation to engagement features like giveaways and XP levelling.",
+    "Rez is an integrated Discord ecosystem designed for high-availability environments. It consolidates a modular Security Engine and a scalable Economic Framework, offering real-time telemetry through a proprietary Liquid Black terminal interface.",
     motivation:
-      "I manage several Discord communities and found myself repeating the same manual moderation tasks over and over. Instead of relying on generic bots with limited customization, I built my own from scratch with exactly the features I needed.",
+    "To build an infrastructure-driven development module for the next generation of Discord management. Rez replaces repetitive moderation actions with an advanced setup featuring global analytical ranking systems.",
     architecture:
-      "The bot runs on an async event-driven architecture using Discord.py's gateway connection. Commands are registered as slash commands through Discord's REST API. All persistent data (XP, warnings, configs) uses a SQLite database with a custom ORM layer for type-safe queries. The modular cog system allows hot-reloading features without restarting the bot.",
+    "Dual-component architecture: Service Layer (Discord Core) using Python/Disnake for async event-driven real-time interactions, and an API Gateway using Flask/CORS designed for low-latency JSON data delivery to frontend consumers. Persistence uses Hybrid PostgreSQL (Supabase) and MongoDB.",
     challenges:
-      "Rate limiting was the biggest challenge — Discord's API has strict rate limits, and I had to implement a smart queue system that batches requests and respects per-route limits. Handling concurrent events from multiple servers without race conditions required careful async/await patterns.",
+    "High concurrency management. Handled asyncio for non-blocking I/O operations to ensure high throughput during peak loads. Ensuring strict CORS policy configurations for the bridging interface.",
     learnings:
-      "Building Rez deepened my understanding of event-driven systems, async programming in Python, and database design. I learned how to structure a large Python project with proper separation of concerns using cogs, and how to write resilient code that handles API failures gracefully.",
+    "Architected a scalable bridge between a Discord backend and a Web UI. Engineered hybrid data solutions utilizing Supabase for relational data and MongoDB for unstructured logs. Mastered RESTful gateway deployments.",
     tags: [
       { name: "Python", color: "text-purple-300/80 border-purple-500/20 bg-purple-500/5" },
-      { name: "Discord.py", color: "text-white/50 border-white/10 bg-white/3" },
-      { name: "SQLite", color: "text-blue-300/80 border-blue-500/20 bg-blue-500/5" },
+      { name: "Flask", color: "text-emerald-300/80 border-emerald-500/20 bg-emerald-500/5" },
+      { name: "Disnake", color: "text-white/50 border-white/10 bg-white/3" },
     ],
-    highlights: ["Async event-driven architecture", "Slash commands + REST API", "SQLite persistence layer", "Hot-reloadable cog system", "Smart rate-limit queue"],
+    highlights: ["Async Event-Driven Core", "Flask Backend Gateway", "Hybrid Persistence (SQL/NoSQL)"],
     href: "https://github.com/SnoW-099/Rez",
     glow: "rgba(168,85,247,0.15)",
     status: "Active",
