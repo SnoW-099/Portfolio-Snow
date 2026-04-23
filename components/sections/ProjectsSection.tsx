@@ -21,6 +21,8 @@ const projects = [
     borderHover: "hover:border-indigo-500/40",
     href: "https://github.com/SnoW-099/vibe",
     colSpan: "md:col-span-7",
+    image: "/vibe.png",
+    imageClass: "right-[-12%] top-[10%] w-[70%]",
   },
   {
     num: "02",
@@ -34,6 +36,8 @@ const projects = [
     borderHover: "hover:border-purple-500/40",
     href: "https://github.com/SnoW-099/Rez",
     colSpan: "md:col-span-5",
+    image: "/rez.png",
+    imageClass: "right-[-5%] bottom-[15%] w-[55%]",
   },
 ]
 
@@ -104,11 +108,26 @@ export default function ProjectsSection() {
                 style={{ background: `radial-gradient(circle at center, ${project.glow}, transparent 70%)` }}
               />
 
-              <div className="absolute top-6 right-8 text-[6rem] font-black text-white/[0.02] leading-none select-none pointer-events-none tabular-nums">
+              {/* Decorative Number */}
+              <div className="absolute top-6 right-8 text-[6rem] font-black text-white/[0.02] leading-none select-none pointer-events-none tabular-nums z-0">
                 {project.num}
               </div>
 
-              <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[280px]">
+              {/* 3D Floating Mockup */}
+              {project.image && (
+                <div className={`absolute ${project.imageClass} z-0 pointer-events-none hidden md:block opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 group-hover:-translate-x-2`} style={{ perspective: "1200px" }}>
+                  <div className="relative transform rotate-y-[-10deg] rotate-x-[8deg] group-hover:rotate-y-[-5deg] group-hover:rotate-x-[4deg] transition-transform duration-700 shadow-2xl rounded-xl">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-auto rounded-xl border border-white/[0.08]"
+                      style={{ maskImage: "linear-gradient(to left, black 85%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, black 85%, transparent 100%)" }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[340px]">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
                   {project.name}
                 </h3>
