@@ -46,29 +46,33 @@ export default function ProjectsSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=350%",
-          scrub: 2,
-          pin: true,
-          pinSpacing: true,
-          invalidateOnRefresh: true,
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.6, ease: "power2.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
         },
-      })
-
-      tl.fromTo(titleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" })
-      tl.to({}, { duration: 0.2 })
+      )
 
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll(".project-card")
-        cards.forEach((card, i) => {
-          tl.fromTo(
+        cards.forEach((card) => {
+          gsap.fromTo(
             card,
-            { opacity: 0, scale: 0.9, y: 100 },
-            { opacity: 1, scale: 1, y: 0, duration: 1, ease: "slow(0.7, 0.7, false)" },
-            i === 0 ? undefined : "-=0.5"
+            { opacity: 0, y: 60, scale: 0.97 },
+            {
+              opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            },
           )
         })
       }
@@ -81,13 +85,13 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={sectionRef}
-      className="h-screen w-full flex items-center justify-center relative overflow-hidden"
+      className="w-full relative overflow-hidden py-32"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-500/5 blur-[250px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl px-6 md:px-10 h-full flex flex-col justify-center py-20">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-10">
         <div className="mb-16 opacity-0 text-center md:text-left" ref={titleRef}>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white">
             Selected work.
