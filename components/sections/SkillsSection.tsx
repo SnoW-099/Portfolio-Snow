@@ -8,10 +8,10 @@ import { Github, Terminal, Zap, Cloud, Atom, Triangle, Wind, Hexagon, Database, 
 gsap.registerPlugin(ScrollTrigger)
 
 const languages = [
-  { name: "Python", level: "Junior+", },
-  { name: "JavaScript", level: "Planned", },
-  { name: "TypeScript", level: "Planned", },
-  { name: "HTML & CSS", level: "Learning(Basisc)", },
+  { name: "Python",      level: "Junior+",   pct: 65, from: "#3572A5", to: "#6A9FD8" },
+  { name: "JavaScript",  level: "Learning",  pct: 40, from: "#F7DF1E", to: "#F0C808" },
+  { name: "TypeScript",  level: "Learning",  pct: 35, from: "#3178C6", to: "#5A9BD5" },
+  { name: "HTML & CSS",  level: "Learning (Basics)", pct: 30, from: "#E34C26", to: "#563D7C" },
 ]
 
 const tools = [
