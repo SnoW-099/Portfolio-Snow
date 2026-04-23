@@ -170,13 +170,12 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                <div className="hidden md:flex flex-1 relative items-center justify-center p-12 bg-white/[0.01]">
+                <div className="hidden md:flex flex-1 relative items-center justify-center p-12">
                   <div className="relative w-full aspect-video group-hover:scale-105 transition-transform duration-700 flex justify-center items-center">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl" />
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-[90%] h-auto rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 object-contain"
+                      className="w-[90%] h-auto rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] object-contain"
                     />
                   </div>
                 </div>

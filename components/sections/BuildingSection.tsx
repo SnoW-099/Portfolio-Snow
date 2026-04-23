@@ -10,9 +10,9 @@ gsap.registerPlugin(ScrollTrigger)
 const building = [
   {
     name: "ZyreHub",
-    description: "A quality-of-life GitHub extension — automated commits, quick fixes, and streamlined workflows to speed up your dev routine.",
+    description: "A VS Code / IDE extension for quality-of-life improvements — automated commits, quick fixes, and streamlined workflows to speed up your dev routine.",
     stage: "MVP",
-    tags: ["TypeScript", "GitHub API", "Chrome Extension"],
+    tags: ["TypeScript", "VS Code API", "IDE Extension"],
     progress: 65,
   },
   {
