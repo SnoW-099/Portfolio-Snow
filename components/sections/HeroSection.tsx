@@ -12,16 +12,15 @@ const marqueeItems = [
 ]
 
 export default function HeroSection() {
-  const sectionRef  = useRef<HTMLDivElement>(null)
-  const nameRef     = useRef<HTMLHeadingElement>(null)
-  const badgeRef    = useRef<HTMLDivElement>(null)
-  const taglineRef  = useRef<HTMLParagraphElement>(null)
-  const bioRef      = useRef<HTMLParagraphElement>(null)
-  const scrollRef   = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const nameRef = useRef<HTMLHeadingElement>(null)
+  const badgeRef = useRef<HTMLDivElement>(null)
+  const taglineRef = useRef<HTMLParagraphElement>(null)
+  const bioRef = useRef<HTMLParagraphElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      
       gsap.set([nameRef.current, badgeRef.current], { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" })
       gsap.set([taglineRef.current, bioRef.current, scrollRef.current], { opacity: 0 })
 
@@ -34,12 +33,10 @@ export default function HeroSection() {
           pin: true,
           pinSpacing: true,
           invalidateOnRefresh: true,
-          
           immediateRender: false,
         },
       })
 
-      
       tl.to(nameRef.current, {
         opacity: 0,
         scale: 1.08,
@@ -56,17 +53,16 @@ export default function HeroSection() {
 
       tl.to({}, { duration: 0.1 })
 
-      
       tl.fromTo(
         taglineRef.current,
         { opacity: 0, y: 30, filter: "blur(4px)" },
-        { opacity: 1, y: 0,  filter: "blur(0px)", duration: 0.5, ease: "power2.out" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "power2.out" },
       )
-      
+
       tl.fromTo(
         bioRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0,  duration: 0.5, ease: "power2.out" },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
         "-=0.3",
       )
     }, sectionRef)
@@ -78,17 +74,16 @@ export default function HeroSection() {
 
   return (
     <section
+      id="hero"
       ref={sectionRef}
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-visible"
     >
-      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue-200/5 blur-[200px]" />
         <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-indigo-300/5 blur-[160px]" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl px-4 w-full">
-        
         <div
           ref={badgeRef}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-200/10 border border-blue-200/25 text-xs font-medium text-blue-200/90 mb-8 tracking-wide"
@@ -100,7 +95,6 @@ export default function HeroSection() {
           Available for work
         </div>
 
-        
         <h1
           ref={nameRef}
           className="font-bold tracking-tighter leading-none text-gradient-amber select-none"
@@ -109,7 +103,6 @@ export default function HeroSection() {
           Angel.
         </h1>
 
-        
         <p
           ref={taglineRef}
           className="text-3xl md:text-5xl lg:text-7xl text-white/80 font-medium mt-12 tracking-tight opacity-0"
@@ -117,26 +110,21 @@ export default function HeroSection() {
           Crafting digital experiences.
         </p>
 
-        
         <p
           ref={bioRef}
           className="text-base md:text-lg lg:text-2xl text-white/40 mt-6 max-w-3xl mx-auto leading-relaxed opacity-0 font-light"
         >
           Aspiring developer building real projects with Python, TypeScript, and React. Always learning, always shipping.
         </p>
-
-
       </div>
 
-      
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-5 border-t border-white/[0.05]">
         <div className="flex animate-marquee gap-8">
           {marquee.map((item, i) => (
             <span
               key={i}
-              className={`text-xs font-mono tracking-widest uppercase ${
-                item === "·" ? "text-blue-200/35" : "text-white/20"
-              }`}
+              className={`text-xs font-mono tracking-widest uppercase ${item === "·" ? "text-blue-200/35" : "text-white/20"
+                }`}
             >
               {item}
             </span>
@@ -144,7 +132,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      
       <div
         ref={scrollRef}
         className="opacity-0 absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"

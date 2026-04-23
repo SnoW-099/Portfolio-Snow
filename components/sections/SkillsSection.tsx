@@ -8,10 +8,10 @@ import { Github, Terminal, Zap, Cloud, Atom, Triangle, Wind, Hexagon, Database, 
 gsap.registerPlugin(ScrollTrigger)
 
 const languages = [
-  { name: "Python",      level: "Junior+",   pct: 65, from: "#3572A5", to: "#6A9FD8" },
-  { name: "JavaScript",  level: "Learning",  pct: 40, from: "#F7DF1E", to: "#F0C808" },
-  { name: "TypeScript",  level: "Learning",  pct: 35, from: "#3178C6", to: "#5A9BD5" },
-  { name: "HTML & CSS",  level: "Learning (Basics)", pct: 30, from: "#E34C26", to: "#563D7C" },
+  { name: "Python", level: "Junior+", pct: 65, from: "#3572A5", to: "#6A9FD8" },
+  { name: "JavaScript", level: "Learning", pct: 40, from: "#F7DF1E", to: "#F0C808" },
+  { name: "TypeScript", level: "Learning", pct: 35, from: "#3178C6", to: "#5A9BD5" },
+  { name: "HTML & CSS", level: "Learning (Basics)", pct: 30, from: "#E34C26", to: "#563D7C" },
 ]
 
 const tools = [
@@ -85,6 +85,7 @@ export default function SkillsSection() {
 
   return (
     <section
+      id="skills"
       ref={sectionRef}
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
     >
@@ -93,7 +94,6 @@ export default function SkillsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-5xl px-6 md:px-10">
-
         <div className="mb-12 md:mb-14">
           <h2
             ref={titleRef}
@@ -110,7 +110,6 @@ export default function SkillsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-
           <div>
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-5 flex items-center gap-2">
               <Cpu className="w-3.5 h-3.5" /> Languages
@@ -136,9 +135,7 @@ export default function SkillsSection() {
             </div>
           </div>
 
-
           <div className="space-y-8">
-
             <div>
               <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">
                 <Terminal className="w-3.5 h-3.5" /> Tools
@@ -158,7 +155,6 @@ export default function SkillsSection() {
                 ))}
               </div>
             </div>
-
 
             <div>
               <h3 className="text-[11px] uppercase tracking-[0.2em] text-white/25 font-medium mb-4 flex items-center gap-2">

@@ -35,9 +35,9 @@ const contacts = [
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const titleRef   = useRef<HTMLHeadingElement>(null)
-  const subRef     = useRef<HTMLParagraphElement>(null)
-  const linksRef   = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const subRef = useRef<HTMLParagraphElement>(null)
+  const linksRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -74,24 +74,22 @@ export default function ContactSection() {
 
   return (
     <section
+      id="contact"
       ref={sectionRef}
       className="min-h-[80vh] w-full flex items-center justify-center relative overflow-hidden"
     >
-      
       <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 
-      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[400px] rounded-full bg-blue-200/4 blur-[160px]" />
       </div>
 
       <div className="relative z-10 text-center max-w-md px-6 w-full">
-        
         <h2
           ref={titleRef}
           className="text-4xl md:text-6xl font-bold tracking-tight mb-3 opacity-0 text-gradient-amber"
         >
-          Let's talk.
+          Let&apos;s talk.
         </h2>
         <p
           ref={subRef}
@@ -102,35 +100,44 @@ export default function ContactSection() {
 
         <div ref={linksRef} className="space-y-3">
           {contacts.map((contact) => {
-            const isClickable = !!contact.value || !!contact.href
-            const Tag = contact.href ? "a" : "button"
+            if (contact.href) {
+              return (
+                <a
+                  key={contact.name}
+                  href={contact.href}
+                  target={contact.external ? "_blank" : undefined}
+                  rel={contact.external ? "noopener noreferrer" : undefined}
+                  data-cursor-hover
+                  className={`contact-link w-full flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/8 transition-all duration-300 group text-left ${contact.glow}`}
+                >
+                  <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0">
+                    <contact.icon className={`w-4 h-4 ${contact.iconColor ?? "text-white/50"} group-hover:text-white transition-colors`} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[11px] text-white/30 uppercase tracking-wider mb-0.5">{contact.name}</div>
+                    <div className="text-sm font-medium text-white/75 truncate">{contact.label}</div>
+                  </div>
+                  {contact.external && <ExternalLink className="w-3.5 h-3.5 text-white/20 flex-shrink-0" />}
+                </a>
+              )
+            }
 
             return (
-              <Tag
+              <button
                 key={contact.name}
-                href={contact.href}
-                target={contact.external ? "_blank" : undefined}
-                rel={contact.external ? "noopener noreferrer" : undefined}
-                onClick={
-                  contact.value
-                    ? () => navigator.clipboard.writeText(contact.value!)
-                    : undefined
-                }
+                onClick={() => navigator.clipboard.writeText(contact.value!)}
                 data-cursor-hover
                 className={`contact-link w-full flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/8 transition-all duration-300 group text-left ${contact.glow}`}
               >
                 <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0">
                   <contact.icon className={`w-4 h-4 ${contact.iconColor ?? "text-white/50"} group-hover:text-white transition-colors`} />
                 </div>
-
                 <div className="flex-1 min-w-0">
                   <div className="text-[11px] text-white/30 uppercase tracking-wider mb-0.5">{contact.name}</div>
                   <div className="text-sm font-medium text-white/75 truncate">{contact.label}</div>
                 </div>
-
-                {contact.external && <ExternalLink className="w-3.5 h-3.5 text-white/20 flex-shrink-0" />}
-                {contact.value   && <Copy className="w-3.5 h-3.5 text-white/20 flex-shrink-0 group-hover:text-white/40 transition-colors" />}
-              </Tag>
+                <Copy className="w-3.5 h-3.5 text-white/20 flex-shrink-0 group-hover:text-white/40 transition-colors" />
+              </button>
             )
           })}
         </div>

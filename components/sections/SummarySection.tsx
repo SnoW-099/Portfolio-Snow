@@ -7,17 +7,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-  { value: "4",   label: "Languages",  sub: "Python · JS · TS · CSS" },
-  { value: "5+",  label: "Frameworks", sub: "React, Next.js, Tailwind…" },
-  { value: "6+",  label: "Tools",      sub: "Git, Vercel, Supabase…"  },
-  { value: "2+",  label: "Projects",   sub: "Shipped & live"          },
+  { value: "4", label: "Languages", sub: "Python · JS · TS · CSS" },
+  { value: "5+", label: "Frameworks", sub: "React, Next.js, Tailwind…" },
+  { value: "6+", label: "Tools", sub: "Git, Vercel, Supabase…" },
+  { value: "2+", label: "Projects", sub: "Shipped & live" },
 ]
 
 export default function SummarySection() {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const titleRef   = useRef<HTMLHeadingElement>(null)
-  const gridRef    = useRef<HTMLDivElement>(null)
-  const footerRef  = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+  const footerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -57,7 +57,6 @@ export default function SummarySection() {
       ref={sectionRef}
       className="min-h-[85vh] w-full flex flex-col items-center justify-center relative overflow-hidden py-24"
     >
-      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-indigo-500/4 blur-[180px]" />
       </div>
@@ -93,7 +92,6 @@ export default function SummarySection() {
         </div>
       </div>
 
-      
       <div ref={footerRef} className="relative z-10 mt-24 opacity-0 text-center">
         <div className="w-px h-10 bg-gradient-to-b from-white/10 to-transparent mx-auto mb-6" />
         <p className="text-xs text-white/20 tracking-widest uppercase font-mono">
