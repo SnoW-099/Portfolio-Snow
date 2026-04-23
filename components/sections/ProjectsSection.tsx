@@ -22,7 +22,7 @@ const projects = [
     href: "https://github.com/SnoW-099/vibe",
     colSpan: "md:col-span-7",
     image: "/vibe.png",
-    imageClass: "right-[-12%] top-[10%] w-[70%]",
+    imageClass: "right-[-25%] top-[15%] w-[80%]",
   },
   {
     num: "02",
@@ -37,7 +37,7 @@ const projects = [
     href: "https://github.com/SnoW-099/Rez",
     colSpan: "md:col-span-5",
     image: "/rez.png",
-    imageClass: "right-[-5%] bottom-[15%] w-[55%]",
+    imageClass: "right-[-10%] top-[15%] w-[55%]",
   },
 ]
 
@@ -115,68 +115,72 @@ export default function ProjectsSection() {
 
               {/* 3D Floating Mockup */}
               {project.image && (
-                <div className={`absolute ${project.imageClass} z-0 pointer-events-none hidden md:block opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 group-hover:-translate-x-2`} style={{ perspective: "1200px" }}>
-                  <div className="relative transform rotate-y-[-10deg] rotate-x-[8deg] group-hover:rotate-y-[-5deg] group-hover:rotate-x-[4deg] transition-transform duration-700 shadow-2xl rounded-xl">
+                <div className={`absolute ${project.imageClass} z-0 pointer-events-none hidden md:block opacity-40 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-2 group-hover:-translate-x-2`} style={{ perspective: "1200px" }}>
+                  <div className="relative transform rotate-y-[-12deg] rotate-x-[8deg] group-hover:rotate-y-[-5deg] group-hover:rotate-x-[4deg] transition-transform duration-700 shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-xl">
                     <img
                       src={project.image}
                       alt={project.name}
                       className="w-full h-auto rounded-xl border border-white/[0.08]"
-                      style={{ maskImage: "linear-gradient(to left, black 85%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, black 85%, transparent 100%)" }}
+                      style={{ maskImage: "linear-gradient(to left, black 80%, transparent 100%)", WebkitMaskImage: "linear-gradient(to left, black 80%, transparent 100%)" }}
                     />
                   </div>
                 </div>
               )}
 
               <div className="relative z-10 p-8 md:p-10 flex flex-col h-full min-h-[340px]">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
-                  {project.name}
-                </h3>
-                <p className="text-white/50 text-base leading-relaxed flex-1 max-w-md">
-                  {project.description}
-                </p>
-                {project.highlights && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.highlights.map((h) => (
-                      <span
-                        key={h}
-                        className="text-[10px] font-mono tracking-wide text-white/40 border border-white/[0.06] bg-white/[0.02] px-2.5 py-1 rounded-md"
-                      >
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div className="flex-1 lg:max-w-[55%]">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                    {project.name}
+                  </h3>
+                  <p className="text-white/50 text-base leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+                  {project.highlights && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.highlights.map((h) => (
+                        <span
+                          key={h}
+                          className="text-[10px] font-mono tracking-wide text-white/40 border border-white/[0.06] bg-white/[0.02] px-2.5 py-1 rounded-md"
+                        >
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
 
-                <div className="mt-10 flex items-center justify-between">
+                <div className="mt-auto flex items-center justify-between relative z-20 pt-4 bg-gradient-to-t from-[#09090b] via-[#09090b]/80 to-transparent -mx-8 -mb-8 px-8 pb-8 md:-mx-10 md:-mb-10 md:px-10 md:pb-10">
                   <div className="flex gap-2 flex-wrap">
                     {project.tags.map((tag, i) => (
                       <span
                         key={tag}
-                        className={`text-xs font-medium tracking-wide px-3 py-1.5 rounded-lg border ${project.tagColors[i]} shadow-inner`}
+                        className={`text-xs font-medium tracking-wide px-3 py-1.5 rounded-lg border ${project.tagColors[i]} shadow-inner bg-[#09090b]`}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <a
-                    href={project.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-cursor-hover
-                    className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
-                  >
-                    <Code2 className="w-4 h-4" />
-                    <span className="font-medium">Repository</span>
-                    <ExternalLink className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
-                  </a>
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    data-cursor-hover
-                    className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span className="font-medium">Case Study</span>
-                  </Link>
+                  <div className="flex items-center gap-6">
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor-hover
+                      className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
+                    >
+                      <Code2 className="w-4 h-4" />
+                      <span className="font-medium hidden sm:block">Repo</span>
+                      <ExternalLink className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 hidden sm:block" />
+                    </a>
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      data-cursor-hover
+                      className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors group/link"
+                    >
+                      <FileText className="w-4 h-4" />
+                      <span className="font-medium">Case Study</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
