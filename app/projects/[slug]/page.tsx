@@ -18,19 +18,20 @@ const projectDetails: Record<string, {
   href: string
   glow: string
   status: string
+}> = {
   vibe: {
     name: "Vibe",
     tagline: "A premium developer dashboard featuring a modern Bento Grid layout.",
     description:
-    "Vibe centralizes your workflow with a snippet manager, quick links, persistent notes, and project tracking. It is a high-performance solution engineered for real-time synchronization and productivity mapping.",
+      "Vibe centralizes your workflow with a snippet manager, quick links, persistent notes, and project tracking. It is a high-performance solution engineered for real-time synchronization and productivity mapping.",
     motivation:
-    "I needed a centralized dashboard that wasn't bloated with heavy frameworks. Vibe is built upon modular principles to ensure scalability, reliability, and seamless integration within professional production environments.",
+      "I needed a centralized dashboard that wasn't bloated with heavy frameworks. Vibe is built upon modular principles to ensure scalability, reliability, and seamless integration within professional production environments.",
     architecture:
-    "Modular Frontend Architecture. Built with React, Vite, and Vanilla CSS to ensure optimized low-latency processing and high throughput. Designed for maximum responsiveness under high-intensity task tracking.",
+      "Modular Frontend Architecture. Built with React, Vite, and Vanilla CSS to ensure optimized low-latency processing and high throughput. Designed for maximum responsiveness under high-intensity task tracking.",
     challenges:
-    "Securing the persistent notes and quick links across sessions. Integrated standard encryption protocols and secure environment handling to make the dashboard production-ready while keeping bundle size extremely low.",
+      "Securing the persistent notes and quick links across sessions. Integrated standard encryption protocols and secure environment handling to make the dashboard production-ready while keeping bundle size extremely low.",
     learnings:
-    "Learned to orchestrate a Bento Grid layout robustly using Vanilla CSS, eliminating the need for bulky UI libraries. Mastered Vite's optimized build pipeline for highly performant frontend solutions.",
+      "Learned to orchestrate a Bento Grid layout robustly using Vanilla CSS, eliminating the need for bulky UI libraries. Mastered Vite's optimized build pipeline for highly performant frontend solutions.",
     tags: [
       { name: "React", color: "text-indigo-300/80 border-indigo-500/20 bg-indigo-500/5" },
       { name: "Vite", color: "text-blue-300/80 border-blue-500/20 bg-blue-500/5" },
@@ -45,15 +46,15 @@ const projectDetails: Record<string, {
     name: "Rez Bot",
     tagline: "High-Performance Security and Economic Infrastructure for Discord.",
     description:
-    "Rez is an integrated Discord ecosystem designed for high-availability environments. It consolidates a modular Security Engine and a scalable Economic Framework, offering real-time telemetry through a proprietary Liquid Black terminal interface.",
+      "Rez is an integrated Discord ecosystem designed for high-availability environments. It consolidates a modular Security Engine and a scalable Economic Framework, offering real-time telemetry through a proprietary Liquid Black terminal interface.",
     motivation:
-    "To build an infrastructure-driven development module for the next generation of Discord management. Rez replaces repetitive moderation actions with an advanced setup featuring global analytical ranking systems.",
+      "To build an infrastructure-driven development module for the next generation of Discord management. Rez replaces repetitive moderation actions with an advanced setup featuring global analytical ranking systems.",
     architecture:
-    "Dual-component architecture: Service Layer (Discord Core) using Python/Disnake for async event-driven real-time interactions, and an API Gateway using Flask/CORS designed for low-latency JSON data delivery to frontend consumers. Persistence uses Hybrid PostgreSQL (Supabase) and MongoDB.",
+      "Dual-component architecture: Service Layer (Discord Core) using Python/Disnake for async event-driven real-time interactions, and an API Gateway using Flask/CORS designed for low-latency JSON data delivery to frontend consumers. Persistence uses Hybrid PostgreSQL (Supabase) and MongoDB.",
     challenges:
-    "High concurrency management. Handled asyncio for non-blocking I/O operations to ensure high throughput during peak loads. Ensuring strict CORS policy configurations for the bridging interface.",
+      "High concurrency management. Handled asyncio for non-blocking I/O operations to ensure high throughput during peak loads. Ensuring strict CORS policy configurations for the bridging interface.",
     learnings:
-    "Architected a scalable bridge between a Discord backend and a Web UI. Engineered hybrid data solutions utilizing Supabase for relational data and MongoDB for unstructured logs. Mastered RESTful gateway deployments.",
+      "Architected a scalable bridge between a Discord backend and a Web UI. Engineered hybrid data solutions utilizing Supabase for relational data and MongoDB for unstructured logs. Mastered RESTful gateway deployments.",
     tags: [
       { name: "Python", color: "text-purple-300/80 border-purple-500/20 bg-purple-500/5" },
       { name: "Flask", color: "text-emerald-300/80 border-emerald-500/20 bg-emerald-500/5" },
