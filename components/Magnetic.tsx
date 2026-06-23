@@ -4,50 +4,48 @@ import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 
 interface MagneticProps {
-    children: React.ReactElement
+  children: React.ReactElement
 }
 
 export default function Magnetic({ children }: MagneticProps) {
-    const magnetic = useRef<HTMLDivElement>(null)
+  const magnetic = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        const defaultXTo = gsap.quickTo(magnetic.current, "x", { duration: 1, ease: "elastic.out(1, 0.3)" })
-        const defaultYTo = gsap.quickTo(magnetic.current, "y", { duration: 1, ease: "elastic.out(1, 0.3)" })
+  useEffect(() => {
+    const defaultXTo = gsap.quickTo(magnetic.current, "x", { duration: 1, ease: "elastic.out(1, 0.3)" })
+    const defaultYTo = gsap.quickTo(magnetic.current, "y", { duration: 1, ease: "elastic.out(1, 0.3)" })
 
-        const handleMouseMove = (e: MouseEvent) => {
-            const { clientX, clientY } = e
-            const rect = magnetic.current?.getBoundingClientRect()
-            if (!rect) return
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e
+      const rect = magnetic.current?.getBoundingClientRect()
+      if (!rect) return
 
-            const centerX = rect.left + rect.width / 2
-            const centerY = rect.top + rect.height / 2
+      const centerX = rect.left + rect.width / 2
+      const centerY = rect.top + rect.height / 2
+      const distanceX = clientX - centerX
+      const distanceY = clientY - centerY
 
-            const distanceX = clientX - centerX
-            const distanceY = clientY - centerY
+      defaultXTo(distanceX * 0.35)
+      defaultYTo(distanceY * 0.35)
+    }
 
-            // Move the element towards the mouse, with a scaled pull value
-            defaultXTo(distanceX * 0.35)
-            defaultYTo(distanceY * 0.35)
-        }
+    const handleMouseLeave = () => {
+      defaultXTo(0)
+      defaultYTo(0)
+    }
 
-        const handleMouseLeave = () => {
-            defaultXTo(0)
-            defaultYTo(0)
-        }
+    const current = magnetic.current
+    if (current) {
+      current.addEventListener("mousemove", handleMouseMove)
+      current.addEventListener("mouseleave", handleMouseLeave)
+    }
 
-        const current = magnetic.current
-        if (current) {
-            current.addEventListener("mousemove", handleMouseMove)
-            current.addEventListener("mouseleave", handleMouseLeave)
-        }
+    return () => {
+      if (current) {
+        current.removeEventListener("mousemove", handleMouseMove)
+        current.removeEventListener("mouseleave", handleMouseLeave)
+      }
+    }
+  }, [])
 
-        return () => {
-            if (current) {
-                current.removeEventListener("mousemove", handleMouseMove)
-                current.removeEventListener("mouseleave", handleMouseLeave)
-            }
-        }
-    }, [])
-
-    return React.cloneElement(children, { ref: magnetic })
+  return React.cloneElement(children, { ref: magnetic })
 }

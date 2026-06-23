@@ -43,8 +43,8 @@ export default function SkillsSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=310%",
-          scrub: 2,
+          end: "+=220%",
+          scrub: 1.35,
           pin: true,
           pinSpacing: true,
           invalidateOnRefresh: true,

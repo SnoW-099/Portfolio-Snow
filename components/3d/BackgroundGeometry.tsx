@@ -10,18 +10,17 @@ uniform float time;
 varying vec2 vUv;
 varying vec3 vPosition;
 
-// Classic Perlin 3D Noise by Stefan Gustavson
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
 vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
 vec3 fade(vec3 t) {return t*t*t*(t*(t*6.0-15.0)+10.0);}
 
 float cnoise(vec3 P){
-  vec3 Pi0 = floor(P); // Integer part for indexing
-  vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
+  vec3 Pi0 = floor(P);
+  vec3 Pi1 = Pi0 + vec3(1.0);
   Pi0 = mod(Pi0, 289.0);
   Pi1 = mod(Pi1, 289.0);
-  vec3 Pf0 = fract(P); // Fractional part for interpolation
-  vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+  vec3 Pf0 = fract(P);
+  vec3 Pf1 = Pf0 - vec3(1.0);
   vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
   vec4 iy = vec4(Pi0.yy, Pi1.yy);
   vec4 iz0 = Pi0.zzzz;
@@ -101,17 +100,15 @@ varying vec2 vUv;
 varying vec3 vPosition;
 
 void main() {
-  vec3 colorA = vec3(0.15, 0.15, 0.15); // Dark gray base
-  vec3 colorB = vec3(0.30, 0.30, 0.32); // Lighter gray for peaks
-  vec3 colorC = vec3(0.20, 0.20, 0.22); // Mid gray
+  vec3 colorA = vec3(0.15, 0.15, 0.15);
+  vec3 colorB = vec3(0.30, 0.30, 0.32);
+  vec3 colorC = vec3(0.20, 0.20, 0.22);
 
-  // Subtle height-based gradient
   float mixValue = smoothstep(0.0, 1.0, (vPosition.z * 1.5) + 0.5);
   
   vec3 finalColor = mix(colorA, colorB, mixValue);
   finalColor = mix(finalColor, colorC, vUv.x * 0.3);
   
-  // Minimal, understated lines
   gl_FragColor = vec4(finalColor, 0.18);
 }
 `
@@ -142,7 +139,7 @@ function NoisePlane() {
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uniforms={uniforms}
-        wireframe={true} 
+        wireframe={true}
         transparent={true}
         depthWrite={false}
       />

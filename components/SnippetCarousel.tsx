@@ -6,32 +6,15 @@ import { DialogClose } from "@/components/ui/dialog"
 
 
 const highlightCode = (code: string) => {
-    
     const keywords = ["const", "let", "var", "function", "return", "if", "else", "import", "export", "from", "default", "async", "await", "try", "catch", "interface", "type", "class", "extends", "implements", "true", "false", "null", "undefined"]
-
-    
     const globals = ["console", "window", "document", "fetch", "Promise", "JSON", "Math", "Object", "Array", "String", "Number", "Boolean"]
 
     return code.split(/(\s+|[()[\].,;="'#])/g).map((token, i) => {
-        // Highlight keywords in soft purple
         if (keywords.includes(token)) return <span key={i} className="text-purple-400">{token}</span>
-
-        // Highlight global objects in soft blue
         if (globals.includes(token)) return <span key={i} className="text-blue-400">{token}</span>
-
-        // Highlight numeric literals in orange
         if (!isNaN(Number(token))) return <span key={i} className="text-orange-400">{token}</span>
-
-        // Highlight string literals in green
         if (token.startsWith('"') || token.startsWith("'") || token.startsWith("`")) return <span key={i} className="text-green-400">{token}</span>
-
-        // Highlight comments in italicized muted gray
-        if (token.startsWith("//") || token.startsWith("/*")) return <span key={i} className="text-gray-500 italic">{token}</span>
-
-        // Highlight PascalCase tokens (likely Classes or Custom Types) in yellow
         if (token.match(/^[A-Z]\w+$/)) return <span key={i} className="text-yellow-200">{token}</span>
-
-        // Default text color for neutral tokens
         return <span key={i} className="text-[#e6edf3]">{token}</span>
     })
 }

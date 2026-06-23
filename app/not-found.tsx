@@ -12,7 +12,6 @@ export default function NotFound() {
         document.documentElement.classList.add("dark")
 
         const ctx = gsap.context(() => {
-            // Glitch effect timeline
             const tl = gsap.timeline({ repeat: -1, repeatDelay: 3 })
 
             if (textRef.current) {
