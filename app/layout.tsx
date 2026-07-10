@@ -1,33 +1,40 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-display",
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500"],
 })
 
 export const metadata: Metadata = {
-  title: "Angel | Code Developer",
-  description: "Developer building real projects with Python, JavaScript, and TypeScript.",
+  title: "Angel | Portfolio",
+  description: "Portfolio of Angel, a developer building web products, bots, and useful tools.",
   generator: "Next.js",
-  keywords: ["Code Developer", "JavaScript", "TypeScript", "Python", "Portfolio", "Web Development"],
+  keywords: ["Angel portfolio", "developer portfolio", "Next.js portfolio", "Python", "React", "TypeScript"],
   authors: [{ name: "Angel" }],
   creator: "Angel",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://portofolio-snow.netlify.app/",
-    title: "Angel | Code Developer Portfolio",
-    description: "Explore my development projects, from automation scripts to web experiences.",
-    siteName: "Angel's Portfolio",
+    title: "Angel | Portfolio",
+    description: "Projects, case studies, and contact details.",
+    siteName: "Angel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Angel | Code Developer",
-    description: "Check out my code portfolio!",
+    title: "Angel | Portfolio",
+    description: "Projects, case studies, and contact details.",
     creator: "@Snow_099",
   },
   icons: {
@@ -43,7 +50,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} dark`}
+      suppressHydrationWarning
+    >
       <body className="font-sans antialiased">
         {children}
       </body>

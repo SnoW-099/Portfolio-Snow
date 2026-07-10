@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 
 interface MagneticProps {
-  children: React.ReactElement
+  children: React.ReactElement<{ ref?: React.Ref<HTMLDivElement> }>
 }
 
 export default function Magnetic({ children }: MagneticProps) {

@@ -9,6 +9,7 @@ interface Repo {
   html_url: string;
   stargazers_count: number;
   language: string | null;
+  languages_url: string;
   fork: boolean;
 }
 
@@ -40,7 +41,7 @@ export const useGithubData = (username: string) => {
   const [data, setData] = useState<GithubData>({
     user: null,
     repos: [],
-    languages: ,
+    languages: {},
     loading: true,
     error: null,
   });
@@ -68,7 +69,7 @@ export const useGithubData = (username: string) => {
         const originalRepos = reposData.filter(repo => !repo.fork);
 
         
-        const languageStats: LanguageStats = ;
+        const languageStats: LanguageStats = {};
         for (const repo of originalRepos) {
           try {
             const repoLangResponse = await fetch(repo.languages_url);
@@ -89,7 +90,7 @@ export const useGithubData = (username: string) => {
         }
 
         
-        const sortedLanguages: LanguageStats = ;
+        const sortedLanguages: LanguageStats = {};
         Object.entries(languageStats)
           .sort(([, a], [, b]) => b - a)
           .forEach(([lang, bytes]) => {
@@ -107,7 +108,7 @@ export const useGithubData = (username: string) => {
         setData({
           user: null,
           repos: [],
-          languages: ,
+          languages: {},
           loading: false,
           error: error instanceof Error ? error.message : 'An unknown error occurred',
         });
