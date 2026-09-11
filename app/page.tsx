@@ -1,10 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Github, Mail } from "lucide-react"
-import { projects } from "@/lib/projects"
+import { featuredProjects } from "@/lib/projects"
 import PortfolioMotion from "@/components/PortfolioMotion"
+import ProjectArtwork from "@/components/ProjectArtwork"
 
-const stack = ["TypeScript", "React", "Next.js", "Python", "Discord.py", "Git"]
+const stack = ["TypeScript", "React", "Electron", "Next.js", "Python", "Go", "PowerShell", "Git"]
 
 export default function Portfolio() {
   return (
@@ -43,13 +44,13 @@ export default function Portfolio() {
         <div className="hero-bottom reveal reveal-3">
           <div>
             <p>
-              I design and build web products, interfaces, and automation with
-              enough character to stand out and enough structure to last.
+              I build desktop apps, web interfaces, and developer tools — from
+              Windows diagnostics to Python systems and Spotify customization.
             </p>
             <div className="hero-proof" aria-label="Areas of focus">
+              <span>Desktop apps</span><i />
               <span>Web interfaces</span><i />
-              <span>Python automation</span><i />
-              <span>Product thinking</span>
+              <span>Developer tools</span>
             </div>
           </div>
           <Link className="circle-link" href="#work" aria-label="See selected work">
@@ -71,21 +72,13 @@ export default function Portfolio() {
           <span className="live-dot" />
           <span>Now / 2026</span>
         </div>
-        <article>
-          <small>Building</small>
-          <strong>Vibe dashboard</strong>
-          <span>Product &amp; frontend</span>
-        </article>
-        <article>
-          <small>Exploring</small>
-          <strong>Better interfaces</strong>
-          <span>Motion &amp; systems</span>
-        </article>
-        <article>
-          <small>Looking for</small>
-          <strong>The right team</strong>
-          <span>Junior opportunities</span>
-        </article>
+        {featuredProjects.map(project => (
+          <article key={project.slug}>
+            <small>{project.eyebrow}</small>
+            <Link href={`/projects/${project.slug}`}><strong>{project.name}</strong></Link>
+            <span>{project.tags.join(" / ")}</span>
+          </article>
+        ))}
       </section>
 
       <section id="work" className="work-section shell" data-reveal>
@@ -99,17 +92,11 @@ export default function Portfolio() {
         </header>
 
         <div className="project-list">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <article id={`project-${project.slug}`} className={`project-feature project-feature-${index + 1}`} key={project.slug} data-reveal>
               <Link href={`/projects/${project.slug}`} className={`project-visual project-visual-${project.slug}`} aria-label={`View ${project.name} case study`} data-tilt>
-                <Image
-                  src={project.image}
-                  alt={`${project.name} interface`}
-                  width={1200}
-                  height={760}
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                />
-                <span className="project-image-label">0{index + 1} / {project.eyebrow}</span>
+                <ProjectArtwork project={project} />
+                <span className="project-image-label">0{index + 1}</span>
                 <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
               </Link>
 
@@ -164,13 +151,14 @@ export default function Portfolio() {
               equal parts logic, structure, and visual polish.
             </p>
             <p>
-              Right now I&apos;m deepening my frontend skills while continuing to build
-              with Python. I&apos;m looking for a team where curiosity and craft matter.
+              My recent work spans Electron apps, Python inventory and user systems, and
+              maintaining a Spicetify fork. I also build Python tools and Discord
+              integrations, connecting interface design with practical functionality.
             </p>
           </div>
           <dl className="about-facts">
             <div><dt>Based in</dt><dd>Catalunya, Spain</dd></div>
-            <div><dt>Focused on</dt><dd>Web + automation</dd></div>
+            <div><dt>Focused on</dt><dd>Desktop + web tools</dd></div>
             <div><dt>Currently</dt><dd><span /> Open to work</dd></div>
           </dl>
         </div>
@@ -184,7 +172,7 @@ export default function Portfolio() {
         <div className="capability-list">
           {[
             ["01", "Product interfaces", "Focused experiences that are easy to understand and satisfying to use.", "React / Next.js / CSS"],
-            ["02", "Frontend systems", "Responsive, maintainable builds with structure behind every visual decision.", "TypeScript / Components / Git"],
+            ["02", "Desktop applications", "Local tools for diagnostics and coding, with focused interfaces and system integration.", "Electron / TypeScript / PowerShell"],
             ["03", "Useful automation", "Bots and tools that remove repetitive work and stay understandable as they grow.", "Python / APIs / Discord"],
           ].map(([number, title, copy, tools]) => (
             <article key={number}>
