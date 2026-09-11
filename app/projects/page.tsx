@@ -1,4 +1,4 @@
-import Image from "next/image"
+import ProjectArtwork from "@/components/ProjectArtwork"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import { projects } from "@/lib/projects"
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
       <section className="archive-hero shell">
         <div className="archive-hero-meta">
           <span className="eyebrow">Selected experiments and products</span>
-          <span>02 projects / Always evolving</span>
+          <span>{String(projects.length).padStart(2, "0")} projects / Always evolving</span>
         </div>
         <h1>Things I&apos;ve<br /><em>made so far.</em></h1>
       </section>
@@ -26,7 +26,7 @@ export default function ProjectsPage() {
         {projects.map((project, index) => (
           <article className="archive-card" key={project.slug}>
             <Link href={`/projects/${project.slug}`} className={`archive-image archive-image-${project.slug}`} data-tilt>
-              <Image src={project.image} alt={`${project.name} interface`} width={1000} height={650} />
+              <ProjectArtwork project={project} />
               <span className="archive-index">0{index + 1}</span>
               <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
             </Link>
