@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+.project-artwork { --art-accent: #c9ff45; min-height: 280px; aspect-ratio: 1200 / 760; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(24px, 4vw, 56px); color: #f0eee8; background: radial-gradient(ellipse at 85% 15%, color-mix(in srgb, var(--art-accent) 16%, transparent), transparent 65%), #111513; border: 1px solid rgba(240,238,232,.13); }
+.artwork-snowtify { --art-accent: #91d9f8; background-color: #0d1820; }
+.artwork-nivra { --art-accent: #baabff; background-color: #151222; }
+.artwork-py-mini-systems { --art-accent: #ffd96a; background-color: #1b1910; }
+.artwork-category { font: 400 10px/1.5 var(--font-mono), monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--art-accent); }
+.artwork-center { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+.artwork-symbol { color: var(--art-accent); font: 400 clamp(36px, 5vw, 72px)/1 var(--font-mono), monospace; }
+.artwork-center strong { font-size: clamp(25px, 3.4vw, 56px); line-height: 1.05; letter-spacing: -.055em; overflow-wrap: anywhere; }
+.artwork-highlights { display: flex; flex-wrap: wrap; gap: 8px 18px; font: 400 10px/1.6 var(--font-mono), monospace; color: rgba(240,238,232,.6); }
+.artwork-highlights span::before { content: "+ "; color: var(--art-accent); }
+
 :root {
   --ink: #0a0a09;
   --paper: #f0eee8;
