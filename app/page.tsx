@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Github, Mail } from "lucide-react"
-import { projects } from "@/lib/projects"
+import { featuredProjects } from "@/lib/projects"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 
@@ -45,7 +45,7 @@ export default function Portfolio() {
           <div>
             <p>
               I build desktop apps, web interfaces, and developer tools — from
-              Windows diagnostics to code editors and Spotify customization.
+              Windows diagnostics to Python systems and Spotify customization.
             </p>
             <div className="hero-proof" aria-label="Areas of focus">
               <span>Desktop apps</span><i />
@@ -72,21 +72,13 @@ export default function Portfolio() {
           <span className="live-dot" />
           <span>Now / 2026</span>
         </div>
-        <article>
-          <small>Latest app</small>
-          <strong>StarOptimizer</strong>
-          <span>Windows diagnostics / Beta</span>
-        </article>
-        <article>
-          <small>Editor prototype</small>
-          <strong>Nivra</strong>
-          <span>Electron &amp; Monaco</span>
-        </article>
-        <article>
-          <small>Open-source fork</small>
-          <strong>Snowtify</strong>
-          <span>Customization &amp; recovery</span>
-        </article>
+        {featuredProjects.map(project => (
+          <article key={project.slug}>
+            <small>{project.eyebrow}</small>
+            <Link href={`/projects/${project.slug}`}><strong>{project.name}</strong></Link>
+            <span>{project.tags.join(" / ")}</span>
+          </article>
+        ))}
       </section>
 
       <section id="work" className="work-section shell" data-reveal>
@@ -100,11 +92,11 @@ export default function Portfolio() {
         </header>
 
         <div className="project-list">
-          {projects.filter(project => project.featured).map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <article id={`project-${project.slug}`} className={`project-feature project-feature-${index + 1}`} key={project.slug} data-reveal>
               <Link href={`/projects/${project.slug}`} className={`project-visual project-visual-${project.slug}`} aria-label={`View ${project.name} case study`} data-tilt>
                 <ProjectArtwork project={project} />
-                <span className="project-image-label">0{index + 1} / {project.eyebrow}</span>
+                <span className="project-image-label">0{index + 1}</span>
                 <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
               </Link>
 
@@ -159,7 +151,7 @@ export default function Portfolio() {
               equal parts logic, structure, and visual polish.
             </p>
             <p>
-              My recent work spans Electron apps, a Monaco-based code editor, and
+              My recent work spans Electron apps, Python inventory and user systems, and
               maintaining a Spicetify fork. I also build Python tools and Discord
               integrations, connecting interface design with practical functionality.
             </p>

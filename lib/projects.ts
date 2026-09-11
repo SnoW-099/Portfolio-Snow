@@ -57,24 +57,6 @@ export const projects: Project[] = [
     highlights: ["Doctor", "Repair", "Frost"],
   },
   {
-    slug: "nivra",
-    name: "Nivra",
-    status: "Prototype / v0.1.0",
-    eyebrow: "Desktop code editor",
-    role: "Editor interface & desktop integration",
-    year: "2026",
-    focus: "A focused coding workspace",
-    shortDescription: "A desktop code editor built with Electron, React, and Monaco, with local files, an integrated command panel, and a focused workspace.",
-    summary: "Nivra explores a quieter coding environment with a Monaco editor, file tabs, folder navigation, search, and adjustable editor settings. Electron connects the interface to local file operations and command execution.",
-    problem: "A useful editor needs more than a text area: opening, editing, saving, and running code should fit together without overwhelming the workspace.",
-    approach: "The prototype connects a React and TypeScript interface to Electron through a desktop bridge. It includes a calm mode and a Flow panel that summarizes workspace context and next actions.",
-    learnings: "The project explores editor state, unsaved changes, desktop bridges, and workspace design. Nivra remains a prototype, with room to develop its workflow and reliability further.",
-    tags: ["Electron", "React", "TypeScript", "Monaco"],
-    repoUrl: "https://github.com/SnoW-099/nivra",
-    featured: true,
-    highlights: ["Edit", "Focus", "Flow"],
-  },
-  {
     slug: "py-mini-systems",
     name: "Python Mini Systems",
     status: "Learning projects",
@@ -89,6 +71,7 @@ export const projects: Project[] = [
     learnings: "These are learning exercises in Python, data structures, and persistence. The login exercise is not presented as a production authentication service.",
     tags: ["Python", "JSON", "CLI"],
     repoUrl: "https://github.com/SnoW-099/py-mini-systems",
+    featured: true,
     highlights: ["Inventory", "Users", "Persistence"],
   },
   {
@@ -137,6 +120,8 @@ export const projects: Project[] = [
     image: "/rez.png",
   },
 ]
+
+export const featuredProjects = projects.filter(project => project.featured)
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug)

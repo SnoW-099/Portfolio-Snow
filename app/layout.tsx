@@ -18,7 +18,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Angel | Portfolio",
-  description: "Angel's desktop apps, web interfaces, and developer tools: StarOptimizer, Snowtify, Nivra, and Python projects.",
+  description: "Angel's desktop apps, web interfaces, and developer tools: StarOptimizer, Snowtify, and Python Mini Systems.",
   generator: "Next.js",
   keywords: ["Angel portfolio", "developer portfolio", "Next.js portfolio", "Python", "React", "TypeScript"],
   authors: [{ name: "Angel" }],
