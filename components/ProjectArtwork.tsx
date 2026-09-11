@@ -10,7 +10,7 @@ export default function ProjectArtwork({ project, priority = false }: { project:
     <div className={`project-artwork artwork-${project.slug}`} aria-label={`${project.name}: ${project.eyebrow}`}>
       <span className="artwork-category">{project.eyebrow}</span>
       <div className="artwork-center">
-        <span className="artwork-symbol" aria-hidden="true">{project.slug === "staroptimizer" ? "✳" : project.slug === "snowtify" ? "❄" : project.slug === "nivra" ? "{ }" : ">_"}</span>
+        <span className="artwork-symbol" aria-hidden="true">{project.slug === "staroptimizer" ? "✳" : project.slug === "snowtify" ? "❄" : ">_"}</span>
         <strong>{project.name}</strong>
       </div>
       <div className="artwork-highlights">{project.highlights?.map(item => <span key={item}>{item}</span>)}</div>
