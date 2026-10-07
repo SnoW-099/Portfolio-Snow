@@ -74,12 +74,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ))}
       </section>
 
-      <section className="case-cta shell">
-        <p>Want to inspect the code?</p>
-        <a href={project.repoUrl} target="_blank" rel="noreferrer">
-          <Github /> View repository <ArrowUpRight />
-        </a>
-      </section>
+      {project.repoUrl && (
+        <section className="case-cta shell">
+          <p>Want to inspect the code?</p>
+          <a href={project.repoUrl} target="_blank" rel="noreferrer">
+            <Github /> View repository <ArrowUpRight />
+          </a>
+        </section>
+      )}
 
       <section id="next-project" className="next-project">
         <Link href={`/projects/${nextProject.slug}`} className="shell">
