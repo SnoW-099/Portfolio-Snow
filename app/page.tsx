@@ -1,9 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Coffee, Github, Mail } from "lucide-react"
-import { projects } from "@/lib/projects"
+import { featuredProjects } from "@/lib/projects"
 import { primaryStack, skillGroups } from "@/lib/profile"
 import PortfolioMotion from "@/components/PortfolioMotion"
+import ProjectArtwork from "@/components/ProjectArtwork"
 
 export default function Portfolio() {
   return (
@@ -104,17 +105,11 @@ export default function Portfolio() {
         </header>
 
         <div className="project-list">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <article id={`project-${project.slug}`} className={`project-feature project-feature-${index + 1}`} key={project.slug} data-reveal>
               <Link href={`/projects/${project.slug}`} className={`project-visual project-visual-${project.slug}`} aria-label={`View ${project.name} case study`} data-tilt>
-                <Image
-                  src={project.image}
-                  alt={`${project.name} interface`}
-                  width={1200}
-                  height={760}
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                />
-                <span className="project-image-label">0{index + 1} / {project.eyebrow}</span>
+                <ProjectArtwork project={project} />
+                <span className="project-image-label">0{index + 1}</span>
                 <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
               </Link>
 
@@ -132,7 +127,7 @@ export default function Portfolio() {
                   <Link href={`/projects/${project.slug}`} className="text-link">
                     View case study <ArrowUpRight />
                   </Link>
-                  {project.repoUrl && (
+                  {project.repoUrl && !project.privateRepo && (
                     <a href={project.repoUrl} target="_blank" rel="noreferrer" className="repo-link">
                       <Github /> Source code <ArrowUpRight />
                     </a>

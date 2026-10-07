@@ -1,4 +1,4 @@
-import Image from "next/image"
+import ProjectArtwork from "@/components/ProjectArtwork"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -56,7 +56,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </section>
 
       <section className={`case-image case-image-${project.slug} shell`} data-reveal>
-        <Image src={project.image} alt={`${project.name} interface`} width={1440} height={900} priority />
+        <ProjectArtwork project={project} priority />
       </section>
 
       <section className="case-intro shell" data-reveal>
@@ -74,12 +74,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ))}
       </section>
 
-      {project.repoUrl && (
+      {(project.privateRepo || project.repoUrl) && (
         <section className="case-cta shell">
-          <p>Want to inspect the code?</p>
-          <a href={project.repoUrl} target="_blank" rel="noreferrer">
-            <Github /> View repository <ArrowUpRight />
-          </a>
+          <p>{project.privateRepo ? "This project's source code is private." : "Want to inspect the code?"}</p>
+          {project.repoUrl && !project.privateRepo && (
+            <a href={project.repoUrl} target="_blank" rel="noreferrer">
+              <Github /> View repository <ArrowUpRight />
+            </a>
+          )}
         </section>
       )}
 

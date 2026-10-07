@@ -7,6 +7,7 @@ export default function PortfolioMotion() {
 
   useEffect(() => {
     const root = document.documentElement
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     root.classList.add("motion-ready")
 
     const updateTime = () => {
@@ -26,6 +27,7 @@ export default function PortfolioMotion() {
 
     let frame = 0
     const updatePointer = (event: PointerEvent) => {
+      if (reducedMotion.matches || event.pointerType === "touch") return
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(() => {
         root.style.setProperty("--pointer-x", `${event.clientX}px`)
@@ -65,6 +67,7 @@ export default function PortfolioMotion() {
 
     const tiltCleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-tilt]")).map((element) => {
       const move = (event: PointerEvent) => {
+        if (reducedMotion.matches || event.pointerType === "touch") return
         const rect = element.getBoundingClientRect()
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
