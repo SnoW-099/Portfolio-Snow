@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google"
+import { skillGroups } from "@/lib/profile"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,25 +17,29 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 })
 
+const profileTitle = "Angel | Junior Developer from Spain"
+const profileDescription = "Junior developer from Spain, building with Python, HTML and CSS while learning JavaScript and TypeScript. Explore my projects and get in touch."
+
 export const metadata: Metadata = {
-  title: "Angel | Portfolio",
-  description: "Portfolio of Angel, a developer building web products, bots, and useful tools.",
+  metadataBase: new URL("https://portfolio-snow.netlify.app/"),
+  title: profileTitle,
+  description: profileDescription,
   generator: "Next.js",
-  keywords: ["Angel portfolio", "developer portfolio", "Next.js portfolio", "Python", "React", "TypeScript"],
+  keywords: ["Angel portfolio", "junior developer", "developer Spain", ...skillGroups.flatMap((group) => group.items)],
   authors: [{ name: "Angel" }],
   creator: "Angel",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://portofolio-snow.netlify.app/",
-    title: "Angel | Portfolio",
-    description: "Projects, case studies, and contact details.",
+    url: "https://portfolio-snow.netlify.app/",
+    title: profileTitle,
+    description: profileDescription,
     siteName: "Angel Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Angel | Portfolio",
-    description: "Projects, case studies, and contact details.",
+    title: profileTitle,
+    description: profileDescription,
     creator: "@Snow_099",
   },
   icons: {

@@ -12,7 +12,7 @@ export type Project = {
   approach: string
   learnings: string
   tags: string[]
-  repoUrl: string
+  repoUrl?: string
   image: string
 }
 
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     name: "Vibe",
     status: "Featured",
     eyebrow: "Developer dashboard",
-    role: "Product design & frontend",
+    role: "Frontend development & UI",
     year: "2025",
     focus: "Personal productivity",
     shortDescription:
@@ -36,7 +36,6 @@ export const projects: Project[] = [
     learnings:
       "This project pushed me to think more carefully about layout, pacing, and how a product can feel lightweight without feeling empty.",
     tags: ["React", "Vite", "CSS"],
-    repoUrl: "https://github.com/SnoW-099/vibe",
     image: "/vibe.png",
   },
   {
@@ -44,11 +43,11 @@ export const projects: Project[] = [
     name: "Rez Bot",
     status: "Active",
     eyebrow: "Discord bot",
-    role: "Architecture & backend",
+    role: "Python development",
     year: "2025",
     focus: "Community automation",
     shortDescription:
-      "A Discord bot with economy commands, embeds, and persistent balances built with growth in mind.",
+      "A Python Discord bot with economy commands, embeds, and persistent balances.",
     summary:
       "Rez Bot is a practical bot project where I explored structure, persistence, and the day-to-day realities of keeping a community tool understandable as features grow.",
     problem:
