@@ -1,20 +1,25 @@
-# Portfolio
+# Angel / Snow — Portfolio
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white)
+A portfolio built with Next.js 16, React 19 and TypeScript. The interface uses a light background, blue accents, system fonts and responsive project cards.
 
-A premium Bento Grid portfolio designed for a Code Developer. Crafted with a strictly monochromatic aesthetic, glassmorphism details, and high-performance interactive elements.
+## Run locally
 
-## Getting Started
+Requires Node.js and npm.
 
-```bash
-git clone https://github.com/SnoW-099/Portofolio-Snow.git
-cd Portofolio-Snow
-npm install
+```sh
+npm ci
 npm run dev
 ```
 
----
-*Designed & Built by Angel.*
+Open http://localhost:3000.
+
+## Validate
+
+```sh
+npx tsc --noEmit
+npm run build
+```
+
+The homepage, project archive, case studies and 404 page share the same visual design. Project content lives in `lib/projects.ts`; profile and skills live in `lib/profile.ts`. Styles live in `app/globals.css`.
+
+The interface uses local system fonts, supports keyboard navigation and respects reduced-motion preferences. Contact links open an email client; there is no form backend.

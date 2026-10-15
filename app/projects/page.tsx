@@ -8,7 +8,6 @@ export default function ProjectsPage() {
   return (
     <main className="site-shell archive-page">
       <PortfolioMotion />
-      <div className="grain" aria-hidden="true" />
       <header className="subnav shell">
         <Link href="/" className="back-link"><ArrowLeft /> Back home</Link>
         <span>Project archive / 2026</span>
@@ -25,7 +24,7 @@ export default function ProjectsPage() {
       <section className="archive-grid shell">
         {projects.map((project, index) => (
           <article className="archive-card" key={project.slug}>
-            <Link href={`/projects/${project.slug}`} className={`archive-image archive-image-${project.slug}`} data-tilt>
+            <Link href={`/projects/${project.slug}`} className={`archive-image archive-image-${project.slug}`}>
               <ProjectArtwork project={project} />
               <span className="archive-index">0{index + 1}</span>
               <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>

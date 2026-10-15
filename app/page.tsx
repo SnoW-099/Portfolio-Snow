@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowDownRight, ArrowUpRight, Coffee, Github, Mail } from "lucide-react"
 import { featuredProjects } from "@/lib/projects"
-import { primaryStack, skillGroups } from "@/lib/profile"
+import { skillGroups } from "@/lib/profile"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 
@@ -11,12 +11,10 @@ export default function Portfolio() {
     <main className="site-shell">
       <a className="skip-link" href="#work">Skip to selected work</a>
       <PortfolioMotion />
-      <div className="ambient-glow" aria-hidden="true" />
-      <div className="grain" aria-hidden="true" />
 
       <nav className="nav-wrap" aria-label="Main navigation">
         <Link href="#top" className="brand" aria-label="Angel, home">
-          A<span>/</span>26
+          <span className="brand-mark">S</span> Snow<span className="brand-dot">.</span>
         </Link>
         <div className="nav-links">
           <Link className="nav-link-work" href="#work">Work</Link>
@@ -30,49 +28,26 @@ export default function Portfolio() {
       </nav>
 
       <section id="top" className="hero shell">
-        <div className="hero-kicker reveal reveal-1">
-          <span>Angel / Junior developer</span>
-          <span>Based in Spain</span>
+        <a className="hero-status" href="mailto:ryze0950@gmail.com">
+          <span className="live-dot" /> Open to junior opportunities <ArrowUpRight />
+        </a>
+        <p className="hero-kicker">Angel · Junior developer · Spain</p>
+        <h1 className="hero-title">Small ideas.<br /><span>Real projects.</span></h1>
+        <p className="hero-description">
+          I build web projects and useful Python tools. Learning JavaScript and
+          TypeScript, one project at a time.
+        </p>
+        <div className="hero-actions">
+          <Link className="hero-primary" href="#work">View my work <ArrowDownRight /></Link>
+          <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Let&apos;s talk <ArrowUpRight /></a>
         </div>
-
-        <h1 className="hero-title reveal reveal-2" aria-label="Junior developer from Spain">
-          <span className="hero-line hero-line-solid"><span>Junior developer</span></span>
-          <span className="hero-line hero-line-stroke"><span>from</span></span>
-          <span className="hero-line hero-line-script"><em>Spain.</em></span>
-        </h1>
-
-        <div className="hero-bottom reveal reveal-3">
-          <div>
-            <p>
-              I build web projects and Python tools. My foundation is Python,
-              HTML and CSS, and I&apos;m currently learning JavaScript and TypeScript.
-            </p>
-            <div className="hero-proof" aria-label="Current focus">
-              <span>Python + web</span><i />
-              <span>Learning by building</span><i />
-              <span>Junior opportunities</span>
-            </div>
-          </div>
-          <div className="hero-actions">
-            <Link className="hero-primary" href="#work">View projects <ArrowDownRight /></Link>
-            <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Get in touch <ArrowUpRight /></a>
-          </div>
+        <div className="hero-proof" aria-label="My foundation">
+          <span>Python</span><span>HTML &amp; CSS</span><span>Always learning</span>
         </div>
+        <a className="hero-scroll" href="#work">A few things I&apos;ve made <ArrowDownRight /></a>
       </section>
 
-      <div className="ticker" aria-hidden="true">
-        <div>
-          {[0, 1].map((copy) => (
-            <div className="ticker-group" key={copy}>
-              {Array.from({ length: 4 }, () => primaryStack).flat().map((item, index) => (
-                <span key={`${item}-${index}`}>{item}<i>+</i></span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <section className="now-strip shell" aria-label="What I am doing now" data-reveal>
+      <section className="now-strip shell" aria-label="What I am doing now">
         <div className="now-heading">
           <span className="live-dot" />
           <span>Now / 2026</span>
@@ -94,7 +69,7 @@ export default function Portfolio() {
         </article>
       </section>
 
-      <section id="work" className="work-section shell" data-reveal>
+      <section id="work" className="work-section shell">
         <header className="section-heading">
           <div>
             <span className="index">01</span>
@@ -106,8 +81,8 @@ export default function Portfolio() {
 
         <div className="project-list">
           {featuredProjects.map((project, index) => (
-            <article id={`project-${project.slug}`} className={`project-feature project-feature-${index + 1}`} key={project.slug} data-reveal>
-              <Link href={`/projects/${project.slug}`} className={`project-visual project-visual-${project.slug}`} aria-label={`View ${project.name} case study`} data-tilt>
+            <article id={`project-${project.slug}`} className={`project-feature project-feature-${index + 1}`} key={project.slug}>
+              <Link href={`/projects/${project.slug}`} className={`project-visual project-visual-${project.slug}`} aria-label={`View ${project.name} case study`}>
                 <ProjectArtwork project={project} />
                 <span className="project-image-label">0{index + 1}</span>
                 <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
@@ -143,7 +118,7 @@ export default function Portfolio() {
         </Link>
       </section>
 
-      <section id="about" className="about-section shell" data-reveal>
+      <section id="about" className="about-section shell">
         <div className="about-rail">
           <div className="about-label">
             <span className="index">02</span>
@@ -180,28 +155,20 @@ export default function Portfolio() {
       </section>
 
       <section id="skills" className="skills-section shell" aria-labelledby="skills-title">
-        <header className="skills-heading" data-reveal>
+        <header className="skills-heading">
           <div><span className="index">03</span><span className="eyebrow">My stack</span></div>
           <h2 id="skills-title">What I use.<br /><em>What I&apos;m learning.</em></h2>
           <p>A foundation in Python, HTML and CSS. New languages to learn, and tools to help me turn practice into projects.</p>
         </header>
         <div className="skill-grid">
           {skillGroups.map((group, index) => (
-            <article className={`skill-card skill-card-${group.id}`} key={group.id} data-reveal>
+            <article className={`skill-card skill-card-${group.id}`} key={group.id}>
               <div className="skill-card-top">
                 <span className="skill-index">0{index + 1}</span>
                 {group.id === "learning" && <span className="learning-label">Learning</span>}
               </div>
               <h3>{group.title}</h3>
               <p>{group.description}</p>
-              <Image
-                className="skill-icons"
-                src={`https://skillicons.dev/icons?i=${group.iconIds}&theme=dark`}
-                alt=""
-                width={group.items.length * 48 + (group.items.length - 1) * 8}
-                height={48}
-                unoptimized
-              />
               <ul className="skill-items">
                 {group.items.map((item) => <li key={item}>{item}</li>)}
               </ul>
@@ -210,7 +177,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer id="contact" className="contact-section" data-reveal>
+      <footer id="contact" className="contact-section">
         <div className="shell">
           <div className="contact-topline">
             <span className="eyebrow">04 / Have a junior opportunity?</span>

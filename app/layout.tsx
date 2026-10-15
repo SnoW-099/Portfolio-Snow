@@ -1,21 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google"
 import { skillGroups } from "@/lib/profile"
 import "./globals.css"
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-display",
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mono",
-  weight: ["400", "500"],
-})
 
 const profileTitle = "Angel | Junior Developer from Spain"
 const profileDescription = "Junior developer from Spain, building with Python, HTML and CSS while learning JavaScript and TypeScript. Explore my projects and get in touch."
@@ -57,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} dark`}
+      className="light"
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">

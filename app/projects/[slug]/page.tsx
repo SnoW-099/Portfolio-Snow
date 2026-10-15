@@ -34,13 +34,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <main className="site-shell case-page">
       <PortfolioMotion />
-      <div className="grain" aria-hidden="true" />
       <header className="subnav shell">
         <Link href="/projects" className="back-link"><ArrowLeft /> All projects</Link>
         <span>{project.eyebrow} / {project.year}</span>
       </header>
 
-      <section className="case-hero shell" data-reveal>
+      <section className="case-hero shell">
         <div className="case-meta">
           <span>{project.status}</span>
           <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
@@ -49,22 +48,22 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <p>{project.shortDescription}</p>
       </section>
 
-      <section className="case-facts shell" aria-label="Project information" data-reveal>
+      <section className="case-facts shell" aria-label="Project information">
         <div><span>Role</span><strong>{project.role}</strong></div>
         <div><span>Focus</span><strong>{project.focus}</strong></div>
         <div><span>Year</span><strong>{project.year}</strong></div>
       </section>
 
-      <section className={`case-image case-image-${project.slug} shell`} data-reveal>
+      <section className={`case-image case-image-${project.slug} shell`}>
         <ProjectArtwork project={project} priority />
       </section>
 
-      <section className="case-intro shell" data-reveal>
+      <section className="case-intro shell">
         <span className="eyebrow">Overview</span>
         <p>{project.summary}</p>
       </section>
 
-      <section className="case-sections shell" data-reveal>
+      <section className="case-sections shell">
         {sections.map(([title, content], index) => (
           <article key={title}>
             <span>0{index + 1}</span>
