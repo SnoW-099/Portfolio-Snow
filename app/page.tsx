@@ -113,7 +113,7 @@ export default function Portfolio() {
       <footer id="contact" className="contact-section" aria-labelledby="contact-title">
         <div className="shell">
           <div className="contact-topline" data-reveal><span className="eyebrow">04 / Let&apos;s talk</span><span>Good things start with a conversation.</span></div>
-          <h2 id="contact-title" data-reveal">Something in mind?<br /><em>Say hello.</em></h2>
+          <h2 id="contact-title" data-reveal>Something in mind?<br /><em>Say hello.</em></h2>
           <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
           <div className="footer-row">
             <span>© {new Date().getFullYear()} Angel / Snow</span>
