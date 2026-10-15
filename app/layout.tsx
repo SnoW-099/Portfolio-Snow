@@ -3,8 +3,8 @@ import type { Metadata } from "next"
 import { skillGroups } from "@/lib/profile"
 import "./globals.css"
 
-const profileTitle = "Angel | Junior Developer from Spain"
-const profileDescription = "Junior developer from Spain, building with Python, HTML and CSS while learning JavaScript and TypeScript. Explore my projects and get in touch."
+const profileTitle = "Angel / Snow | Junior Developer"
+const profileDescription = "Angel, online as Snow. Junior developer from Spain building Python tools and thoughtful web interfaces, with transparent AI-assisted projects."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-snow.netlify.app/"),
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://portfolio-snow.netlify.app/",
     title: profileTitle,
     description: profileDescription,
-    siteName: "Angel Portfolio",
+    siteName: "Snow — Angel",
   },
   twitter: {
     card: "summary_large_image",

@@ -1,45 +1,21 @@
 import ProjectArtwork from "@/components/ProjectArtwork"
 import Link from "next/link"
-import { ArrowLeft, ArrowUpRight } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react"
 import { projects } from "@/lib/projects"
 import PortfolioMotion from "@/components/PortfolioMotion"
 
 export default function ProjectsPage() {
   return (
     <main className="site-shell archive-page">
+      <a className="skip-link" href="#archive">Skip to projects</a>
       <PortfolioMotion />
-      <header className="subnav shell">
-        <Link href="/" className="back-link"><ArrowLeft /> Back home</Link>
-        <span>Project archive / 2026</span>
-      </header>
-
-      <section className="archive-hero shell">
-        <div className="archive-hero-meta">
-          <span className="eyebrow">Selected experiments and products</span>
-          <span>{String(projects.length).padStart(2, "0")} projects / Always evolving</span>
-        </div>
-        <h1>Things I&apos;ve<br /><em>made so far.</em></h1>
-      </section>
-
-      <section className="archive-grid shell">
+      <header className="subnav shell"><Link href="/" className="back-link"><ArrowLeft aria-hidden="true" /> Back home</Link><Link href="/" className="subnav-brand">Snow<span>.</span></Link></header>
+      <section className="archive-hero shell"><div className="archive-hero-meta"><span className="eyebrow">Projects &amp; experiments</span><span>{String(projects.length).padStart(2, "0")} projects / Always learning</span></div><h1>Made to learn.<br /><em>Refined along the way.</em></h1><p className="archive-intro">Finished pieces, ongoing work, and small exercises. Each project makes its scope and use of AI clear.</p></section>
+      <section id="archive" className="archive-grid shell" aria-label="All projects">
         {projects.map((project, index) => (
-          <article className="archive-card" key={project.slug}>
-            <Link href={`/projects/${project.slug}`} className={`archive-image archive-image-${project.slug}`}>
-              <ProjectArtwork project={project} />
-              <span className="archive-index">0{index + 1}</span>
-              <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
-            </Link>
-            <div className="archive-card-copy">
-              <div>
-                <span>{project.eyebrow}</span>
-                <span>{project.year} / {project.status}</span>
-              </div>
-              <h2>{project.name}</h2>
-              <p>{project.shortDescription}</p>
-              <Link href={`/projects/${project.slug}`} className="text-link">
-                Read case study <ArrowUpRight />
-              </Link>
-            </div>
+          <article className="archive-card" key={project.slug} data-reveal>
+            <Link href={"/projects/" + project.slug} className={"archive-image archive-image-" + project.slug} aria-label={"Explore " + project.name}><ProjectArtwork project={project} /><span className="archive-index">0{index + 1}</span><span className="project-open" aria-hidden="true"><ArrowUpRight /></span></Link>
+            <div className="archive-card-copy"><div><span>{project.eyebrow}</span><span>{project.year}</span></div><h2><Link href={"/projects/" + project.slug}>{project.name}</Link></h2>{project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}<p>{project.shortDescription}</p><Link href={"/projects/" + project.slug} className="text-link">Behind the project <ArrowUpRight aria-hidden="true" /></Link></div>
           </article>
         ))}
       </section>

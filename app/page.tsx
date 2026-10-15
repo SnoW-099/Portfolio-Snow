@@ -1,201 +1,124 @@
+import type { CSSProperties } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowDownRight, ArrowUpRight, Coffee, Github, Mail } from "lucide-react"
+import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { featuredProjects } from "@/lib/projects"
 import { skillGroups } from "@/lib/profile"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
+import SiteHeader from "@/components/SiteHeader"
 
 export default function Portfolio() {
   return (
     <main className="site-shell">
       <a className="skip-link" href="#work">Skip to selected work</a>
       <PortfolioMotion />
+      <SiteHeader />
 
-      <nav className="nav-wrap" aria-label="Main navigation">
-        <Link href="#top" className="brand" aria-label="Angel, home">
-          <span className="brand-mark">S</span> Snow<span className="brand-dot">.</span>
-        </Link>
-        <div className="nav-links">
-          <Link className="nav-link-work" href="#work">Work</Link>
-          <Link className="nav-link-about" href="#about">About</Link>
-          <Link className="nav-link-skills" href="#skills">Skills</Link>
-          <Link className="nav-link-contact" href="#contact">Contact</Link>
-        </div>
-        <a className="availability" href="mailto:ryze0950@gmail.com">
-          <span /> Available for work
-        </a>
-      </nav>
-
-      <section id="top" className="hero shell">
-        <a className="hero-status" href="mailto:ryze0950@gmail.com">
-          <span className="live-dot" /> Open to junior opportunities <ArrowUpRight />
-        </a>
-        <p className="hero-kicker">Angel · Junior developer · Spain</p>
-        <h1 className="hero-title">Small ideas.<br /><span>Real projects.</span></h1>
-        <p className="hero-description">
-          I build web projects and useful Python tools. Learning JavaScript and
-          TypeScript, one project at a time.
-        </p>
-        <div className="hero-actions">
-          <Link className="hero-primary" href="#work">View my work <ArrowDownRight /></Link>
-          <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Let&apos;s talk <ArrowUpRight /></a>
-        </div>
-        <div className="hero-proof" aria-label="My foundation">
-          <span>Python</span><span>HTML &amp; CSS</span><span>Always learning</span>
-        </div>
-        <a className="hero-scroll" href="#work">A few things I&apos;ve made <ArrowDownRight /></a>
-      </section>
-
-      <section className="now-strip shell" aria-label="What I am doing now">
-        <div className="now-heading">
-          <span className="live-dot" />
-          <span>Now / 2026</span>
-        </div>
-        <article>
-          <small>Working with</small>
-          <strong>Python, HTML &amp; CSS</strong>
-          <span>Web projects &amp; Python tools</span>
-        </article>
-        <article>
-          <small>Learning</small>
-          <strong>JavaScript &amp; TypeScript</strong>
-          <span>One project at a time</span>
-        </article>
-        <article>
-          <small>Looking for</small>
-          <strong>A place to grow</strong>
-          <span>Junior opportunities</span>
-        </article>
-      </section>
-
-      <section id="work" className="work-section shell">
-        <header className="section-heading">
-          <div>
-            <span className="index">01</span>
-            <span className="eyebrow">Selected work</span>
+      <section id="top" className="hero shell" aria-labelledby="hero-title">
+        <div className="hero-aura" aria-hidden="true" />
+        <div className="hero-content">
+          <p className="hero-kicker hero-enter" style={{ "--enter-delay": "0ms" } as CSSProperties}>
+            <span className="hero-monogram" aria-hidden="true">s.</span> Angel, online as Snow
+          </p>
+          <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>
+            Simple things.<br /><span>Made with care.</span>
+          </h1>
+          <p className="hero-description hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
+            A junior developer from Spain. I like clear interfaces, thoughtful details,
+            and learning by making things that work.
+          </p>
+          <div className="hero-actions hero-enter" style={{ "--enter-delay": "240ms" } as CSSProperties}>
+            <Link className="hero-primary" href="#work">Explore my work <ArrowDown aria-hidden="true" /></Link>
+            <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Get in touch <ArrowUpRight aria-hidden="true" /></a>
           </div>
-          <h2>Learning through real projects.</h2>
-          <p>A selection of web projects and Python tools I&apos;ve been building.</p>
-        </header>
+          <div className="hero-footnote hero-enter" style={{ "--enter-delay": "300ms" } as CSSProperties}>
+            <span className="hero-status"><span className="live-dot" /> Open to junior opportunities</span>
+            <span className="hero-location">Based in Spain · Building at my own pace</span>
+          </div>
+        </div>
+        <a className="hero-scroll" href="#work"><span>Less noise. More intention.</span><ArrowDown aria-hidden="true" /></a>
+      </section>
 
+      <section id="work" className="work-section shell" aria-labelledby="work-title">
+        <header className="section-heading" data-reveal>
+          <div><span className="index">01</span><span className="eyebrow">Selected work</span></div>
+          <h2 id="work-title">A few things<br /><span className="heading-muted">I&apos;ve put care into.</span></h2>
+          <p>Desktop tools, a community fork, and the website you&apos;re on. Each one has a story, a scope, and something I&apos;m learning.</p>
+        </header>
         <div className="project-list">
           {featuredProjects.map((project, index) => (
-            <article id={`project-${project.slug}`} className={`project-feature project-feature-${index + 1}`} key={project.slug}>
-              <Link href={`/projects/${project.slug}`} className={`project-visual project-visual-${project.slug}`} aria-label={`View ${project.name} case study`}>
+            <article id={"project-" + project.slug} className={"project-feature project-feature-" + (index + 1)} key={project.slug} data-reveal>
+              <Link href={"/projects/" + project.slug} className={"project-visual project-visual-" + project.slug} aria-label={"Explore " + project.name}>
                 <ProjectArtwork project={project} />
                 <span className="project-image-label">0{index + 1}</span>
-                <span className="project-open" aria-hidden="true">Open <ArrowUpRight /></span>
+                <span className="project-open" aria-hidden="true"><ArrowUpRight /></span>
               </Link>
-
               <div className="project-copy">
-                <div className="project-meta">
-                  <span>{project.status}</span>
-                  <span>{project.year}</span>
-                </div>
-                <h3>{project.name}</h3>
+                <div className="project-meta"><span>{project.eyebrow}</span><span>{project.year}</span></div>
+                <h3><Link href={"/projects/" + project.slug}>{project.name}</Link></h3>
+                {project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}
                 <p>{project.shortDescription}</p>
-                <div className="tag-row">
-                  {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
-                </div>
+                {project.cardNote && <p className="project-card-note">{project.cardNote}</p>}
+                <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <div className="project-actions">
-                  <Link href={`/projects/${project.slug}`} className="text-link">
-                    View case study <ArrowUpRight />
-                  </Link>
-                  {project.repoUrl && !project.privateRepo && (
-                    <a href={project.repoUrl} target="_blank" rel="noreferrer" className="repo-link">
-                      <Github /> Source code <ArrowUpRight />
-                    </a>
-                  )}
+                  <Link href={"/projects/" + project.slug} className="text-link">Behind the project <ArrowUpRight aria-hidden="true" /></Link>
+                  {project.liveUrl && <a href={project.liveUrl} className="text-link">View website <ArrowUpRight aria-hidden="true" /></a>}
+                  {project.repoUrl && !project.privateRepo && <a href={project.repoUrl} target="_blank" rel="noreferrer" className="repo-link"><Github aria-hidden="true" /> Code<span className="sr-only"> for {project.name}</span></a>}
                 </div>
               </div>
             </article>
           ))}
         </div>
-
-        <Link className="archive-link" href="/projects">
-          <span>Explore all projects</span><ArrowUpRight />
-        </Link>
+        <Link className="archive-link" href="/projects">All projects &amp; experiments <ArrowUpRight aria-hidden="true" /></Link>
       </section>
 
-      <section id="about" className="about-section shell">
-        <div className="about-rail">
-          <div className="about-label">
-            <span className="index">02</span>
-            <span className="eyebrow">About me</span>
-          </div>
-          <figure className="about-mark">
-            <Image src="/logo.jpg" alt="Angel's personal cat mark" width={280} height={280} />
-            <figcaption>Personal mark / Snow</figcaption>
-          </figure>
+      <section id="about" className="about-section shell" aria-labelledby="about-title">
+        <div className="about-rail" data-reveal>
+          <div className="about-label"><span className="index">02</span><span className="eyebrow">A little about me</span></div>
+          <figure className="about-mark"><Image src="/logo.jpg" alt="Snow's cat mark" width={200} height={200} /><figcaption>Angel, aka Snow.</figcaption></figure>
         </div>
-        <div className="about-copy">
-          <p className="about-lead">
-            I&apos;m a <strong>junior developer</strong> who learns by
-            <em> building.</em>
-          </p>
+        <div className="about-copy" data-reveal>
+          <h2 id="about-title" className="about-lead">I like things simple.<br /><strong>And thoughtfully made.</strong></h2>
           <div className="about-details">
-            <p>
-              I&apos;m based in Spain and enjoy building web projects and useful Python
-              tools. Python, HTML and CSS are my starting point, and each project
-              gives me a new problem to work through.
-            </p>
-            <p>
-              Right now I&apos;m learning JavaScript and TypeScript while exploring
-              the frameworks and tools in my stack. I&apos;m looking for a junior
-              opportunity where I can contribute, learn from others and keep improving.
-            </p>
+            <p>I&apos;m Angel, a junior developer based in Spain. Snow is the name I use online. My starting point is Python, HTML and CSS, and I enjoy turning small ideas into useful tools.</p>
+            <p>I also build with AI. StarOptimizer and this portfolio are vibe-coded projects: a way to explore ideas while I keep learning JavaScript, TypeScript and the tools behind them.</p>
           </div>
           <dl className="about-facts">
-            <div><dt>Based in</dt><dd>Spain</dd></div>
-            <div><dt>Learning</dt><dd>JavaScript + TypeScript</dd></div>
-            <div><dt>Currently</dt><dd><span /> Open to work</dd></div>
+            <div><dt>Name</dt><dd>Angel</dd></div>
+            <div><dt>Online</dt><dd>Snow / SnoW-099</dd></div>
+            <div><dt>Approach</dt><dd>Build. Understand. Refine.</dd></div>
           </dl>
         </div>
       </section>
 
       <section id="skills" className="skills-section shell" aria-labelledby="skills-title">
-        <header className="skills-heading">
-          <div><span className="index">03</span><span className="eyebrow">My stack</span></div>
-          <h2 id="skills-title">What I use.<br /><em>What I&apos;m learning.</em></h2>
-          <p>A foundation in Python, HTML and CSS. New languages to learn, and tools to help me turn practice into projects.</p>
+        <header className="skills-heading" data-reveal>
+          <div><span className="index">03</span><span className="eyebrow">An honest stack</span></div>
+          <h2 id="skills-title">What I use.<br /><span className="heading-muted">Where I&apos;m growing.</span></h2>
+          <p>Public projects, private experience, and tools I&apos;m learning with AI. Different levels of experience, made clear.</p>
         </header>
         <div className="skill-grid">
           {skillGroups.map((group, index) => (
-            <article className={`skill-card skill-card-${group.id}`} key={group.id}>
-              <div className="skill-card-top">
-                <span className="skill-index">0{index + 1}</span>
-                {group.id === "learning" && <span className="learning-label">Learning</span>}
-              </div>
-              <h3>{group.title}</h3>
-              <p>{group.description}</p>
-              <ul className="skill-items">
-                {group.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+            <article className={"skill-card skill-card-" + group.id} key={group.id} data-reveal>
+              <div className="skill-card-top"><span className="skill-index">0{index + 1}</span><span className="skill-label">{group.label}</span></div>
+              <h3>{group.title}</h3><p>{group.description}</p>
+              <ul className="skill-items">{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
+              {group.evidence.length > 0 && <div className="skill-evidence">{group.evidence.map((proof) => <Link href={proof.href} key={proof.href}>{proof.label} <ArrowUpRight aria-hidden="true" /></Link>)}</div>}
             </article>
           ))}
         </div>
       </section>
 
-      <footer id="contact" className="contact-section">
+      <footer id="contact" className="contact-section" aria-labelledby="contact-title">
         <div className="shell">
-          <div className="contact-topline">
-            <span className="eyebrow">04 / Have a junior opportunity?</span>
-            <span><i /> Open to junior roles</span>
-          </div>
-          <h2>Let&apos;s make<br /><em>something good.</em></h2>
-          <a className="contact-mail" href="mailto:ryze0950@gmail.com">
-            <Mail /> ryze0950@gmail.com <ArrowUpRight />
-          </a>
-          <a className="support-link" href="https://www.buymeacoffee.com/snow099" target="_blank" rel="noreferrer">
-            <Coffee /> Buy me a coffee <ArrowUpRight />
-          </a>
+          <div className="contact-topline" data-reveal><span className="eyebrow">04 / Let&apos;s talk</span><span>Good things start with a conversation.</span></div>
+          <h2 id="contact-title" data-reveal">Something in mind?<br /><em>Say hello.</em></h2>
+          <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
           <div className="footer-row">
-            <span>Angel (c) 2026</span>
-            <a href="https://github.com/SnoW-099" target="_blank" rel="noreferrer">
-              <Github /> GitHub
-            </a>
-            <span>Designed &amp; built with care</span>
+            <span>© {new Date().getFullYear()} Angel / Snow</span>
+            <a href="https://github.com/SnoW-099" target="_blank" rel="noreferrer"><Github aria-hidden="true" /> GitHub</a>
+            <Link href="/projects/portfolio" className="footer-colophon"><Sparkles aria-hidden="true" /> Built with care &amp; AI</Link>
           </div>
         </div>
       </footer>

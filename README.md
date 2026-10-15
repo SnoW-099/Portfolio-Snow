@@ -23,3 +23,10 @@ npm run build
 The homepage, project archive, case studies and 404 page share the same visual design. Project content lives in `lib/projects.ts`; profile and skills live in `lib/profile.ts`. Styles live in `app/globals.css`.
 
 The interface uses local system fonts, supports keyboard navigation and respects reduced-motion preferences. Contact links open an email client; there is no form backend.
+
+## Content and project media
+
+- [Screenshot and video guide](docs/CAPTURAS.md): file names, dimensions and shots needed for each project.
+- [Next web project](docs/PROYECTO-WEB.md): a practical path from the Python inventory exercise to a deployed app.
+
+Angel is the developer name; Snow is the online identity. StarOptimizer and the portfolio are explicitly labeled as AI-assisted. Supabase and MongoDB are described as private-project experience. Missing screenshots use clearly labeled project artwork until real captures are supplied.

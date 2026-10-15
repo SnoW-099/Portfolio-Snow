@@ -17,6 +17,13 @@ export type Project = {
   privateRepo?: boolean
   featured?: boolean
   highlights?: string[]
+  aiAssisted?: boolean
+  aiNote?: string
+  liveUrl?: string
+  cardNote?: string
+  contributions?: { title: string; body: string }[]
+  upstream?: { name: string; href: string; description: string }
+  safetyNotes?: { title: string; body: string }[]
 }
 
 export const projects: Project[] = [
@@ -25,7 +32,7 @@ export const projects: Project[] = [
     name: "StarOptimizer",
     status: "Beta / v0.5.0",
     eyebrow: "Windows desktop app",
-    role: "Desktop development & interface",
+    role: "AI-assisted development & interface direction",
     year: "2026",
     focus: "Local diagnostics & reversible settings",
     shortDescription: "A Windows app for guided diagnostics, before-and-after CPU and RAM measurements, and reversible system settings.",
@@ -37,6 +44,15 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/SnoW-099/StarOptimizer",
     featured: true,
     highlights: ["Measure", "Review", "Restore"],
+    aiAssisted: true,
+    aiNote: "Built with AI assistance (vibe coding). I guide the scope and interface while continuing to learn JavaScript, Electron and the code behind the app.",
+    cardNote: "Source available · Review the scope and recovery limits in the case study.",
+    safetyNotes: [
+      { title: "Review the source", body: "The public repository lets you inspect the implementation. Source availability is not a guarantee that an action is risk-free." },
+      { title: "Supported recovery", body: "The project includes a history of supported changes and restore actions. Check the restore behavior for the specific action and release before changing your system." },
+      { title: "What changes", body: "Local diagnostics and supported Windows configuration changes. Check the repository for the exact settings and permissions of the release you install." },
+      { title: "Installer publisher", body: "Installer signing has not been confirmed here. Check the Windows publisher details and the release information before running it." },
+    ],
   },
   {
     slug: "snowtify",
@@ -55,24 +71,34 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/SnoW-099/snowtify",
     featured: true,
     highlights: ["Doctor", "Repair", "Frost"],
+    cardNote: "Based on Spicetify. My additions focus on diagnosis, repair and the Frost theme.",
+    contributions: [
+      { title: "Doctor & logs", body: "Diagnostic commands to inspect customization problems and collect information for troubleshooting." },
+      { title: "Repair workflow", body: "Repair tools aimed at recovering customization after a Spotify update disrupts it." },
+      { title: "Updates & Frost", body: "An update panel and the Snowtify Frost theme, while keeping the upstream API and configuration layout." },
+    ],
+    upstream: { name: "Spicetify CLI", href: "https://github.com/spicetify/cli", description: "The underlying customization engine and JavaScript API come from Spicetify. Snowtify is a fork, not a customization engine written from scratch." },
   },
   {
-    slug: "py-mini-systems",
-    name: "Python Mini Systems",
-    status: "Learning projects",
-    eyebrow: "Python fundamentals",
-    role: "Python development",
+    slug: "portfolio",
+    name: "Snow Portfolio",
+    status: "This website",
+    eyebrow: "Personal website",
+    role: "Visual direction & AI-assisted development",
     year: "2026",
-    focus: "Small, practical systems",
-    shortDescription: "Two small Python projects: store inventory management and a registration and login flow with JSON storage.",
-    summary: "A collection of small backend exercises that turn Python fundamentals into runnable systems. Mini Store handles products and discounts; Mini Users explores registration, login, and JSON persistence.",
-    problem: "Learning syntax is only a starting point. Small complete workflows make it easier to practice data handling and program structure.",
-    approach: "I kept each system small and runnable on its own, covering product creation, search, deletion, discounts, and a separate user flow.",
-    learnings: "These are learning exercises in Python, data structures, and persistence. The login exercise is not presented as a production authentication service.",
-    tags: ["Python", "JSON", "CLI"],
-    repoUrl: "https://github.com/SnoW-099/py-mini-systems",
+    focus: "Responsive interfaces & clear project stories",
+    shortDescription: "My own space on the web. A light, responsive portfolio built around simple interfaces, thoughtful motion and an honest look at my work.",
+    summary: "Snow is my online identity; Angel is my name. This portfolio brings my projects together and makes the level of experience behind them clear, including where I use AI to help build.",
+    problem: "A portfolio needs to communicate what I am building without confusing a project's technology list with independent proficiency in every tool.",
+    approach: "I used AI to help implement a Next.js and React site with a restrained blue palette, responsive layouts, keyboard-friendly navigation and motion that respects reduced-motion preferences.",
+    learnings: "This is a vibe-coded project and part of my learning process. It is a place to practice reading generated code, refining layouts and explaining the choices behind the interface.",
+    tags: ["Next.js", "React", "TypeScript", "CSS"],
+    repoUrl: "https://github.com/SnoW-099/Portfolio-Snow",
+    liveUrl: "/",
     featured: true,
-    highlights: ["Inventory", "Users", "Persistence"],
+    aiAssisted: true,
+    aiNote: "Vibe-coded with AI assistance. I set the visual direction, choose the content and refine the result while continuing to learn the underlying web stack.",
+    highlights: ["Responsive", "Accessible motion", "Clear content"],
   },
   {
     slug: "vibe",
@@ -117,6 +143,24 @@ export const projects: Project[] = [
     tags: ["Python", "Discord.py", "JSON"],
     repoUrl: "https://github.com/SnoW-099/Rez",
     image: "/rez.png",
+  },
+  {
+    slug: "py-mini-systems",
+    name: "Python Mini Systems",
+    status: "Learning projects",
+    eyebrow: "Python fundamentals",
+    role: "Python development",
+    year: "2026",
+    focus: "Small, practical systems",
+    shortDescription: "Two small Python projects: store inventory management and a registration and login flow with JSON storage.",
+    summary: "A collection of small backend exercises that turn Python fundamentals into runnable systems. Mini Store handles products and discounts; Mini Users explores registration, login, and JSON persistence.",
+    problem: "Learning syntax is only a starting point. Small complete workflows make it easier to practice data handling and program structure.",
+    approach: "I kept each system small and runnable on its own, covering product creation, search, deletion, discounts, and a separate user flow.",
+    learnings: "These are learning exercises in Python, data structures, and persistence. The login exercise is not presented as a production authentication service.",
+    tags: ["Python", "JSON", "CLI"],
+    repoUrl: "https://github.com/SnoW-099/py-mini-systems",
+    featured: false,
+    highlights: ["Inventory", "Users", "Persistence"],
   },
 ]
 
