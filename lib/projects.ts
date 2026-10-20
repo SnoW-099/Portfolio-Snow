@@ -14,6 +14,8 @@ export type Project = {
   tags: string[]
   repoUrl?: string
   image?: string
+  imageAlt?: string
+  imageSize?: [number, number]
   privateRepo?: boolean
   featured?: boolean
   highlights?: string[]
@@ -69,6 +71,9 @@ export const projects: Project[] = [
     learnings: "Maintaining a fork means balancing new features with upstream compatibility. Snowtify is derived from spicetify/cli and retains its LGPL-2.1 license; the underlying customization engine is upstream work.",
     tags: ["Go", "JavaScript", "CSS"],
     repoUrl: "https://github.com/SnoW-099/snowtify",
+    image: "/projects/snowtify/overview.png",
+    imageAlt: "Snowtify website showing its introduction, documentation and download links, and a Spotify customization preview.",
+    imageSize: [1372, 963],
     featured: true,
     highlights: ["Doctor", "Repair", "Frost"],
     cardNote: "Based on Spicetify. My additions focus on diagnosis, repair and the Frost theme.",
@@ -142,7 +147,8 @@ export const projects: Project[] = [
       "I improved the way I think about maintainability, command flows, and building something small that can still evolve without collapsing under its own weight.",
     tags: ["Python", "Discord.py", "JSON"],
     repoUrl: "https://github.com/SnoW-099/Rez",
-    image: "/rez.png",
+    image: "/projects/rez-bot/overview.png",
+    featured: true,
   },
   {
     slug: "py-mini-systems",
@@ -159,6 +165,9 @@ export const projects: Project[] = [
     learnings: "These are learning exercises in Python, data structures, and persistence. The login exercise is not presented as a production authentication service.",
     tags: ["Python", "JSON", "CLI"],
     repoUrl: "https://github.com/SnoW-099/py-mini-systems",
+    image: "/projects/py-mini-systems/overview.png",
+    imageAlt: "Python Mini Systems introduction: Python exercises for logic, file handling and simple interfaces.",
+    imageSize: [840, 139],
     featured: false,
     highlights: ["Inventory", "Users", "Persistence"],
   },

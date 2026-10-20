@@ -2,9 +2,9 @@
 
 ## Cambios
 
-- Portada con presentación personal y accesos a los tres proyectos destacados.
+- Portada con presentación personal y accesos a los cuatro proyectos destacados.
 - Tarjetas con identidad cromática propia y datos de `featuredProjects`.
-- StarOptimizer ocupa la primera fila de proyectos; los otros dos comparten la siguiente en escritorio.
+- StarOptimizer ocupa la primera fila de proyectos; Snowtify y el portfolio comparten la siguiente; Rez cierra con una tarjeta propia.
 - Navegación flotante translúcida, con menú desplegable en móvil.
 - Texto de lectura más grande y una invitación concreta al contacto.
 - Tarjetas de proyectos apiladas en tablet y móvil; accesos de portada compactos en móvil.
@@ -42,6 +42,10 @@ Validado el 20 de octubre de 2026 antes de integrar en Main:
 - `npm run build`: compilación de producción correcta; 11 páginas generadas.
 - `git diff --check`: sin errores de formato.
 
-Queda pendiente la revisión visual en navegador a los tamaños indicados arriba.
+Revisión en Chromium completada para la portada, el archivo y los detalles de Rez, Python Mini Systems y Snowtify a 360, 768 y 1440 px. Las imágenes cargan sin errores y no hay desbordamiento horizontal.
+
+## Imágenes originales de proyectos
+
+Las capturas aportadas por el propietario están en `public/projects/rez-bot`, `public/projects/py-mini-systems` y `public/projects/snowtify`. Se conserva cada archivo original. Rez también usa su propio logo y una presentación oscura en la portada. Python Mini Systems y Snowtify mantienen la proporción de sus capturas, sin un marco de navegador simulado.
 
 La conexión de red ya permite recuperar el historial original con Git. La copia de trabajo está en `~/Documentos/proyectos/github/Portfolio-Snow`.

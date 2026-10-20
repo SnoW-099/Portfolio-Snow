@@ -51,7 +51,7 @@ export default function Portfolio() {
         </header>
         <div className="project-list">
           {featuredProjects.map((project, index) => (
-            <article id={"project-" + project.slug} className={"project-feature project-feature-" + (index + 1)} key={project.slug} data-reveal>
+            <article id={"project-" + project.slug} className={"project-feature project-feature-" + (index + 1) + " project-feature-" + project.slug} key={project.slug} data-reveal>
               <Link href={"/projects/" + project.slug} className={"project-visual project-visual-" + project.slug} aria-label={"Explore " + project.name}>
                 <ProjectArtwork project={project} />
                 <span className="project-image-label">0{index + 1}</span>
