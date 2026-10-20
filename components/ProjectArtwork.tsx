@@ -2,11 +2,13 @@ import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import SnowLogo from "@/components/SnowLogo"
 import RezArtwork from "@/components/RezArtwork"
+import PythonArtwork from "@/components/PythonArtwork"
 import type { Project } from "@/lib/projects"
 import { getProjectCover } from "@/lib/project-media"
 
 export default function ProjectArtwork({ project, priority = false }: { project: Project; priority?: boolean }) {
   if (project.slug === "rez-bot") return <RezArtwork priority={priority} />
+  if (project.slug === "py-mini-systems") return <PythonArtwork />
   const cover = getProjectCover(project)
   if (cover) {
     return (

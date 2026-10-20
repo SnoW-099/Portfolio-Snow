@@ -1,5 +1,4 @@
 import type { CSSProperties } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { featuredProjects } from "@/lib/projects"
@@ -8,7 +7,6 @@ import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
 import ProjectSpotlight from "@/components/ProjectSpotlight"
-import SnowLogo from "@/components/SnowLogo"
 
 export default function Portfolio() {
   return (
@@ -18,43 +16,35 @@ export default function Portfolio() {
       <SiteHeader />
 
       <section id="top" className="hero shell" aria-labelledby="hero-title">
-        <div className="hero-aura" aria-hidden="true" />
         <div className="hero-content">
-          <p className="hero-kicker hero-enter" style={{ "--enter-delay": "0ms" } as CSSProperties}>
-            <span className="hero-monogram"><SnowLogo size={40} /></span> Angel, online as Snow
-          </p>
-          <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>
-            Small ideas.<br /><span>Thoughtfully built.</span>
-          </h1>
-          <p className="hero-description hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
-            I&apos;m Angel, a junior developer in Spain. I turn curiosity into
-            useful tools, clear interfaces, and projects worth learning from.
-          </p>
-          <div className="hero-actions hero-enter" style={{ "--enter-delay": "240ms" } as CSSProperties}>
-            <Link className="hero-primary" href="#work">Explore my work <ArrowDown aria-hidden="true" /></Link>
-            <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Get in touch <ArrowUpRight aria-hidden="true" /></a>
+          <div className="hero-heading">
+            <p className="hero-kicker hero-enter">A developer in the making. Based in Spain.</p>
+            <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>Angel,<br /><span>aka Snow.</span></h1>
           </div>
-          <div className="hero-footnote hero-enter" style={{ "--enter-delay": "300ms" } as CSSProperties}>
-            <span className="hero-status"><span className="live-dot" /> Open to junior opportunities</span>
-            <span className="hero-location">Based in Spain · Building at my own pace</span>
+          <div className="hero-aside hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
+            <p className="hero-description">I build small tools, look after the details, and learn by making things work.</p>
+            <p className="hero-supporting">Python is where I started. The projects below are where it&apos;s taking me.</p>
+            <div className="hero-actions">
+              <Link className="hero-primary" href="#work">View my work <ArrowDown aria-hidden="true" /></Link>
+              <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a>
+            </div>
+            <div className="hero-footnote"><span className="hero-status"><span className="live-dot" /> Open to junior opportunities</span></div>
           </div>
         </div>
         <ProjectSpotlight />
-        <a className="hero-scroll" href="#work"><span>A closer look at my work</span><ArrowDown aria-hidden="true" /></a>
       </section>
 
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
-          <div><span className="index">01</span><span className="eyebrow">Selected work</span></div>
-          <h2 id="work-title">Different ideas.<br /><span className="heading-muted">The same attention to detail.</span></h2>
-          <p>Python systems, a Discord bot, and a community fork. Each one has a story, a scope, and something I&apos;m learning.</p>
+          <div><span className="eyebrow">Selected work</span></div>
+          <h2 id="work-title">Small projects.<br /><span className="heading-muted">A closer look.</span></h2>
+          <p>The tools I&apos;m building, the code I&apos;m learning, and the decisions behind both.</p>
         </header>
         <div className="project-list">
           {featuredProjects.map((project, index) => (
             <article id={"project-" + project.slug} className={"project-feature project-feature-" + (index + 1) + " project-feature-" + project.slug} key={project.slug} data-reveal>
               <Link href={"/projects/" + project.slug} className={"project-visual project-visual-" + project.slug} aria-label={"Explore " + project.name}>
                 <ProjectArtwork project={project} />
-                <span className="project-image-label">0{index + 1}</span>
                 <span className="project-open" aria-hidden="true"><ArrowUpRight /></span>
               </Link>
               <div className="project-copy">
@@ -65,7 +55,7 @@ export default function Portfolio() {
                 {project.cardNote && <p className="project-card-note">{project.cardNote}</p>}
                 <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <div className="project-actions">
-                  <Link href={"/projects/" + project.slug} className="text-link">Behind the project <ArrowUpRight aria-hidden="true" /></Link>
+                  <Link href={"/projects/" + project.slug} className="text-link">Explore the project <ArrowUpRight aria-hidden="true" /></Link>
                   {project.liveUrl && <a href={project.liveUrl} className="text-link">View website <ArrowUpRight aria-hidden="true" /></a>}
                   {project.repoUrl && !project.privateRepo && <a href={project.repoUrl} target="_blank" rel="noreferrer" className="repo-link"><Github aria-hidden="true" /> Code<span className="sr-only"> for {project.name}</span></a>}
                 </div>
@@ -78,12 +68,11 @@ export default function Portfolio() {
 
       <section id="about" className="about-section shell" aria-labelledby="about-title">
         <div className="about-rail" data-reveal>
-          <div className="about-label"><span className="index">02</span><span className="eyebrow">A little about me</span></div>
-          <figure className="about-mark"><Image src="/logo.jpg" alt="Snow's cat mark" width={200} height={200} /><figcaption>Angel, aka Snow.</figcaption></figure>
+          <div className="about-label"><span className="eyebrow">The person behind the projects</span></div>
+          <span className="about-signature">Angel / Snow</span>
         </div>
         <div className="about-copy" data-reveal>
-          <h2 id="about-title" className="about-lead">I like things simple.<br /><strong>And thoughtfully made.</strong></h2>
-          <p className="about-intro">Curious by nature.<br />A developer in the making.</p>
+          <h2 id="about-title" className="about-lead">Still learning.<br /><strong>Already making.</strong></h2>
           <div className="about-details">
             <p>I&apos;m Angel, a junior developer based in Spain. Snow is the name I use online. My starting point is Python, HTML and CSS, and I enjoy turning small ideas into useful tools.</p>
             <p>I also build with AI. StarOptimizer and this portfolio are vibe-coded projects: a way to explore ideas while I keep learning JavaScript, TypeScript and the tools behind them.</p>
@@ -98,14 +87,14 @@ export default function Portfolio() {
 
       <section id="skills" className="skills-section shell" aria-labelledby="skills-title">
         <header className="skills-heading" data-reveal>
-          <div><span className="index">03</span><span className="eyebrow">An honest stack</span></div>
-          <h2 id="skills-title">What I use.<br /><span className="heading-muted">Where I&apos;m growing.</span></h2>
-          <p>Public projects, private experience, and tools I&apos;m learning with AI. Different levels of experience, made clear.</p>
+          <div><span className="eyebrow">Tools &amp; experience</span></div>
+          <h2 id="skills-title">An honest stack.</h2>
+          <p>What I&apos;ve used, what I know a little, and what I&apos;m learning with help.</p>
         </header>
         <div className="skill-grid">
-          {skillGroups.map((group, index) => (
+          {skillGroups.map((group) => (
             <article className={"skill-card skill-card-" + group.id} key={group.id} data-reveal>
-              <div className="skill-card-top"><span className="skill-index">0{index + 1}</span><span className="skill-label">{group.label}</span></div>
+                <div className="skill-card-top"><span className="skill-label">{group.label}</span></div>
               <h3>{group.title}</h3><p>{group.description}</p>
               <ul className="skill-items">{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
               {group.evidence.length > 0 && <div className="skill-evidence">{group.evidence.map((proof) => <Link href={proof.href} key={proof.href}>{proof.label} <ArrowUpRight aria-hidden="true" /></Link>)}</div>}
@@ -116,9 +105,9 @@ export default function Portfolio() {
 
       <footer id="contact" className="contact-section" aria-labelledby="contact-title">
         <div className="shell">
-          <div className="contact-topline" data-reveal><span className="eyebrow">04 / Let&apos;s talk</span><span>Good things start with a conversation.</span></div>
-          <h2 id="contact-title" data-reveal>Something in mind?<br /><em>Say hello.</em></h2>
-          <p className="contact-intro">A junior opportunity, a small collaboration, or an interesting idea.<br />I&apos;d love to hear about it.</p>
+          <div className="contact-topline" data-reveal><span className="eyebrow">Let&apos;s talk</span><span>Based in Spain. Open to what&apos;s next.</span></div>
+          <h2 id="contact-title" data-reveal>Have something<br /><em>in mind?</em></h2>
+          <p className="contact-intro">A junior role, a small collaboration, or just a good idea.<br />My inbox is open.</p>
           <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
           <div className="footer-row">
             <span>© {new Date().getFullYear()} Angel / Snow</span>
