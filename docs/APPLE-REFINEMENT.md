@@ -33,8 +33,15 @@ npm run build
 
 Revisar la portada a 360, 768 y 1440 px, los enlaces de los proyectos y el correo. Usar Tab para recorrer los controles y Escape para cerrar el menú móvil. Activar la preferencia del sistema para reducir movimiento y comprobar que no se animan las tarjetas.
 
-## Estado de verificación de esta entrega
+## Estado de verificación
 
-La revisión estática y `git diff --check` no detectaron problemas. No se ha validado el aspecto en un navegador ni completado la compilación: el entorno de edición no resuelve los servidores de npm y su caché no contiene todas las dependencias. `npm ci --offline` devuelve `ENOTCACHED`; `npm run build` no encuentra `next`.
+Validado el 20 de octubre de 2026 antes de integrar en Main:
 
-La copia local se recuperó mediante la conexión de GitHub, porque `git clone` tampoco pudo resolver GitHub. Contiene una instantánea local de origen y commits locales; los commits publicados en `design/apple-refinement` sí parten del historial original. Para trabajar con el historial remoto completo, clonar esa rama en una terminal con conexión a Internet.
+- `npm ci --no-audit --no-fund`: dependencias instaladas.
+- `npx --no-install tsc --noEmit`: sin errores de tipos.
+- `npm run build`: compilación de producción correcta; 11 páginas generadas.
+- `git diff --check`: sin errores de formato.
+
+Queda pendiente la revisión visual en navegador a los tamaños indicados arriba.
+
+La conexión de red ya permite recuperar el historial original con Git. La copia de trabajo está en `~/Documentos/proyectos/github/Portfolio-Snow`.
