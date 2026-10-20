@@ -127,6 +127,8 @@ export const projects: Project[] = [
       "This project pushed me to think more carefully about layout, pacing, and how a product can feel lightweight without feeling empty.",
     tags: ["React", "Vite", "CSS"],
     image: "/vibe.png",
+    imageAlt: "Vibe dashboard with its sidebar, task list, time and weather widgets.",
+    imageSize: [2878, 1546],
   },
   {
     slug: "rez-bot",
