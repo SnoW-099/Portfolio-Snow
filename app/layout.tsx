@@ -2,9 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { skillGroups } from "@/lib/profile"
 import "./globals.css"
-import "@/styles/spotlight.css"
-import "@/styles/rez.css"
-import "@/styles/vibe.css"
 
 const profileTitle = "Angel / Snow | Junior Developer"
 const profileDescription = "Angel, online as Snow. Junior developer from Spain building Python tools and thoughtful web interfaces, with transparent AI-assisted projects."
@@ -46,7 +43,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="light"
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">

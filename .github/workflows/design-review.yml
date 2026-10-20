@@ -1,0 +1,34 @@
+name: Portfolio design review
+on:
+  push:
+    branches: [design/apple-minimal]
+  pull_request:
+    branches: [Main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run build -- --webpack
+      - name: Install isolated browser tools
+        run: |
+          npm install --prefix .artifacts/browser --no-save --package-lock=false playwright@1.64.1
+          .artifacts/browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Review responsive production pages
+        run: node scripts/verify-design.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: portfolio-design-screenshots
+          path: .artifacts/design
+          if-no-files-found: ignore
