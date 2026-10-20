@@ -82,6 +82,7 @@ export default function Portfolio() {
         </div>
         <div className="about-copy" data-reveal>
           <h2 id="about-title" className="about-lead">I like things simple.<br /><strong>And thoughtfully made.</strong></h2>
+          <p className="about-intro">Curious by nature.<br />A developer in the making.</p>
           <div className="about-details">
             <p>I&apos;m Angel, a junior developer based in Spain. Snow is the name I use online. My starting point is Python, HTML and CSS, and I enjoy turning small ideas into useful tools.</p>
             <p>I also build with AI. StarOptimizer and this portfolio are vibe-coded projects: a way to explore ideas while I keep learning JavaScript, TypeScript and the tools behind them.</p>
@@ -116,6 +117,7 @@ export default function Portfolio() {
         <div className="shell">
           <div className="contact-topline" data-reveal><span className="eyebrow">04 / Let&apos;s talk</span><span>Good things start with a conversation.</span></div>
           <h2 id="contact-title" data-reveal>Something in mind?<br /><em>Say hello.</em></h2>
+          <p className="contact-intro">A junior opportunity, a small collaboration, or an interesting idea.<br />I&apos;d love to hear about it.</p>
           <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
           <div className="footer-row">
             <span>© {new Date().getFullYear()} Angel / Snow</span>
