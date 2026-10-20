@@ -47,7 +47,7 @@ export default function Portfolio() {
         <header className="section-heading" data-reveal>
           <div><span className="index">01</span><span className="eyebrow">Selected work</span></div>
           <h2 id="work-title">Different ideas.<br /><span className="heading-muted">The same attention to detail.</span></h2>
-          <p>Desktop tools, a community fork, and the website you&apos;re on. Each one has a story, a scope, and something I&apos;m learning.</p>
+          <p>Python systems, a Discord bot, and a community fork. Each one has a story, a scope, and something I&apos;m learning.</p>
         </header>
         <div className="project-list">
           {featuredProjects.map((project, index) => (

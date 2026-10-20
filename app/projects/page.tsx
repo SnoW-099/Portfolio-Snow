@@ -16,7 +16,7 @@ export default function ProjectsPage() {
         {visibleProjects.map((project, index) => (
           <article className={"archive-card archive-card-" + project.slug} key={project.slug} data-reveal>
             <Link href={"/projects/" + project.slug} className={"archive-image archive-image-" + project.slug} aria-label={"Explore " + project.name}><ProjectArtwork project={project} /><span className="archive-index">0{index + 1}</span><span className="project-open" aria-hidden="true"><ArrowUpRight /></span></Link>
-            <div className="archive-card-copy"><div><span>{project.eyebrow}</span><span>{project.year}</span></div><h2><Link href={"/projects/" + project.slug}>{project.name}</Link></h2>{project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}<p>{project.shortDescription}</p><Link href={"/projects/" + project.slug} className="text-link">Behind the project <ArrowUpRight aria-hidden="true" /></Link></div>
+            <div className="archive-card-copy"><div><span>{project.eyebrow}</span><span>{project.status}</span></div><h2><Link href={"/projects/" + project.slug}>{project.name}</Link></h2>{project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}<p>{project.shortDescription}</p><Link href={"/projects/" + project.slug} className="text-link">Behind the project <ArrowUpRight aria-hidden="true" /></Link></div>
           </article>
         ))}
       </section>
