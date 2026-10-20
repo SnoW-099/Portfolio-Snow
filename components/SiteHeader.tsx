@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import SnowLogo from "@/components/SnowLogo"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -38,7 +39,7 @@ export default function SiteHeader() {
   return (
     <nav ref={nav} className="nav-wrap" aria-label="Main navigation">
       <Link href="#top" className="brand" aria-label="Snow — Angel, home" onClick={() => setOpen(false)}>
-        <span className="brand-mark" aria-hidden="true">s.</span>
+        <span className="brand-mark"><SnowLogo size={40} priority /></span>
         Snow<span className="brand-dot">.</span>
       </Link>
       <div id="main-navigation" className="nav-links" data-open={open}>
@@ -55,3 +56,4 @@ export default function SiteHeader() {
     </nav>
   )
 }
+

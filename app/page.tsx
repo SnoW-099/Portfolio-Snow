@@ -7,6 +7,8 @@ import { skillGroups } from "@/lib/profile"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
+import ProjectSpotlight from "@/components/ProjectSpotlight"
+import SnowLogo from "@/components/SnowLogo"
 
 export default function Portfolio() {
   return (
@@ -19,14 +21,14 @@ export default function Portfolio() {
         <div className="hero-aura" aria-hidden="true" />
         <div className="hero-content">
           <p className="hero-kicker hero-enter" style={{ "--enter-delay": "0ms" } as CSSProperties}>
-            <span className="hero-monogram" aria-hidden="true">s.</span> Angel, online as Snow
+            <span className="hero-monogram"><SnowLogo size={40} /></span> Angel, online as Snow
           </p>
           <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>
-            Simple things.<br /><span>Made with care.</span>
+            Small ideas.<br /><span>Thoughtfully built.</span>
           </h1>
           <p className="hero-description hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
-            A junior developer from Spain. I like clear interfaces, thoughtful details,
-            and learning by making things that work.
+            I&apos;m Angel, a junior developer in Spain. I turn curiosity into
+            useful tools, clear interfaces, and projects worth learning from.
           </p>
           <div className="hero-actions hero-enter" style={{ "--enter-delay": "240ms" } as CSSProperties}>
             <Link className="hero-primary" href="#work">Explore my work <ArrowDown aria-hidden="true" /></Link>
@@ -37,13 +39,14 @@ export default function Portfolio() {
             <span className="hero-location">Based in Spain · Building at my own pace</span>
           </div>
         </div>
-        <a className="hero-scroll" href="#work"><span>Less noise. More intention.</span><ArrowDown aria-hidden="true" /></a>
+        <ProjectSpotlight />
+        <a className="hero-scroll" href="#work"><span>A closer look at my work</span><ArrowDown aria-hidden="true" /></a>
       </section>
 
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
           <div><span className="index">01</span><span className="eyebrow">Selected work</span></div>
-          <h2 id="work-title">A few things<br /><span className="heading-muted">I&apos;ve put care into.</span></h2>
+          <h2 id="work-title">Different ideas.<br /><span className="heading-muted">The same attention to detail.</span></h2>
           <p>Desktop tools, a community fork, and the website you&apos;re on. Each one has a story, a scope, and something I&apos;m learning.</p>
         </header>
         <div className="project-list">
@@ -80,6 +83,7 @@ export default function Portfolio() {
         </div>
         <div className="about-copy" data-reveal>
           <h2 id="about-title" className="about-lead">I like things simple.<br /><strong>And thoughtfully made.</strong></h2>
+          <p className="about-intro">Curious by nature.<br />A developer in the making.</p>
           <div className="about-details">
             <p>I&apos;m Angel, a junior developer based in Spain. Snow is the name I use online. My starting point is Python, HTML and CSS, and I enjoy turning small ideas into useful tools.</p>
             <p>I also build with AI. StarOptimizer and this portfolio are vibe-coded projects: a way to explore ideas while I keep learning JavaScript, TypeScript and the tools behind them.</p>
@@ -114,6 +118,7 @@ export default function Portfolio() {
         <div className="shell">
           <div className="contact-topline" data-reveal><span className="eyebrow">04 / Let&apos;s talk</span><span>Good things start with a conversation.</span></div>
           <h2 id="contact-title" data-reveal>Something in mind?<br /><em>Say hello.</em></h2>
+          <p className="contact-intro">A junior opportunity, a small collaboration, or an interesting idea.<br />I&apos;d love to hear about it.</p>
           <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
           <div className="footer-row">
             <span>© {new Date().getFullYear()} Angel / Snow</span>
@@ -125,3 +130,4 @@ export default function Portfolio() {
     </main>
   )
 }
+
