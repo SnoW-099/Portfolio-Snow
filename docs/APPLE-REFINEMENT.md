@@ -11,6 +11,10 @@
 
 Se mantienen los enlaces, las páginas de detalle y las indicaciones de trabajo con IA. Las tarjetas de portada son identidades de proyecto, no capturas de sus interfaces.
 
+## Identidad Snow
+
+La cabecera, la presentación, los accesos a proyectos y las ilustraciones sin captura usan el logo original de `public/logo.jpg`, también presente en el archivo y los casos de estudio. `SnowLogo` centraliza ese recurso; no se generan monogramas ni se sustituyen por símbolos genéricos. El favicon ya apunta al mismo archivo.
+
 ## Arrancar y comprobar
 
 Desde la carpeta del proyecto:

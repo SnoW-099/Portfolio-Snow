@@ -1,3 +1,4 @@
+import SnowLogo from "@/components/SnowLogo"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react"
@@ -9,7 +10,7 @@ export default function ProjectsPage() {
     <main className="site-shell archive-page">
       <a className="skip-link" href="#archive">Skip to projects</a>
       <PortfolioMotion />
-      <header className="subnav shell"><Link href="/" className="back-link"><ArrowLeft aria-hidden="true" /> Back home</Link><Link href="/" className="subnav-brand">Snow<span>.</span></Link></header>
+      <header className="subnav shell"><Link href="/" className="back-link"><ArrowLeft aria-hidden="true" /> Back home</Link><Link href="/" className="subnav-brand"><SnowLogo size={36} /> Snow<span>.</span></Link></header>
       <section className="archive-hero shell"><div className="archive-hero-meta"><span className="eyebrow">Projects &amp; experiments</span><span>{String(projects.length).padStart(2, "0")} projects / Always learning</span></div><h1>Made to learn.<br /><em>Refined along the way.</em></h1><p className="archive-intro">Finished pieces, ongoing work, and small exercises. Each project makes its scope and use of AI clear.</p></section>
       <section id="archive" className="archive-grid shell" aria-label="All projects">
         {projects.map((project, index) => (
@@ -22,3 +23,4 @@ export default function ProjectsPage() {
     </main>
   )
 }
+

@@ -8,7 +8,7 @@
 .spotlight-portfolio { --spot-color: #7356bf; background: linear-gradient(145deg, #fff, #ebe5fb); }
 .spotlight-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--muted); font-size: 10px; }
 .spotlight-top svg { width: 15px; height: 15px; color: var(--spot-color); }
-.spotlight-icon { display: grid; place-items: center; width: 52px; height: 52px; margin-block: 24px; border-radius: 16px; color: var(--spot-color); background: rgb(255 255 255 / 80%); box-shadow: 0 6px 18px rgb(28 54 94 / 6%); }
+.spotlight-icon { overflow: hidden; display: grid; place-items: center; width: 52px; height: 52px; margin-block: 24px; border-radius: 16px; color: var(--spot-color); background: rgb(255 255 255 / 80%); box-shadow: 0 6px 18px rgb(28 54 94 / 6%); }
 .spotlight-icon svg { width: 26px; height: 26px; stroke-width: 1.5; }
 .spotlight-bottom { display: flex; flex-direction: column; gap: 7px; margin-top: auto; }
 .spotlight-bottom strong { font-size: 21px; font-weight: 600; letter-spacing: -.04em; overflow-wrap: anywhere; }

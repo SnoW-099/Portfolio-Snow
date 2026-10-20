@@ -8,6 +8,7 @@ import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
 import ProjectSpotlight from "@/components/ProjectSpotlight"
+import SnowLogo from "@/components/SnowLogo"
 
 export default function Portfolio() {
   return (
@@ -20,7 +21,7 @@ export default function Portfolio() {
         <div className="hero-aura" aria-hidden="true" />
         <div className="hero-content">
           <p className="hero-kicker hero-enter" style={{ "--enter-delay": "0ms" } as CSSProperties}>
-            <span className="hero-monogram" aria-hidden="true">s.</span> Angel, online as Snow
+            <span className="hero-monogram"><SnowLogo size={40} /></span> Angel, online as Snow
           </p>
           <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>
             Small ideas.<br /><span>Thoughtfully built.</span>

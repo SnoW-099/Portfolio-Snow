@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { ArrowUpRight, Code2, Monitor, Snowflake, Sparkles } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
+import SnowLogo from "@/components/SnowLogo"
 import type { Project } from "@/lib/projects"
 import { getProjectCover } from "@/lib/project-media"
 
@@ -13,12 +14,12 @@ export default function ProjectArtwork({ project, priority = false }: { project:
       </div>
     )
   }
-  const Icon = project.slug === "snowtify" ? Snowflake : project.slug === "staroptimizer" ? Sparkles : project.slug === "portfolio" ? Monitor : Code2
   return (
     <div className={"project-artwork artwork-" + project.slug} aria-label={project.name + ": project overview"}>
       <div className="artwork-top"><span className="artwork-category">{project.eyebrow}</span><ArrowUpRight aria-hidden="true" /></div>
-      <div className="artwork-center"><span className="artwork-symbol"><Icon aria-hidden="true" /></span><strong>{project.name}</strong></div>
+      <div className="artwork-center"><span className="artwork-symbol"><SnowLogo size={80} /></span><strong>{project.name}</strong></div>
       <div className="artwork-bottom"><div className="artwork-highlights">{project.highlights?.map((item) => <span key={item}>{item}</span>)}</div><small>Project overview</small></div>
     </div>
   )
 }
+
