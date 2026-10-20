@@ -45,7 +45,7 @@ export default function Portfolio() {
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
           <div><span className="index">01</span><span className="eyebrow">Selected work</span></div>
-          <h2 id="work-title">A few things<br /><span className="heading-muted">I&apos;ve put care into.</span></h2>
+          <h2 id="work-title">Different ideas.<br /><span className="heading-muted">The same attention to detail.</span></h2>
           <p>Desktop tools, a community fork, and the website you&apos;re on. Each one has a story, a scope, and something I&apos;m learning.</p>
         </header>
         <div className="project-list">
