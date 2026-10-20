@@ -5,7 +5,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowUpRight, Github, ShieldCheck, Sparkles } from "lucide-react"
-import { getProjectBySlug, projects } from "@/lib/projects"
+import { getProjectBySlug, projects, visibleProjects } from "@/lib/projects"
 import PortfolioMotion from "@/components/PortfolioMotion"
 
 export function generateStaticParams() {
@@ -22,8 +22,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params
   const project = getProjectBySlug(slug)
   if (!project) notFound()
-  const currentIndex = projects.findIndex((item) => item.slug === project.slug)
-  const nextProject = projects[(currentIndex + 1) % projects.length]
+  const currentIndex = visibleProjects.findIndex((item) => item.slug === project.slug)
+  const nextProject = visibleProjects[(currentIndex + 1) % visibleProjects.length]
   const sections = [["The problem", project.problem], ["The approach", project.approach], ["What I learned", project.learnings]]
 
   return (

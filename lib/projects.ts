@@ -18,6 +18,7 @@ export type Project = {
   imageSize?: [number, number]
   privateRepo?: boolean
   featured?: boolean
+  listed?: boolean
   highlights?: string[]
   aiAssisted?: boolean
   aiNote?: string
@@ -100,7 +101,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript", "CSS"],
     repoUrl: "https://github.com/SnoW-099/Portfolio-Snow",
     liveUrl: "/",
-    featured: true,
+    listed: false,
     aiAssisted: true,
     aiNote: "Vibe-coded with AI assistance. I set the visual direction, choose the content and refine the result while continuing to learn the underlying web stack.",
     highlights: ["Responsive", "Accessible motion", "Clear content"],
@@ -173,7 +174,8 @@ export const projects: Project[] = [
   },
 ]
 
-export const featuredProjects = projects.filter(project => project.featured)
+export const visibleProjects = projects.filter(project => project.listed !== false)
+export const featuredProjects = visibleProjects.filter(project => project.featured)
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug)

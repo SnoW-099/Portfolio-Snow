@@ -2,9 +2,9 @@
 
 ## Cambios
 
-- Portada con presentación personal y accesos a los cuatro proyectos destacados.
+- Portada con presentación personal y accesos a los tres proyectos destacados.
 - Tarjetas con identidad cromática propia y datos de `featuredProjects`.
-- StarOptimizer ocupa la primera fila de proyectos; Snowtify y el portfolio comparten la siguiente; Rez cierra con una tarjeta propia.
+- StarOptimizer, Snowtify y Rez tienen tarjetas amplias propias. El portfolio no aparece entre los proyectos; su explicación técnica sigue accesible desde el pie de página.
 - Navegación flotante translúcida, con menú desplegable en móvil.
 - Texto de lectura más grande y una invitación concreta al contacto.
 - Tarjetas de proyectos apiladas en tablet y móvil; accesos de portada compactos en móvil.
