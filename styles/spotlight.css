@@ -11,8 +11,8 @@
 .spotlight-top svg { width: 15px; height: 15px; color: var(--spot-color); }
 .spotlight-icon { overflow: hidden; display: grid; place-items: center; width: 52px; height: 52px; margin-block: 24px; border-radius: 16px; color: var(--spot-color); background: rgb(255 255 255 / 80%); box-shadow: 0 6px 18px rgb(28 54 94 / 6%); }
 .spotlight-icon svg { width: 26px; height: 26px; stroke-width: 1.5; }
-.spotlight-snowtify .spotlight-icon { width: 149px; padding: 8px 10px; border-radius: 12px; background: transparent; box-shadow: none; }
-.snowtify-wordmark { display: block; width: 129px; height: 35px; object-fit: contain; mix-blend-mode: screen; }
+.spotlight-snowtify .spotlight-icon { padding: 8px; border-radius: 12px; background: transparent; box-shadow: none; }
+.snowtify-icon { display: block; width: 35px; height: 35px; object-fit: cover; object-position: left; mix-blend-mode: screen; }
 .spotlight-bottom { display: flex; flex-direction: column; gap: 7px; margin-top: auto; }
 .spotlight-bottom strong { font-size: 21px; font-weight: 600; letter-spacing: -.04em; overflow-wrap: anywhere; }
 .spotlight-bottom > span { color: var(--muted); font-size: 10px; line-height: 1.6; }
@@ -25,9 +25,6 @@
   .spotlight-card { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 0 16px; min-height: 0; padding: 20px; border-radius: 20px; }
   .spotlight-top { grid-column: 2; }
   .spotlight-icon { grid-column: 1; grid-row: 1 / 3; width: 46px; height: 46px; margin: 0; align-self: center; }
-  .spotlight-snowtify { grid-template-columns: minmax(0, 1fr); }
-  .spotlight-snowtify .spotlight-top, .spotlight-snowtify .spotlight-bottom { grid-column: 1; }
-  .spotlight-snowtify .spotlight-icon { grid-column: 1; grid-row: auto; height: 52px; margin-top: 14px; }
   .spotlight-bottom { grid-column: 2; gap: 4px; margin-top: 8px; }
   .spotlight-bottom strong { font-size: 19px; }
   .spotlight-caption > span:last-child { font-size: 9px; }
