@@ -10,8 +10,8 @@
 .spotlight-top svg { width: 15px; height: 15px; color: var(--spot-color); }
 .spotlight-icon { overflow: hidden; display: grid; place-items: center; width: 52px; height: 52px; margin-block: 24px; border-radius: 16px; color: var(--spot-color); background: rgb(255 255 255 / 80%); box-shadow: 0 6px 18px rgb(28 54 94 / 6%); }
 .spotlight-icon svg { width: 26px; height: 26px; stroke-width: 1.5; }
-.spotlight-snowtify .spotlight-icon { width: 149px; padding: 8px 10px; border-radius: 12px; background: #0b0e10; }
-.snowtify-wordmark { display: block; width: 129px; height: 35px; object-fit: contain; }
+.spotlight-snowtify .spotlight-icon { width: 149px; padding: 8px 10px; border-radius: 12px; background: linear-gradient(135deg, #112e40, #1c4b62); box-shadow: inset 0 0 0 1px #3e6980; isolation: isolate; }
+.snowtify-wordmark { display: block; width: 129px; height: 35px; object-fit: contain; mix-blend-mode: screen; }
 .spotlight-bottom { display: flex; flex-direction: column; gap: 7px; margin-top: auto; }
 .spotlight-bottom strong { font-size: 21px; font-weight: 600; letter-spacing: -.04em; overflow-wrap: anywhere; }
 .spotlight-bottom > span { color: var(--muted); font-size: 10px; line-height: 1.6; }
