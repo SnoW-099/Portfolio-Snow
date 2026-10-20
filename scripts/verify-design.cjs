@@ -62,11 +62,6 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
     assert.equal(await page.locator('.hero-title').evaluate(el => getComputedStyle(el).animationName), 'none');
     assert.deepEqual(errors, []);
     console.log('PASS: 24 route/viewport checks; images; light/dark appearance; mobile navigation; Escape/focus; keyboard skip link; 200% text; reduced motion.');
-    if (process.env.DESIGN_PREVIEW_LOG === '1') {
-      console.log('DESIGN_PREVIEW_DESKTOP:' + desktop.toString('base64'));
-      console.log('DESIGN_PREVIEW_DARK:' + dark.toString('base64'));
-      console.log('DESIGN_PREVIEW_MOBILE:' + mobile.toString('base64'));
-    }
   } finally {
     if (browser) await browser.close();
     server.kill();
