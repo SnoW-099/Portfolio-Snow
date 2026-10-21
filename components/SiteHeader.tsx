@@ -17,6 +17,22 @@ export default function SiteHeader() {
   const nav = useRef<HTMLElement>(null)
   const button = useRef<HTMLButtonElement>(null)
 
+  const navigateToSection = (href: string) => {
+    setOpen(false)
+    const target = document.querySelector<HTMLElement>(href)
+    if (target) {
+      target.tabIndex = -1
+      target.focus({ preventScroll: true })
+    }
+  }
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 48em)")
+    const onResize = () => { if (!mobile.matches) setOpen(false) }
+    mobile.addEventListener("change", onResize)
+    return () => mobile.removeEventListener("change", onResize)
+  }, [])
+
   useEffect(() => {
     if (!open) return
     const onKey = (event: KeyboardEvent) => {
@@ -37,14 +53,16 @@ export default function SiteHeader() {
   }, [open])
 
   return (
-    <nav ref={nav} className="nav-wrap" aria-label="Main navigation">
-      <Link href="#top" className="brand" aria-label="Snow — Angel, home" onClick={() => setOpen(false)}>
+    <nav ref={nav} className="nav-wrap" aria-label="Main navigation" onBlur={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false)
+    }}>
+      <Link href="#top" className="brand" aria-label="Snow — Angel, home" onClick={() => navigateToSection("#top")}>
         <span className="brand-mark"><SnowLogo size={40} priority /></span>
         Snow<span className="brand-dot">.</span>
       </Link>
       <div id="main-navigation" className="nav-links" data-open={open}>
         {links.map((link) => (
-          <Link key={link.key} className={"nav-link-" + link.key} href={link.href} onClick={() => setOpen(false)}>
+          <Link key={link.key} className={"nav-link-" + link.key} href={link.href} onClick={() => navigateToSection(link.href)}>
             {link.label}<ArrowUpRight className="mobile-nav-arrow" aria-hidden="true" />
           </Link>
         ))}

@@ -318,6 +318,14 @@ section[id], footer[id] { scroll-margin-top: 100px; }
   .rez-artwork { padding: 26px; }
 }
 @media (max-width: 48em) {
+  .nav-wrap { min-height: 76px; gap: 16px; }
+  .nav-contact { margin-left: auto; font-size: .75rem; }
+  .nav-toggle { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--foreground); background: var(--background); }
+  .nav-links { display: none; position: absolute; inset: calc(100% + 4px) 0 auto; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--background); box-shadow: 0 12px 32px #0000000a; }
+  .nav-links[data-open="true"] { display: flex; }
+  .nav-links a { min-height: 52px; padding-block: 8px; font-size: 1rem; }
+  .mobile-nav-arrow { display: block; width: 16px; height: 16px; }
+
   .hero { padding-top: 140px; }
   .hero-content { grid-template-columns: 1fr; gap: 36px; }
   .hero-title { font-size: clamp(4rem, 13vw, 7rem); }
@@ -365,13 +373,6 @@ section[id], footer[id] { scroll-margin-top: 100px; }
   .archive-image .python-study, .archive-image .rez-artwork { padding: 22px; }
 }
 @media (max-width: 38em) {
-  .nav-wrap { min-height: 76px; gap: 16px; }
-  .nav-contact { margin-left: auto; font-size: .75rem; }
-  .nav-toggle { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--foreground); background: var(--background); }
-  .nav-links { display: none; position: absolute; inset: calc(100% + 4px) 0 auto; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--background); box-shadow: 0 12px 32px #0000000a; }
-  .nav-links[data-open="true"] { display: flex; }
-  .nav-links a { min-height: 52px; padding-block: 8px; font-size: 1rem; }
-  .mobile-nav-arrow { display: block; width: 16px; height: 16px; }
   .hero { padding-top: 118px; padding-bottom: 20px; }
   .hero-kicker { margin-bottom: 22px; font-size: .75rem; }
   .hero-title { font-size: clamp(2.5rem, 16vw, 5.5rem); }
