@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { skillGroups } from "@/lib/profile"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 const profileTitle = "Angel / Snow | Junior Developer"
@@ -46,7 +47,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">
-        {children}
+        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

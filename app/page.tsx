@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { featuredProjects } from "@/lib/projects"
@@ -18,12 +17,11 @@ export default function Portfolio() {
       <section id="top" className="hero shell" aria-labelledby="hero-title">
         <div className="hero-content">
           <div className="hero-heading">
-            <p className="hero-kicker hero-enter">A developer in the making. Based in Spain.</p>
-            <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>Angel,<br /><span>aka Snow.</span></h1>
+            <p className="hero-kicker">Junior developer based in Spain.</p>
+            <h1 id="hero-title" className="hero-title">Angel,<br />aka Snow.</h1>
           </div>
-          <div className="hero-aside hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
-            <p className="hero-description">I build small tools, look after the details, and learn by making things work.</p>
-            <p className="hero-supporting">Python is where I started. The projects below are where it&apos;s taking me.</p>
+          <div className="hero-aside">
+            <p className="hero-description">I build useful tools with Python and thoughtful interfaces for the web.</p>
             <div className="hero-actions">
               <Link className="hero-primary" href="#work">View my work <ArrowDown aria-hidden="true" /></Link>
               <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a>
@@ -36,8 +34,7 @@ export default function Portfolio() {
 
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
-          <div><span className="eyebrow">Selected work</span></div>
-          <h2 id="work-title">Small projects.<br /><span className="heading-muted">A closer look.</span></h2>
+          <h2 id="work-title">Selected projects.</h2>
           <p>The tools I&apos;m building, the code I&apos;m learning, and the decisions behind both.</p>
         </header>
         <div className="project-list">
@@ -87,7 +84,6 @@ export default function Portfolio() {
 
       <section id="skills" className="skills-section shell" aria-labelledby="skills-title">
         <header className="skills-heading" data-reveal>
-          <div><span className="eyebrow">Tools &amp; experience</span></div>
           <h2 id="skills-title">An honest stack.</h2>
           <p>What I&apos;ve used, what I know a little, and what I&apos;m learning with help.</p>
         </header>

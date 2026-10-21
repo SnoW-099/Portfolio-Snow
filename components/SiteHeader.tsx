@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import ThemeSelect from "@/components/ThemeSelect"
 import SnowLogo from "@/components/SnowLogo"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
@@ -16,6 +17,22 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false)
   const nav = useRef<HTMLElement>(null)
   const button = useRef<HTMLButtonElement>(null)
+
+  const navigateToSection = (href: string) => {
+    setOpen(false)
+    const target = document.querySelector<HTMLElement>(href)
+    if (target) {
+      target.tabIndex = -1
+      target.focus({ preventScroll: true })
+    }
+  }
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 48em)")
+    const onResize = () => { if (!mobile.matches) setOpen(false) }
+    mobile.addEventListener("change", onResize)
+    return () => mobile.removeEventListener("change", onResize)
+  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -37,19 +54,21 @@ export default function SiteHeader() {
   }, [open])
 
   return (
-    <nav ref={nav} className="nav-wrap" aria-label="Main navigation">
-      <Link href="#top" className="brand" aria-label="Snow — Angel, home" onClick={() => setOpen(false)}>
+    <nav ref={nav} className="nav-wrap" aria-label="Main navigation" onBlur={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false)
+    }}>
+      <Link href="#top" className="brand" aria-label="Snow — Angel, home" onClick={() => navigateToSection("#top")}>
         <span className="brand-mark"><SnowLogo size={40} priority /></span>
         Snow<span className="brand-dot">.</span>
       </Link>
       <div id="main-navigation" className="nav-links" data-open={open}>
         {links.map((link) => (
-          <Link key={link.key} className={"nav-link-" + link.key} href={link.href} onClick={() => setOpen(false)}>
+          <Link key={link.key} className={"nav-link-" + link.key} href={link.href} onClick={() => navigateToSection(link.href)}>
             {link.label}<ArrowUpRight className="mobile-nav-arrow" aria-hidden="true" />
           </Link>
         ))}
       </div>
-      <a className="nav-contact" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a>
+      <div className="nav-actions"><ThemeSelect /><a className="nav-contact" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a></div>
       <button ref={button} className="nav-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>
         {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
