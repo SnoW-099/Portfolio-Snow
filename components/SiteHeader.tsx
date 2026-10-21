@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import ThemeSelect from "@/components/ThemeSelect"
 import SnowLogo from "@/components/SnowLogo"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
@@ -67,7 +68,7 @@ export default function SiteHeader() {
           </Link>
         ))}
       </div>
-      <a className="nav-contact" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a>
+      <div className="nav-actions"><ThemeSelect /><a className="nav-contact" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a></div>
       <button ref={button} className="nav-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>
         {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>

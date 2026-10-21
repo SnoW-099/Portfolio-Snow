@@ -1,3 +1,4 @@
+import ThemeSelect from "@/components/ThemeSelect"
 import SnowLogo from "@/components/SnowLogo"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import ProjectMediaGallery from "@/components/ProjectMediaGallery"
@@ -32,7 +33,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <PortfolioMotion />
       <header className="subnav shell">
         <Link href="/projects" className="back-link"><ArrowLeft aria-hidden="true" /> All projects</Link>
-        <Link href="/" className="subnav-brand"><SnowLogo size={36} /> Snow<span>.</span></Link>
+        <div className="subnav-actions"><ThemeSelect /><Link href="/" className="subnav-brand"><SnowLogo size={36} /> Snow<span>.</span></Link></div>
       </header>
       <section id="project-content" className="case-hero shell">
         <div className="case-meta"><span>{project.eyebrow} / {project.year}</span><span>{project.status}</span></div>

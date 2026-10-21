@@ -38,6 +38,20 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
     await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
     const dark = await page.screenshot({ type: 'jpeg', quality: 70 });
     await fs.writeFile('.artifacts/design/hero-dark.jpg', dark);
+    const appearance = page.getByRole('combobox', { name: 'Appearance' });
+    await appearance.selectOption('light');
+    await page.emulateMedia({ colorScheme: 'dark' });
+    assert.equal(await page.locator('html').getAttribute('data-theme'), 'light', 'Explicit light overrides system');
+    await appearance.selectOption('dark');
+    await page.reload({ waitUntil: 'networkidle' });
+    assert.equal(await page.getByRole('combobox', { name: 'Appearance' }).inputValue(), 'dark', 'Appearance persists after reload');
+    assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    await page.goto(url + '/projects', { waitUntil: 'networkidle' });
+    assert.equal(await page.getByRole('combobox', { name: 'Appearance' }).inputValue(), 'dark', 'Archive shares appearance');
+    await page.getByRole('combobox', { name: 'Appearance' }).selectOption('system');
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.waitForFunction(() => document.documentElement.dataset.theme === 'light');
+    await page.goto(url, { waitUntil: 'networkidle' });
     await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
     await page.goto(url, { waitUntil: 'networkidle' });
@@ -54,6 +68,7 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
     assert.equal(await page.getByRole('button', { name: 'Open navigation' }).getAttribute('aria-expanded'), 'false', 'Leaving navigation closes the disclosure');
     await page.getByRole('button', { name: 'Open navigation' }).click();
     await page.setViewportSize({ width: 1024, height: 844 });
+    await page.waitForFunction(() => document.querySelector('#main-navigation').dataset.open === 'false');
     await page.setViewportSize({ width: 700, height: 844 });
     assert.equal(await page.getByRole('button', { name: 'Open navigation' }).getAttribute('aria-expanded'), 'false', 'Desktop resize clears mobile menu state');
     await page.getByRole('button', { name: 'Open navigation' }).click();
@@ -73,6 +88,7 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, '200% text must reflow');
     await page.screenshot({ path: '.artifacts/design/mobile-large-text.png', fullPage: true });
     assert.equal(await page.locator('.hero-title').evaluate(el => getComputedStyle(el).animationName), 'none');
+    assert.equal(await page.locator('.hero-content').evaluate(el => getComputedStyle(el).animationName), 'none');
     assert.deepEqual(errors, []);
     console.log('PASS: 24 route/viewport checks; images; light/dark appearance; mobile navigation; Escape/focus; keyboard skip link; 200% text; reduced motion.');
   } finally {
