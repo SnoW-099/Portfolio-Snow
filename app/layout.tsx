@@ -1,10 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
 import { skillGroups } from "@/lib/profile"
 import "./globals.css"
 
-const profileTitle = "Angel / Snow | Junior Developer"
-const profileDescription = "Angel, online as Snow. Junior developer from Spain building Python tools and thoughtful web interfaces, with transparent AI-assisted projects."
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+
+const profileTitle = "Snow Dev — Independent Digital Development"
+const profileDescription = "Snow Dev: websites, applications, automations and creative digital products, built independently by Snow."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-snow.netlify.app/"),
@@ -20,18 +24,13 @@ export const metadata: Metadata = {
     url: "https://portfolio-snow.netlify.app/",
     title: profileTitle,
     description: profileDescription,
-    siteName: "Snow — Angel",
+    siteName: "Snow Dev",
   },
   twitter: {
     card: "summary_large_image",
     title: profileTitle,
     description: profileDescription,
     creator: "@Snow_099",
-  },
-  icons: {
-    icon: "/logo.jpg",
-    shortcut: "/logo.jpg",
-    apple: "/logo.jpg",
   },
 }
 
@@ -44,6 +43,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="font-sans antialiased">
         {children}
