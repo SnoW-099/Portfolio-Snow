@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { featuredProjects } from "@/lib/projects"
 import { skillGroups } from "@/lib/profile"
+import { services } from "@/lib/services"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
@@ -64,6 +65,28 @@ export default function Portfolio() {
           ))}
         </div>
         <Link className="archive-link" href="/projects">All projects &amp; experiments <ArrowUpRight aria-hidden="true" /></Link>
+      </section>
+
+      <section id="services" className="services-section shell" aria-labelledby="services-title">
+        <header className="section-heading" data-reveal>
+          <div><span className="eyebrow">Services</span></div>
+          <h2 id="services-title">What Snow Dev builds.<br /><span className="heading-muted">Backed by real work.</span></h2>
+          <p>Four kinds of work, each linked to a project that shows it. Small and focused, by design.</p>
+        </header>
+        <div className="service-grid">
+          {services.map((service, index) => (
+            <article className="service-card" key={service.id} data-reveal>
+              <span className="index">0{index + 1}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <ul className="service-items">{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
+              <div className="service-proof">
+                <span>{service.scope}</span>
+                <div>{service.proof.map((proof) => <Link href={proof.href} key={proof.label}>{proof.label} <ArrowUpRight aria-hidden="true" /></Link>)}</div>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section id="about" className="about-section shell" aria-labelledby="about-title">
