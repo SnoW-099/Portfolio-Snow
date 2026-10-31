@@ -2,7 +2,7 @@ import type { CSSProperties } from "react"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { featuredProjects, visibilityLabels } from "@/lib/projects"
-import { skillGroups } from "@/lib/profile"
+import { capabilityAreas, levelLabels, type Level } from "@/lib/profile"
 import { services } from "@/lib/services"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
@@ -89,6 +89,27 @@ export default function Portfolio() {
         </div>
       </section>
 
+      <section id="capabilities" className="skills-section shell" aria-labelledby="capabilities-title">
+        <header className="skills-heading" data-reveal>
+          <div><span className="eyebrow">Capabilities</span></div>
+          <h2 id="capabilities-title">What I can build with.<br /><span className="heading-muted">And how far it goes.</span></h2>
+          <p>Grouped by area, with an honest level for each tool and a project that shows it.</p>
+        </header>
+        <ul className="level-legend" aria-label="Levels">
+          {(Object.keys(levelLabels) as Level[]).map((level) => <li key={level} data-level={level}>{levelLabels[level]}</li>)}
+        </ul>
+        <div className="skill-grid">
+          {capabilityAreas.map((area, index) => (
+            <article className={"skill-card skill-card-" + area.id} key={area.id} data-reveal>
+              <div className="skill-card-top"><span className="index">0{index + 1}</span></div>
+              <h3>{area.title}</h3><p>{area.description}</p>
+              <ul className="skill-items">{area.items.map((item) => <li key={item.name} data-level={item.level}>{item.name}<span className="sr-only"> ({levelLabels[item.level]})</span></li>)}</ul>
+              {area.evidence.length > 0 && <div className="skill-evidence">{area.evidence.map((proof) => <Link href={proof.href} key={proof.label}>{proof.label} <ArrowUpRight aria-hidden="true" /></Link>)}</div>}
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section id="about" className="about-section shell" aria-labelledby="about-title">
         <div className="about-rail" data-reveal>
           <div className="about-label"><span className="eyebrow">The person behind the projects</span></div>
@@ -105,24 +126,6 @@ export default function Portfolio() {
             <div><dt>Online</dt><dd>Snow / SnoW-099</dd></div>
             <div><dt>Approach</dt><dd>Build. Understand. Refine.</dd></div>
           </dl>
-        </div>
-      </section>
-
-      <section id="skills" className="skills-section shell" aria-labelledby="skills-title">
-        <header className="skills-heading" data-reveal>
-          <div><span className="eyebrow">Tools &amp; experience</span></div>
-          <h2 id="skills-title">An honest stack.</h2>
-          <p>What I&apos;ve used, what I know a little, and what I&apos;m learning with help.</p>
-        </header>
-        <div className="skill-grid">
-          {skillGroups.map((group) => (
-            <article className={"skill-card skill-card-" + group.id} key={group.id} data-reveal>
-                <div className="skill-card-top"><span className="skill-label">{group.label}</span></div>
-              <h3>{group.title}</h3><p>{group.description}</p>
-              <ul className="skill-items">{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
-              {group.evidence.length > 0 && <div className="skill-evidence">{group.evidence.map((proof) => <Link href={proof.href} key={proof.href}>{proof.label} <ArrowUpRight aria-hidden="true" /></Link>)}</div>}
-            </article>
-          ))}
         </div>
       </section>
 

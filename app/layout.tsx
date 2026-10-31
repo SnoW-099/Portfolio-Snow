@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { skillGroups } from "@/lib/profile"
+import { capabilityAreas } from "@/lib/profile"
 import "./globals.css"
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: profileTitle,
   description: profileDescription,
   generator: "Next.js",
-  keywords: ["Angel portfolio", "junior developer", "developer Spain", ...skillGroups.flatMap((group) => group.items)],
+  keywords: ["Snow Dev", "independent developer", "web development", "automation", "developer Spain", ...capabilityAreas.flatMap((area) => area.items.map((item) => item.name))],
   authors: [{ name: "Angel" }],
   creator: "Angel",
   openGraph: {

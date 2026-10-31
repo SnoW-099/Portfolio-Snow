@@ -64,7 +64,7 @@ section[id], footer[id] { scroll-margin-top: 100px; }
 .hero-content { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 72px; }
 .hero-kicker { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 26px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font: .75rem/1.5 var(--font-code); }
 .hero-title { margin: 0; font-size: clamp(3rem, 8.2vw, 7.5rem); font-weight: 550; letter-spacing: -.07em; line-height: 1; }
-.hero-title > span { background: linear-gradient(100deg, var(--foreground) 0%, var(--muted) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-title > span { color: var(--muted); }
 .hero-aside { padding-bottom: 8px; max-width: 340px; justify-self: end; }
 .hero-description { margin: 0; font-size: clamp(1.125rem, 1.7vw, 1.4375rem); line-height: 1.55; letter-spacing: -.035em; text-wrap: pretty; }
 .hero-supporting { margin: 20px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.7; }
@@ -207,6 +207,12 @@ section[id], footer[id] { scroll-margin-top: 100px; }
 .skill-card h3 { grid-column: 1; grid-row: 2; margin: 0; font-size: 1.25rem; font-weight: 550; letter-spacing: -.035em; line-height: 1.3; }
 .skill-card > p { grid-column: 2; grid-row: 1 / 4; margin: 0; color: var(--muted); font-size: .9375rem; line-height: 1.8; }
 .skill-items { grid-column: 3; grid-row: 1 / 3; display: flex; flex-wrap: wrap; gap: 9px 18px; list-style: none; margin: 0; padding: 0; font-size: .875rem; line-height: 1.7; }
+.level-legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 24px; padding: 0; list-style: none; color: var(--muted); font-size: .75rem; line-height: 1.6; }
+.level-legend li, .skill-items li { display: inline-flex; align-items: center; gap: 8px; }
+.level-legend li::before, .skill-items li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+[data-level="used"]::before { background: var(--foreground); }
+[data-level="familiar"]::before { border: 1px solid var(--foreground); }
+[data-level="learning"]::before { border: 1px dashed var(--muted); }
 .skill-evidence { grid-column: 3; display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; }
 .skill-evidence a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; font-size: .75rem; color: var(--accent); }
 .skill-evidence svg { width: 14px; height: 14px; }
