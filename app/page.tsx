@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
-import { featuredProjects } from "@/lib/projects"
+import { featuredProjects, visibilityLabels } from "@/lib/projects"
 import { skillGroups } from "@/lib/profile"
 import { services } from "@/lib/services"
 import PortfolioMotion from "@/components/PortfolioMotion"
@@ -38,8 +38,8 @@ export default function Portfolio() {
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
           <div><span className="eyebrow">Selected work</span></div>
-          <h2 id="work-title">Small projects.<br /><span className="heading-muted">A closer look.</span></h2>
-          <p>The tools I&apos;m building, the code I&apos;m learning, and the decisions behind both.</p>
+          <h2 id="work-title">Selected work.<br /><span className="heading-muted">Built to be used.</span></h2>
+          <p>Software, automations and experiments. Each project says whether it is public, private, experimental or still in development.</p>
         </header>
         <div className="project-list">
           {featuredProjects.map((project, index) => (
@@ -49,7 +49,7 @@ export default function Portfolio() {
                 <span className="project-open" aria-hidden="true"><ArrowUpRight /></span>
               </Link>
               <div className="project-copy">
-                <div className="project-meta"><span>{project.eyebrow}</span><span>{project.year}</span></div>
+                <div className="project-meta"><span>{project.category}</span><span className="visibility-badge" data-visibility={project.visibility}>{visibilityLabels[project.visibility]} · {project.year}</span></div>
                 <h3><Link href={"/projects/" + project.slug}>{project.name}</Link></h3>
                 {project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}
                 <p>{project.shortDescription}</p>

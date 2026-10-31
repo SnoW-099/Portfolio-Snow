@@ -1,11 +1,11 @@
-import SnowLogo from "@/components/SnowLogo"
+import SnowDevMark from "@/components/SnowDevMark"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import ProjectMediaGallery from "@/components/ProjectMediaGallery"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowUpRight, Github, ShieldCheck, Sparkles } from "lucide-react"
-import { getProjectBySlug, projects, visibleProjects } from "@/lib/projects"
+import { getProjectBySlug, projects, visibilityLabels, visibleProjects } from "@/lib/projects"
 import PortfolioMotion from "@/components/PortfolioMotion"
 
 export function generateStaticParams() {
@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const project = getProjectBySlug(slug)
-  return project ? { title: project.name + " | Angel / Snow", description: project.shortDescription } : { title: "Project not found | Snow" }
+  return project ? { title: project.name + " | Snow Dev", description: project.shortDescription } : { title: "Project not found | Snow Dev" }
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -32,10 +32,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <PortfolioMotion />
       <header className="subnav shell">
         <Link href="/projects" className="back-link"><ArrowLeft aria-hidden="true" /> All projects</Link>
-        <Link href="/" className="subnav-brand"><SnowLogo size={36} /> Snow<span>.</span></Link>
+        <Link href="/" className="subnav-brand"><SnowDevMark size={28} /> Snow Dev<span>.</span></Link>
       </header>
       <section id="project-content" className="case-hero shell">
-        <div className="case-meta"><span>{project.eyebrow} / {project.year}</span><span>{project.status}</span></div>
+        <div className="case-meta"><span>{project.category} / {project.year}</span><span className="visibility-badge" data-visibility={project.visibility}>{visibilityLabels[project.visibility]} · {project.status}</span></div>
         <h1>{project.name}<em>.</em></h1>
         <p>{project.shortDescription}</p>
         <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
