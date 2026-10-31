@@ -1,9 +1,6 @@
 name: Portfolio design review
+# Manual only: Actions is unavailable on this account, and the owner asked not to run CI automatically.
 on:
-  push:
-    branches: ["snowdev/**"]
-  pull_request:
-    branches: [Main]
   workflow_dispatch:
 permissions:
   contents: read
