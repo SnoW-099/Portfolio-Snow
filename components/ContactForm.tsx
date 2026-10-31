@@ -9,8 +9,8 @@ export const budgets = ["Under €500", "€500 – €1,500", "€1,500 – €
 type Status = "idle" | "sending" | "sent" | "error"
 
 /**
- * Netlify Forms: the static copy in public/__forms.html registers the form at build time,
- * and this component posts to it. Netlify stores submissions and filters spam (plus the honeypot).
+ * Netlify Forms. `data-netlify` on the form (present in the prerendered HTML) registers it at deploy time;
+ * submissions are posted to "/" and stored in Netlify (Forms tab). `netlify-honeypot` filters bots.
  */
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle")
@@ -21,7 +21,7 @@ export default function ContactForm() {
     setStatus("sending")
     try {
       const body = new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString()
-      const response = await fetch("/__forms.html", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
+      const response = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
       if (!response.ok) throw new Error(String(response.status))
       form.reset()
       setStatus("sent")
@@ -31,7 +31,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form className="contact-form" name="contact" onSubmit={onSubmit}>
+    <form className="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={onSubmit}>
       <input type="hidden" name="form-name" value="contact" />
       <p className="sr-only"><label>Leave this empty: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
       <div className="field-row">
