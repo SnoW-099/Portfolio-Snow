@@ -192,7 +192,7 @@ export default function Portfolio() {
               <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
               <div className="contact-links">
                 <a href="https://github.com/SnoW-099" target="_blank" rel="noreferrer"><Github aria-hidden="true" /> GitHub · SnoW-099</a>
-                <a href="https://x.com/Snow_099" target="_blank" rel="noreferrer">X · @Snow_099</a>
+                <a href="https://x.com/Ryze517182" target="_blank" rel="noreferrer">X · @Ryze517182</a>
               </div>
             </aside>
           </div>
@@ -210,7 +210,7 @@ export default function Portfolio() {
           </nav>
           <div className="footer-links">
             <a href="https://github.com/SnoW-099" target="_blank" rel="noreferrer"><Github aria-hidden="true" /> GitHub</a>
-            <a href="https://x.com/Snow_099" target="_blank" rel="noreferrer">X / Twitter</a>
+            <a href="https://x.com/Ryze517182" target="_blank" rel="noreferrer">X / Twitter</a>
             <a href="mailto:ryze0950@gmail.com">Email</a>
           </div>
           <div className="footer-row">
