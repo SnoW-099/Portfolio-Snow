@@ -8,6 +8,9 @@ import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
 import ProjectSpotlight from "@/components/ProjectSpotlight"
+import ContactForm from "@/components/ContactForm"
+import SnowDevMark from "@/components/SnowDevMark"
+import SnowLogo from "@/components/SnowLogo"
 
 export default function Portfolio() {
   return (
@@ -112,32 +115,55 @@ export default function Portfolio() {
 
       <section id="about" className="about-section shell" aria-labelledby="about-title">
         <div className="about-rail" data-reveal>
-          <div className="about-label"><span className="eyebrow">The person behind the projects</span></div>
-          <span className="about-signature">Angel / Snow</span>
+          <div className="about-label"><span className="eyebrow">The person behind Snow Dev</span></div>
+          <span className="about-signature"><span className="about-avatar"><SnowLogo size={44} /></span>Snow</span>
         </div>
         <div className="about-copy" data-reveal>
-          <h2 id="about-title" className="about-lead">Still learning.<br /><strong>Already making.</strong></h2>
+          <h2 id="about-title" className="about-lead">One person.<br /><strong>Building with care.</strong></h2>
           <div className="about-details">
-            <p>I&apos;m Angel, a junior developer based in Spain. Snow is the name I use online. My starting point is Python, HTML and CSS, and I enjoy turning small ideas into useful tools.</p>
-            <p>I also build with AI. StarOptimizer and this portfolio are vibe-coded projects: a way to explore ideas while I keep learning JavaScript, TypeScript and the tools behind them.</p>
+            <p>Snow Dev is the independent brand of Snow, the online name of Angel, a developer based in Spain. It is not an agency: every project is designed, built and looked after by one person, so you talk directly to whoever writes the code.</p>
+            <p>I like taking digital products from idea to something people use, with a creative eye for the interface. I experiment with new technologies and use AI openly while I learn them; each project says where it helped.</p>
           </div>
           <dl className="about-facts">
-            <div><dt>Name</dt><dd>Angel</dd></div>
-            <div><dt>Online</dt><dd>Snow / SnoW-099</dd></div>
-            <div><dt>Approach</dt><dd>Build. Understand. Refine.</dd></div>
+            <div><dt>Founder</dt><dd>Snow / SnoW-099</dd></div>
+            <div><dt>How I work</dt><dd>Small scope. Clear steps. Honest progress.</dd></div>
+            <div><dt>Also</dt><dd>Open to junior developer roles</dd></div>
           </dl>
         </div>
       </section>
 
-      <footer id="contact" className="contact-section" aria-labelledby="contact-title">
+      <section id="contact" className="contact-section" aria-labelledby="contact-title">
         <div className="shell">
-          <div className="contact-topline" data-reveal><span className="eyebrow">Let&apos;s talk</span><span>Based in Spain. Open to what&apos;s next.</span></div>
-          <h2 id="contact-title" data-reveal>Have something<br /><em>in mind?</em></h2>
-          <p className="contact-intro">A junior role, a small collaboration, or just a good idea.<br />My inbox is open.</p>
-          <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
-          <div className="footer-row">
-            <span>© {new Date().getFullYear()} Angel / Snow</span>
+          <div className="contact-topline" data-reveal><span className="eyebrow">Contact</span><span>Based in Spain. Replies by email.</span></div>
+          <h2 id="contact-title" data-reveal>Have an idea?<br /><em>Let&apos;s build it.</em></h2>
+          <div className="contact-grid">
+            <ContactForm />
+            <aside className="contact-direct" aria-label="Other ways to reach Snow Dev">
+              <p className="contact-intro">Tell me what you have in mind: a website, a small app, an automation or an experiment. Rough ideas are welcome.</p>
+              <a className="contact-mail" href="mailto:ryze0950@gmail.com"><span>ryze0950@gmail.com</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="contact-mail" href="https://github.com/SnoW-099" target="_blank" rel="noreferrer"><span>GitHub · SnoW-099</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="contact-mail" href="https://x.com/Snow_099" target="_blank" rel="noreferrer"><span>X · @Snow_099</span><ArrowUpRight aria-hidden="true" /></a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <div className="shell">
+          <div className="footer-brand">
+            <Link href="#top" className="brand" aria-label="Snow Dev, back to top"><span className="brand-mark"><SnowDevMark /></span>Snow Dev<span className="brand-dot">.</span></Link>
+            <p>Independent digital development. Websites, applications, automations and creative digital products, built by Snow.</p>
+          </div>
+          <nav className="footer-links" aria-label="Footer">
+            <a href="#top">Home</a><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a>
+          </nav>
+          <div className="footer-links">
             <a href="https://github.com/SnoW-099" target="_blank" rel="noreferrer"><Github aria-hidden="true" /> GitHub</a>
+            <a href="https://x.com/Snow_099" target="_blank" rel="noreferrer">X / Twitter</a>
+            <a href="mailto:ryze0950@gmail.com">Email</a>
+          </div>
+          <div className="footer-row">
+            <span>© {new Date().getFullYear()} Snow Dev · Built by Snow</span>
             <Link href="/projects/portfolio" className="footer-colophon"><Sparkles aria-hidden="true" /> Built with care &amp; AI</Link>
           </div>
         </div>
