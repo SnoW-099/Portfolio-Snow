@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react"
 import Link from "next/link"
-import { ArrowDown, ArrowUpRight, Github, Globe, LayoutDashboard, Sparkles, Workflow, type LucideIcon } from "lucide-react"
+import { ArrowDown, ArrowUpRight, Github, Globe, LayoutDashboard, Play, Sparkles, Workflow, type LucideIcon } from "lucide-react"
 import { featuredProjects, visibilityLabels } from "@/lib/projects"
 import { capabilityAreas, levelLabels, type Level } from "@/lib/profile"
 import { services } from "@/lib/services"
@@ -10,6 +10,7 @@ import SiteHeader from "@/components/SiteHeader"
 import Marquee from "@/components/Marquee"
 import ContactForm from "@/components/ContactForm"
 import BuildReel from "@/components/BuildReel"
+import Showreel from "@/components/Showreel"
 import SnowDevMark from "@/components/SnowDevMark"
 import SectionTitle from "@/components/SectionTitle"
 
@@ -50,6 +51,7 @@ export default function Portfolio() {
             <div className="hero-actions">
               <Link className="hero-primary" href="#work">Explore projects <ArrowDown aria-hidden="true" /></Link>
               <Link className="hero-secondary" href="#contact">Contact <ArrowUpRight aria-hidden="true" /></Link>
+              <Link className="hero-film" href="#showreel"><Play aria-hidden="true" /> Watch the film</Link>
             </div>
           </div>
         </div>
@@ -73,6 +75,7 @@ export default function Portfolio() {
           <SectionTitle id="work-title" a="Real projects." b="Built to be used." />
           <p>One project for each kind of work: open source, web apps, automation and desktop. Each says whether it is public, private or still in development.</p>
         </header>
+        <Showreel />
         <ol className="stack">
           {featuredProjects.map((project, index) => (
             <li id={"project-" + project.slug} className={"stack-card stack-card-" + project.slug} key={project.slug} style={{ "--i": index } as CSSProperties}>
