@@ -1,13 +1,13 @@
-import { services } from "@/lib/services"
+const words = ["Design", "Develop", "Connect"]
 
-/** Slow ribbon of the four services. Decorative (the Services section carries the content); static under reduced motion. */
+/** Ribbon echoing the Design / Develop / Connect reel. Decorative; moves with scrolling only, and is static under reduced motion. */
 export default function Marquee() {
   return (
     <div className="marquee" aria-hidden="true">
       <div className="marquee-track">
         {[0, 1].map((copy) => (
           <div className="marquee-group" key={copy}>
-            {services.map((service) => <span key={service.id}>{service.title}<i>✦</i></span>)}
+            {[...words, ...words].map((word, i) => <span key={i}>{word}<i>✦</i></span>)}
           </div>
         ))}
       </div>
