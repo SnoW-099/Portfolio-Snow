@@ -1,6 +1,4 @@
 import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
-import SnowLogo from "@/components/SnowLogo"
 import RezArtwork from "@/components/RezArtwork"
 import PythonArtwork from "@/components/PythonArtwork"
 import type { Project } from "@/lib/projects"
@@ -20,9 +18,12 @@ export default function ProjectArtwork({ project, priority = false }: { project:
   }
   return (
     <div className={"project-artwork artwork-" + project.slug} aria-label={project.name + ": project overview"}>
-      <div className="artwork-top"><span className="artwork-category">{project.eyebrow}</span><ArrowUpRight aria-hidden="true" /></div>
-      <div className="artwork-center"><span className="artwork-symbol"><SnowLogo size={80} /></span><strong>{project.name}</strong></div>
-      <div className="artwork-bottom"><div className="artwork-highlights">{project.highlights?.map((item) => <span key={item}>{item}</span>)}</div><small>Project overview</small></div>
+      <div className="artwork-top"><span className="artwork-category">{project.eyebrow}</span><span>{project.name}</span></div>
+      {project.highlights?.length ? (
+        <ol className="artwork-steps">{project.highlights.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol>
+      ) : (
+        <div className="artwork-center"><strong>{project.name}</strong></div>
+      )}
     </div>
   )
 }

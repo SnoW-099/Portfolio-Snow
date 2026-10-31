@@ -54,7 +54,6 @@ export const projects: Project[] = [
     image: "/projects/py-mini-systems/overview.png",
     imageAlt: "Python Mini Systems introduction: Python exercises for logic, file handling and simple interfaces.",
     imageSize: [840, 139],
-    featured: true,
     highlights: ["Inventory", "Users", "Persistence"],
   },
   {
@@ -135,6 +134,7 @@ export const projects: Project[] = [
     image: "/vibe.png",
     imageAlt: "Vibe dashboard with its sidebar, task list, time and weather widgets.",
     imageSize: [2878, 1546],
+    featured: true,
   },
   {
     slug: "rez-bot",
@@ -178,7 +178,7 @@ export const projects: Project[] = [
     learnings: "This project brings together desktop interfaces, Windows integration, persistent recovery, and testing. Measurements describe observed CPU and RAM usage rather than promising an FPS or speed increase.",
     tags: ["Electron", "JavaScript", "PowerShell"],
     repoUrl: "https://github.com/Orvyn-Studios/StarOptimizer/tree/feature/orvyn-staroptimizer-2",
-    featured: false,
+    featured: true,
     highlights: ["Measure", "Review", "Restore"],
     aiAssisted: true,
     aiNote: "Built with AI assistance (vibe coding). I guide the scope and interface while continuing to learn JavaScript, Electron and the code behind the app.",

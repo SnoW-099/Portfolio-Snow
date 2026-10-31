@@ -1,22 +1,29 @@
 import type { CSSProperties } from "react"
 import Link from "next/link"
-import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
+import { ArrowDown, ArrowUpRight, Github, Globe, LayoutDashboard, Sparkles, Workflow, type LucideIcon } from "lucide-react"
 import { featuredProjects, visibilityLabels } from "@/lib/projects"
 import { capabilityAreas, levelLabels, type Level } from "@/lib/profile"
 import { services } from "@/lib/services"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
-import ProjectSpotlight from "@/components/ProjectSpotlight"
+import Marquee from "@/components/Marquee"
 import ContactForm from "@/components/ContactForm"
 import BuildReel from "@/components/BuildReel"
 import SnowDevMark from "@/components/SnowDevMark"
 import SnowLogo from "@/components/SnowLogo"
 
+const serviceIcons: Record<string, LucideIcon> = { web: Globe, apps: LayoutDashboard, automation: Workflow, creative: Sparkles }
+
+function ServiceIcon({ id }: { id: string }) {
+  const Icon = serviceIcons[id] ?? Sparkles
+  return <Icon aria-hidden="true" />
+}
+
 export default function Portfolio() {
   return (
     <main className="site-shell">
-      <a className="skip-link" href="#work">Skip to selected work</a>
+      <a className="skip-link" href="#work">Skip to featured projects</a>
       <PortfolioMotion />
       <SiteHeader />
 
@@ -24,7 +31,11 @@ export default function Portfolio() {
         <div className="hero-content">
           <div className="hero-heading">
             <p className="hero-kicker hero-enter"><span className="live-dot" /> Snow Dev — Independent Digital Development</p>
-            <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>Building<br /><span>digital experiences.</span></h1>
+            <h1 id="hero-title" className="hero-title">
+              <span className="line"><span style={{ "--d": "60ms" } as CSSProperties}>Building </span></span>
+              <span className="line line-muted"><span style={{ "--d": "160ms" } as CSSProperties}>digital </span></span>
+              <span className="line line-muted"><span style={{ "--d": "260ms" } as CSSProperties}>experiences.</span></span>
+            </h1>
           </div>
           <div className="hero-aside hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
             <p className="hero-description">Websites, applications, automations and creative digital products.</p>
@@ -37,38 +48,43 @@ export default function Portfolio() {
           </div>
         </div>
         <BuildReel />
-        <ProjectSpotlight />
       </section>
+
+      <Marquee />
 
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
-          <div><span className="eyebrow">Selected work</span></div>
+          <div><span className="eyebrow">Featured projects</span></div>
           <h2 id="work-title">Real projects.<br /><span className="heading-muted">Built to be used.</span></h2>
-          <p>Software, automations and experiments. Each project says whether it is public, private, experimental or still in development.</p>
+          <p>One project for each kind of work: open source, web apps, automation and desktop. Each says whether it is public, private or still in development.</p>
         </header>
-        <div className="project-list">
+        <ol className="stack">
           {featuredProjects.map((project, index) => (
-            <article id={"project-" + project.slug} className={"project-feature project-feature-" + (index + 1) + " project-feature-" + project.slug} key={project.slug} data-reveal>
-              <Link href={"/projects/" + project.slug} className={"project-visual project-visual-" + project.slug} aria-label={"Explore " + project.name}>
-                <ProjectArtwork project={project} />
-                <span className="project-open" aria-hidden="true"><ArrowUpRight /></span>
-              </Link>
-              <div className="project-copy">
-                <div className="project-meta"><span>{project.category}</span><span className="visibility-badge" data-visibility={project.visibility}>{visibilityLabels[project.visibility]} · {project.year}</span></div>
+            <li id={"project-" + project.slug} className={"stack-card stack-card-" + project.slug} key={project.slug} style={{ "--i": index } as CSSProperties}>
+              <div className="stack-copy">
+                <div className="stack-top">
+                  <span className="index">{String(index + 1).padStart(2, "0")} / {String(featuredProjects.length).padStart(2, "0")}</span>
+                  <span className="visibility-badge" data-visibility={project.visibility}>{visibilityLabels[project.visibility]} · {project.year}</span>
+                </div>
+                <span className="stack-category">{project.category}</span>
                 <h3><Link href={"/projects/" + project.slug}>{project.name}</Link></h3>
-                {project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}
                 <p>{project.shortDescription}</p>
-                {project.cardNote && <p className="project-card-note">{project.cardNote}</p>}
+                {project.cardNote && <p className="stack-note">{project.cardNote}</p>}
+                {project.aiAssisted && <span className="ai-badge"><Sparkles aria-hidden="true" /> Vibe-coded · AI-assisted</span>}
                 <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <div className="project-actions">
-                  <Link href={"/projects/" + project.slug} className="text-link">Explore the project <ArrowUpRight aria-hidden="true" /></Link>
+                  <Link href={"/projects/" + project.slug} className="stack-cta">Explore the project<span className="sr-only">: {project.name}</span> <ArrowUpRight aria-hidden="true" /></Link>
                   {project.liveUrl && <a href={project.liveUrl} className="text-link">View website <ArrowUpRight aria-hidden="true" /></a>}
                   {project.repoUrl && !project.privateRepo && <a href={project.repoUrl} target="_blank" rel="noreferrer" className="repo-link"><Github aria-hidden="true" /> Code<span className="sr-only"> for {project.name}</span></a>}
                 </div>
               </div>
-            </article>
+              <Link href={"/projects/" + project.slug} className="stack-visual" tabIndex={-1} aria-hidden="true">
+                <ProjectArtwork project={project} />
+                <span className="project-open"><ArrowUpRight /></span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ol>
         <Link className="archive-link" href="/projects">All projects &amp; experiments <ArrowUpRight aria-hidden="true" /></Link>
       </section>
 
@@ -81,7 +97,7 @@ export default function Portfolio() {
         <div className="service-grid">
           {services.map((service, index) => (
             <article className="service-card" key={service.id} data-reveal>
-              <span className="index">0{index + 1}</span>
+              <div className="service-top"><span className="index">0{index + 1}</span><ServiceIcon id={service.id} /></div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
               <ul className="service-items">{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
@@ -168,6 +184,7 @@ export default function Portfolio() {
             <span>© {new Date().getFullYear()} Snow Dev · Built by Snow</span>
             <Link href="/projects/portfolio" className="footer-colophon"><Sparkles aria-hidden="true" /> Built with care &amp; AI</Link>
           </div>
+          <p className="footer-wordmark" aria-hidden="true">Snow Dev</p>
         </div>
       </footer>
     </main>

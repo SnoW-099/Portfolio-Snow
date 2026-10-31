@@ -1,9 +1,9 @@
 import { Braces, FolderCode, Package, UserRound } from "lucide-react"
 
 /** An editorial diagram of the two real projects, not a simulated app screenshot. */
-export default function PythonArtwork({ compact = false }: { compact?: boolean }) {
+export default function PythonArtwork() {
   return (
-    <div className={"python-study" + (compact ? " python-study-compact" : "")} aria-label="Python Mini Systems: inventory and user-management learning projects">
+    <div className="python-study" aria-label="Python Mini Systems: inventory and user-management learning projects">
       <div className="python-study-heading"><span>Python Mini Systems</span><Braces aria-hidden="true" /></div>
       <div className="python-folders">
         <div className="python-folder python-folder-store">
