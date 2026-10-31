@@ -9,6 +9,7 @@ import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
 import ProjectSpotlight from "@/components/ProjectSpotlight"
 import ContactForm from "@/components/ContactForm"
+import BuildReel from "@/components/BuildReel"
 import SnowDevMark from "@/components/SnowDevMark"
 import SnowLogo from "@/components/SnowLogo"
 
@@ -35,6 +36,7 @@ export default function Portfolio() {
             <div className="hero-footnote"><span>Based in Spain · Independent</span></div>
           </div>
         </div>
+        <BuildReel />
         <ProjectSpotlight />
       </section>
 
