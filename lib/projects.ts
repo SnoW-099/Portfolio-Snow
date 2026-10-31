@@ -1,5 +1,9 @@
+export type Visibility = "public" | "private" | "experimental" | "in-development"
+
 export type Project = {
   slug: string
+  category: string
+  visibility: Visibility
   name: string
   status: string
   eyebrow: string
@@ -32,6 +36,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "py-mini-systems",
+    category: "Development Experiments",
+    visibility: "experimental",
     name: "Python Mini Systems",
     status: "Learning projects",
     eyebrow: "Python fundamentals",
@@ -53,6 +59,8 @@ export const projects: Project[] = [
   },
   {
     slug: "snowtify",
+    category: "Software / Open Source",
+    visibility: "public",
     name: "Snowtify",
     status: "Public",
     eyebrow: "Spotify customization",
@@ -81,16 +89,18 @@ export const projects: Project[] = [
   },
   {
     slug: "portfolio",
-    name: "Snow Portfolio",
+    category: "Websites",
+    visibility: "public",
+    name: "Snow Dev website",
     status: "This website",
-    eyebrow: "Personal website",
+    eyebrow: "Brand website",
     role: "Visual direction & AI-assisted development",
     year: "2026",
     focus: "Responsive interfaces & clear project stories",
-    shortDescription: "My own space on the web. A light, responsive portfolio built around simple interfaces, thoughtful motion and an honest look at my work.",
-    summary: "Snow is my online identity; Angel is my name. This portfolio brings my projects together and makes the level of experience behind them clear, including where I use AI to help build.",
+    shortDescription: "The Snow Dev website. A black-and-white, responsive site that presents services, projects and capabilities, with an honest look at the work behind them.",
+    summary: "Snow Dev is the independent brand I build under; Snow is my online identity and Angel is my name. The site brings services and projects together and makes the level of experience behind them clear, including where I use AI to help build.",
     problem: "A portfolio needs to communicate what I am building without confusing a project's technology list with independent proficiency in every tool.",
-    approach: "I used AI to help implement a Next.js and React site with a restrained blue palette, responsive layouts, keyboard-friendly navigation and motion that respects reduced-motion preferences.",
+    approach: "I used AI to help implement a Next.js and React site with a black-and-white palette, responsive layouts, keyboard-friendly navigation and motion that respects reduced-motion preferences.",
     learnings: "This is a vibe-coded project and part of my learning process. It is a place to practice reading generated code, refining layouts and explaining the choices behind the interface.",
     tags: ["Next.js", "React", "TypeScript", "CSS"],
     repoUrl: "https://github.com/SnoW-099/Portfolio-Snow",
@@ -102,6 +112,8 @@ export const projects: Project[] = [
   },
   {
     slug: "vibe",
+    category: "Web Applications",
+    visibility: "private",
     name: "Vibe",
     status: "Private project",
     privateRepo: true,
@@ -126,6 +138,8 @@ export const projects: Project[] = [
   },
   {
     slug: "rez-bot",
+    category: "Automation / Development",
+    visibility: "public",
     name: "Rez Bot",
     status: "Active",
     eyebrow: "Discord bot",
@@ -149,6 +163,8 @@ export const projects: Project[] = [
   },
   {
     slug: "staroptimizer",
+    category: "Desktop Applications",
+    visibility: "in-development",
     name: "StarOptimizer",
     status: "Active development",
     eyebrow: "Windows desktop app",
@@ -176,8 +192,16 @@ export const projects: Project[] = [
   },
 ]
 
+export const visibilityLabels: Record<Visibility, string> = {
+  public: "Public",
+  private: "Private",
+  experimental: "Experimental",
+  "in-development": "In development",
+}
+
 export const visibleProjects = projects.filter(project => project.listed !== false)
 export const featuredProjects = visibleProjects.filter(project => project.featured)
+export const projectCategories = [...new Set(visibleProjects.map((project) => project.category))]
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug)
