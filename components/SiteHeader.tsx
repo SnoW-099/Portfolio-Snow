@@ -6,9 +6,9 @@ import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 const links = [
+  { href: "#top", label: "Home", key: "top" },
   { href: "#work", label: "Work", key: "work" },
   { href: "#about", label: "About", key: "about" },
-  { href: "#skills", label: "Stack", key: "skills" },
   { href: "#contact", label: "Contact", key: "contact" },
 ]
 

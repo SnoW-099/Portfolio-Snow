@@ -18,17 +18,17 @@ export default function Portfolio() {
       <section id="top" className="hero shell" aria-labelledby="hero-title">
         <div className="hero-content">
           <div className="hero-heading">
-            <p className="hero-kicker hero-enter">A developer in the making. Based in Spain.</p>
-            <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>Angel,<br /><span>aka Snow.</span></h1>
+            <p className="hero-kicker hero-enter"><span className="live-dot" /> Snow Dev — Independent Digital Development</p>
+            <h1 id="hero-title" className="hero-title hero-enter" style={{ "--enter-delay": "80ms" } as CSSProperties}>Building<br /><span>digital experiences.</span></h1>
           </div>
           <div className="hero-aside hero-enter" style={{ "--enter-delay": "160ms" } as CSSProperties}>
-            <p className="hero-description">I build small tools, look after the details, and learn by making things work.</p>
-            <p className="hero-supporting">Python is where I started. The projects below are where it&apos;s taking me.</p>
+            <p className="hero-description">Websites, applications, automations and creative digital products.</p>
+            <p className="hero-supporting">An independent brand by Snow, building small, careful things that work.</p>
             <div className="hero-actions">
-              <Link className="hero-primary" href="#work">View my work <ArrowDown aria-hidden="true" /></Link>
-              <a className="hero-secondary" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a>
+              <Link className="hero-primary" href="#work">Explore projects <ArrowDown aria-hidden="true" /></Link>
+              <Link className="hero-secondary" href="#contact">Contact <ArrowUpRight aria-hidden="true" /></Link>
             </div>
-            <div className="hero-footnote"><span className="hero-status"><span className="live-dot" /> Open to junior opportunities</span></div>
+            <div className="hero-footnote"><span>Based in Spain · Independent</span></div>
           </div>
         </div>
         <ProjectSpotlight />
