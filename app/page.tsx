@@ -43,7 +43,7 @@ export default function Portfolio() {
       <section id="work" className="work-section shell" aria-labelledby="work-title">
         <header className="section-heading" data-reveal>
           <div><span className="eyebrow">Selected work</span></div>
-          <h2 id="work-title">Selected work.<br /><span className="heading-muted">Built to be used.</span></h2>
+          <h2 id="work-title">Real projects.<br /><span className="heading-muted">Built to be used.</span></h2>
           <p>Software, automations and experiments. Each project says whether it is public, private, experimental or still in development.</p>
         </header>
         <div className="project-list">

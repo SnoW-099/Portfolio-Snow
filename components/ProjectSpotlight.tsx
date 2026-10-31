@@ -7,7 +7,7 @@ import PythonArtwork from "@/components/PythonArtwork"
 export default function ProjectSpotlight() {
   return (
     <div className="spotlight" aria-label="Explore featured projects">
-      <div className="spotlight-caption"><span>A few things I&apos;ve made.</span><Link href="#work">Explore the work <ArrowUpRight aria-hidden="true" /></Link></div>
+      <div className="spotlight-caption"><span>Featured projects</span><Link href="#work">Explore the work <ArrowUpRight aria-hidden="true" /></Link></div>
       <div className="spotlight-grid">
         {featuredProjects.map((project) => {
           return (

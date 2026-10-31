@@ -2,9 +2,15 @@ import SnowDevMark from "@/components/SnowDevMark"
 import ProjectFilter from "@/components/ProjectFilter"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import Link from "next/link"
+import type { Metadata } from "next"
 import { ArrowLeft, ArrowUpRight, Sparkles } from "lucide-react"
 import { projectCategories, visibilityLabels, visibleProjects } from "@/lib/projects"
 import PortfolioMotion from "@/components/PortfolioMotion"
+
+export const metadata: Metadata = {
+  title: "Work | Snow Dev",
+  description: "Snow Dev projects: software, web applications, automations and experiments, each with its visibility and scope.",
+}
 
 export default function ProjectsPage() {
   return (
