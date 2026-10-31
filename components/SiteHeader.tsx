@@ -50,7 +50,7 @@ export default function SiteHeader() {
           </Link>
         ))}
       </div>
-      <a className="nav-contact" href="mailto:ryze0950@gmail.com">Say hello <ArrowUpRight aria-hidden="true" /></a>
+      <Link className="nav-contact" href="#contact" onClick={() => setOpen(false)}>Start a project <ArrowUpRight aria-hidden="true" /></Link>
       <button ref={button} className="nav-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>
         {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
