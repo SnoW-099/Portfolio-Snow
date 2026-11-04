@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-snow.netlify.app/"),
   title: profileTitle,
   description: profileDescription,
+  verification: {
+    google: "gXyGcc1kmsFovRzcNvju1MnjcbD7smCTI7dW49GcFHA",
+  },
   generator: "Next.js",
   keywords: ["Snow Dev", "independent developer", "web development", "automation", "developer Spain", ...capabilityAreas.flatMap((area) => area.items.map((item) => item.name))],
   authors: [{ name: "Angel" }],
@@ -51,4 +54,3 @@ export default function RootLayout({
     </html>
   )
 }
-
