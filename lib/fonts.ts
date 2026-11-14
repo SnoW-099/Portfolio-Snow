@@ -1,0 +1,7 @@
+import { Geist, Geist_Mono } from "next/font/google"
+
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+
+/** Class for <html>: exposes both Geist families as CSS variables. */
+export const fontClass = `${geistSans.variable} ${geistMono.variable}`

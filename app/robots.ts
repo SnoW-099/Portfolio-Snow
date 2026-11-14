@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next"
-
-const siteUrl = "https://portfolio-snow.netlify.app"
+import { siteUrl } from "@/lib/i18n"
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -1,56 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import { capabilityAreas } from "@/lib/profile"
+import { siteUrl } from "@/lib/i18n"
 import "./globals.css"
 
-const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+export const metadata: Metadata = { metadataBase: new URL(siteUrl) }
 
-const profileTitle = "Snow Dev — Independent Digital Development"
-const profileDescription = "Snow Dev: websites, applications, automations and creative digital products, built independently by Snow."
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio-snow.netlify.app/"),
-  title: profileTitle,
-  description: profileDescription,
-  verification: {
-    google: "gXyGcc1kmsFovRzcNvju1MnjcbD7smCTI7dW49GcFHA",
-  },
-  generator: "Next.js",
-  keywords: ["Snow Dev", "independent developer", "web development", "automation", "developer Spain", ...capabilityAreas.flatMap((area) => area.items.map((item) => item.name))],
-  authors: [{ name: "Angel" }],
-  creator: "Angel",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://portfolio-snow.netlify.app/",
-    title: profileTitle,
-    description: profileDescription,
-    siteName: "Snow Dev",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: profileTitle,
-    description: profileDescription,
-    creator: "@Ryze517182",
-  },
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <body className="font-sans antialiased">
-        {children}
-      </body>
-    </html>
-  )
+// The real layout (with <html lang>) lives in app/[lang]/layout.tsx. This one only exists so that not-found.tsx has a root.
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return children
 }
