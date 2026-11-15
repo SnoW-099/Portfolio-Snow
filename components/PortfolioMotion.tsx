@@ -2,6 +2,10 @@
 
 import { useEffect } from "react"
 
+/**
+ * Progressive enhancement only: without JavaScript every element is already visible.
+ * Adds the scrolled / active-section state, and the staggered reveal.
+ */
 export default function PortfolioMotion() {
   useEffect(() => {
     const root = document.documentElement
@@ -23,14 +27,17 @@ export default function PortfolioMotion() {
       if (!frame) frame = window.requestAnimationFrame(update)
     }
     const reveal = new IntersectionObserver((entries) => {
+      let order = 0
       for (const entry of entries) {
         if (!entry.isIntersecting) continue
         reveal.unobserve(entry.target)
+        entry.target.setAttribute("data-revealed", "")
         if (reducedMotion.matches || !(entry.target instanceof HTMLElement) || !entry.target.animate) continue
+        // Elements that arrive together come in one after another.
         const animation = entry.target.animate([
           { opacity: 0, transform: "translateY(24px)" },
           { opacity: 1, transform: "translateY(0)" },
-        ], { duration: 700, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" })
+        ], { duration: 700, delay: order++ * 80, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" })
         animations.add(animation)
         animation.onfinish = () => animations.delete(animation)
       }

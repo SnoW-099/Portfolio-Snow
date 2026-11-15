@@ -29,11 +29,22 @@ npm run build
 | Content | File |
 |---|---|
 | Projects (category, visibility, case-study text) | `lib/projects.ts` |
-| Services and the projects that back them | `lib/services.ts` |
-| Capabilities and levels (used / familiar / learning) | `lib/profile.ts` |
+| Services, starting prices and the projects that back them | `lib/services.ts` |
+| Process steps | `lib/process.ts` |
+| FAQ | `lib/faq.ts` |
+| Interface text, Spanish and English | `lib/i18n/es.ts`, `lib/i18n/en.ts` |
+| Capabilities, levels, contact details and availability | `lib/profile.ts` |
 | Project screenshots and videos | `public/projects/<slug>/` (see [docs/CAPTURAS.md](docs/CAPTURAS.md)) |
 | Contact form | `components/ContactForm.tsx` + `public/__forms.html` |
 | Plan for the next web project | [docs/PROYECTO-WEB.md](docs/PROYECTO-WEB.md) |
+
+## Languages
+
+Every page exists at `/es/...` and `/en/...`. Data files keep both languages side by side as `{ en: "...", es: "..." }`; `/` redirects by browser language (see `next.config.mjs`).
+
+## Analytics
+
+Umami Cloud (no cookies) loads only when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is set.
 
 ## Contact form
 

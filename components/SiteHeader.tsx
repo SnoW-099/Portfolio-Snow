@@ -2,18 +2,12 @@
 
 import Link from "next/link"
 import SnowDevMark from "@/components/SnowDevMark"
+import LangSwitch from "@/components/LangSwitch"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import type { Dictionary, Lang } from "@/lib/i18n"
 
-const links = [
-  { href: "#top", label: "Home", key: "top" },
-  { href: "#work", label: "Work", key: "work" },
-  { href: "#services", label: "Services", key: "services" },
-  { href: "#about", label: "About", key: "about" },
-  { href: "#contact", label: "Contact", key: "contact" },
-]
-
-export default function SiteHeader() {
+export default function SiteHeader({ lang, t }: { lang: Lang; t: Dictionary["nav"] }) {
   const [open, setOpen] = useState(false)
   const nav = useRef<HTMLElement>(null)
   const button = useRef<HTMLButtonElement>(null)
@@ -38,23 +32,23 @@ export default function SiteHeader() {
   }, [open])
 
   return (
-    <nav ref={nav} className="nav-wrap" aria-label="Main navigation">
-      <Link href="#top" className="brand" aria-label="Snow Dev, home" onClick={() => setOpen(false)}>
+    <nav ref={nav} className="nav-wrap" aria-label={t.label}>
+      <Link href="#top" className="brand" aria-label={t.home} onClick={() => setOpen(false)}>
         <span className="brand-mark"><SnowDevMark /></span>
         Snow Dev<span className="brand-dot">.</span>
       </Link>
       <div id="main-navigation" className="nav-links" data-open={open}>
-        {links.map((link) => (
-          <Link key={link.key} className={"nav-link-" + link.key} href={link.href} onClick={() => setOpen(false)}>
-            {link.label}<ArrowUpRight className="mobile-nav-arrow" aria-hidden="true" />
+        {Object.entries(t.links).map(([key, label]) => (
+          <Link key={key} data-section={key} href={"#" + key} onClick={() => setOpen(false)}>
+            {label}<ArrowUpRight className="mobile-nav-arrow" aria-hidden="true" />
           </Link>
         ))}
       </div>
-      <Link className="nav-contact" href="#contact" onClick={() => setOpen(false)}>Start a project <ArrowUpRight aria-hidden="true" /></Link>
-      <button ref={button} className="nav-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>
+      <LangSwitch lang={lang} label={t.switchTo} />
+      <Link className="nav-contact" href="#contact" onClick={() => setOpen(false)}>{t.cta} <ArrowUpRight aria-hidden="true" /></Link>
+      <button ref={button} className="nav-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" aria-label={open ? t.close : t.open} onClick={() => setOpen(!open)}>
         {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
     </nav>
   )
 }
-
