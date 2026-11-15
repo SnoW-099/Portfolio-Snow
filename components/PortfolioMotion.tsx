@@ -4,7 +4,7 @@ import { useEffect } from "react"
 
 /**
  * Progressive enhancement only: without JavaScript every element is already visible.
- * Adds the scrolled / active-section state, the staggered reveal and the hero pointer light.
+ * Adds the scrolled / active-section state, and the staggered reveal.
  */
 export default function PortfolioMotion() {
   useEffect(() => {
@@ -12,7 +12,6 @@ export default function PortfolioMotion() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const animations = new Set<Animation>()
     const sections = Array.from(document.querySelectorAll<HTMLElement>("section[id], footer[id]"))
-    const hero = document.querySelector<HTMLElement>(".hero")
     let frame = 0
 
     const update = () => {
@@ -44,21 +43,11 @@ export default function PortfolioMotion() {
       }
     }, { threshold: 0.08 })
 
-    // The hero dot grid lights up under the pointer. Percentages are relative to the grid layer, which is wider than the hero.
-    const onPointer = (event: PointerEvent) => {
-      if (!hero || event.pointerType !== "mouse") return
-      const box = hero.getBoundingClientRect()
-      const bleed = window.innerWidth * 0.2
-      hero.style.setProperty("--mx", (((event.clientX - box.left + bleed) / (box.width + bleed * 2)) * 100).toFixed(1) + "%")
-      hero.style.setProperty("--my", (((event.clientY - box.top + 88) / (box.height + 88)) * 100).toFixed(1) + "%")
-    }
-
     const finishAnimations = () => animations.forEach((animation) => animation.finish())
     const onMotionChange = () => { if (reducedMotion.matches) finishAnimations() }
     document.querySelectorAll("[data-reveal]").forEach((element) => reveal.observe(element))
     document.addEventListener("focusin", finishAnimations)
     reducedMotion.addEventListener("change", onMotionChange)
-    hero?.addEventListener("pointermove", onPointer, { passive: true })
     window.addEventListener("scroll", scheduleUpdate, { passive: true })
     window.addEventListener("resize", scheduleUpdate, { passive: true })
     update()
@@ -69,7 +58,6 @@ export default function PortfolioMotion() {
       window.cancelAnimationFrame(frame)
       document.removeEventListener("focusin", finishAnimations)
       reducedMotion.removeEventListener("change", onMotionChange)
-      hero?.removeEventListener("pointermove", onPointer)
       window.removeEventListener("scroll", scheduleUpdate)
       window.removeEventListener("resize", scheduleUpdate)
       root.classList.remove("page-scrolled")

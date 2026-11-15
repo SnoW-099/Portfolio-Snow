@@ -11,19 +11,15 @@ import { getDictionary, isLang, siteUrl } from "@/lib/i18n"
 import PortfolioMotion from "@/components/PortfolioMotion"
 import ProjectArtwork from "@/components/ProjectArtwork"
 import SiteHeader from "@/components/SiteHeader"
-import Marquee from "@/components/Marquee"
 import ContactForm from "@/components/ContactForm"
 import BuildReel from "@/components/BuildReel"
 import Showreel from "@/components/Showreel"
 import SnowDevMark from "@/components/SnowDevMark"
 import SectionTitle from "@/components/SectionTitle"
 import JsonLd from "@/components/JsonLd"
-import HeroOrbit from "@/components/HeroOrbit"
-import SpinBadge from "@/components/SpinBadge"
 
 const serviceIcons: Record<string, LucideIcon> = { web: Globe, apps: LayoutDashboard, automation: Workflow, creative: Sparkles }
 const processIcons: LucideIcon[] = [MessageSquare, FileText, Code, Rocket, LifeBuoy]
-const glanceLinks = ["#about", "#services", "#work", "#contact"]
 const delay = (ms: number, name = "--enter-delay") => ({ [name]: ms + "ms" }) as CSSProperties
 const two = (n: number) => String(n).padStart(2, "0")
 
@@ -76,7 +72,6 @@ export default async function Portfolio({ params }: { params: Promise<{ lang: st
       <SiteHeader lang={lang} t={t.nav} />
 
       <section id="top" className="hero shell" aria-labelledby="hero-title">
-        <HeroOrbit labels={t.reel.steps} />
         <div className="hero-content">
           <div className="hero-heading">
             <p className="hero-kicker hero-enter" style={delay(300)}><span className="live-dot" /><span><span className="kicker-prefix">Snow Dev — </span>{t.hero.kicker}</span></p>
@@ -97,17 +92,6 @@ export default async function Portfolio({ params }: { params: Promise<{ lang: st
             {available && <p className="hero-footnote hero-status"><span className="live-dot" /> {t.hero.availableFrom} {available}</p>}
           </div>
         </div>
-        <ul className="glance hero-enter" style={delay(700)} aria-label={t.hero.glanceLabel}>
-          {t.hero.glance.map((item, index) => (
-            <li key={item.key}>
-              <a href={glanceLinks[index]}>
-                <span className="glance-k">{item.key}</span>
-                <strong>{index === 2 ? featured.length + " " + item.title : item.title}</strong>
-                <small>{item.text} <ArrowUpRight aria-hidden="true" /></small>
-              </a>
-            </li>
-          ))}
-        </ul>
         <BuildReel t={t.reel} />
       </section>
 
@@ -209,15 +193,13 @@ export default async function Portfolio({ params }: { params: Promise<{ lang: st
           {areas.map((area, index) => (
             <article className={"skill-card skill-card-" + area.id} key={area.id} data-reveal>
               <div className="skill-card-top"><span className="index">{two(index + 1)}</span></div>
-              <h3>{area.title}</h3><p>{area.description}</p>
+              <h3>{area.title}</h3>
               <ul className="skill-items">{area.items.map((item) => <li key={item.name} data-level={item.level}>{item.name}<span className="sr-only"> ({levels[item.level]})</span></li>)}</ul>
               {area.evidence.length > 0 && <div className="skill-evidence">{area.evidence.map((proof) => <Link href={home + proof.href} key={proof.href}>{proof.label} <ArrowUpRight aria-hidden="true" /></Link>)}</div>}
             </article>
           ))}
         </div>
       </section>
-
-      <Marquee words={t.marquee} />
 
       <section id="about" className="about-section shell" aria-labelledby="about-title">
         <div className="about-rail" data-reveal>
@@ -255,7 +237,6 @@ export default async function Portfolio({ params }: { params: Promise<{ lang: st
       <section id="contact" className="contact-section" aria-labelledby="contact-title">
         <div className="shell">
           <div className="contact-topline" data-reveal><span className="eyebrow">07 — {t.contact.eyebrow}</span><span>{t.contact.topline}</span></div>
-          <SpinBadge text={t.nav.cta} />
           <SectionTitle id="contact-title" a={t.contact.a} b={t.contact.b} />
           <div className="contact-grid">
             <ContactForm lang={lang} t={t.contact.form} />

@@ -30,13 +30,6 @@ export const es: typeof en = {
     secondary: "Ver proyectos",
     film: "Ver el vídeo",
     availableFrom: "Disponible para proyectos desde",
-    glanceLabel: "De un vistazo",
-    glance: [
-      { key: "Quién", title: "Snow (Angel)", text: "Desarrollador independiente, España" },
-      { key: "Qué", title: "Webs, apps, automatizaciones", text: "Los cuatro servicios" },
-      { key: "Prueba", title: "proyectos destacados", text: "Públicos, privados y en desarrollo" },
-      { key: "Abierto a", title: "Proyectos y puestos junior", text: "Empieza una conversación" },
-    ],
   },
   reel: {
     caption: "Animación: Snow Dev diseña interfaces, desarrolla aplicaciones y conecta herramientas con automatizaciones.",
@@ -85,7 +78,6 @@ export const es: typeof en = {
     intro: "Agrupado por áreas, con un nivel honesto para cada herramienta y un proyecto que lo demuestra.",
     levels: "Niveles",
   },
-  marquee: ["Diseñar", "Desarrollar", "Conectar"],
   about: {
     eyebrow: "Sobre mí",
     place: "Angel · España",

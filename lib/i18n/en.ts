@@ -28,13 +28,6 @@ export const en = {
     secondary: "Explore projects",
     film: "Watch the film",
     availableFrom: "Available for projects from",
-    glanceLabel: "At a glance",
-    glance: [
-      { key: "Who", title: "Snow (Angel)", text: "Independent developer, Spain" },
-      { key: "What", title: "Sites, apps, automations", text: "The four services" },
-      { key: "Proof", title: "featured projects", text: "Public, private, in development" },
-      { key: "Open to", title: "Projects and junior roles", text: "Start a conversation" },
-    ],
   },
   reel: {
     caption: "Animation: Snow Dev designs interfaces, develops applications and connects tools with automations.",
@@ -83,7 +76,6 @@ export const en = {
     intro: "Grouped by area, with an honest level for each tool and a project that shows it.",
     levels: "Levels",
   },
-  marquee: ["Design", "Develop", "Connect"],
   about: {
     eyebrow: "About",
     place: "Angel · Spain",

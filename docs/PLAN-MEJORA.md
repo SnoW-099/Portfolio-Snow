@@ -188,7 +188,7 @@ Decisiones tomadas al ejecutar:
 - **Idioma antes que el contenido:** se montó primero `/es` + `/en` para escribir cada texto nuevo una sola vez en los dos idiomas.
 - **Hero:** titular elegido "Webs y apps a medida para tu negocio." / "Sites & apps built for your business." Alternativas: "Tu web, lista y sin sorpresas." y "Webs y automatizaciones para negocios pequeños."
 - **CRF del vídeo:** 33 en lugar de 26, porque con 26 el archivo salía más grande que el original.
-- **Extras visuales (pedidos aparte):** órbita animada en el hero, cortina de entrada, iconos que se dibujan, sello giratorio en contacto, grano, guías de columnas y barra de progreso. Todo se apaga con `prefers-reduced-motion`.
+- **Animación (ajustada después a petición del usuario):** versión minimalista. Se quitaron la órbita, la cortina, el sello, el grano y las guías; quedan las líneas que se trazan, los iconos que se dibujan y los subrayados. Página compactada: servicios y stack en rejilla, sin la franja "de un vistazo" ni la cinta. Todo se apaga con `prefers-reduced-motion`.
 
 ### Pendiente del usuario
 
