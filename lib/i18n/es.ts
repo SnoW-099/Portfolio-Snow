@@ -60,8 +60,7 @@ export const es: typeof en = {
   },
   services: {
     eyebrow: "Servicios",
-    a: "Lo que hace Snow Dev.",
-    b: "Con trabajo real detrás.",
+    a: "Lo que hace Snow.",
     intro: "Cuatro tipos de trabajo, cada uno enlazado a un proyecto que lo demuestra. Pequeño y centrado, a propósito.",
     priceNote: "Precio cerrado tras ver el proyecto. Sin sorpresas.",
   },

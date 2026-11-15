@@ -134,7 +134,7 @@ export default async function Portfolio({ params }: { params: Promise<{ lang: st
       <section id="services" className="services-section shell" aria-labelledby="services-title">
         <header className="section-heading" data-reveal>
           <div><span className="eyebrow">02 — {t.services.eyebrow}</span></div>
-          <SectionTitle id="services-title" a={t.services.a} b={t.services.b} />
+          <SectionTitle id="services-title" a={t.services.a} />
           <p>{t.services.intro}</p>
         </header>
         <ol className="service-list">

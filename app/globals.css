@@ -884,3 +884,48 @@ html { scrollbar-color: #3a3a3a var(--background); scrollbar-width: thin; }
   .service-items { display: none; }
   .service-side { margin-top: 12px; }
 }
+
+/* ═════ Quiet motion, second pass ═════ */
+
+/* Pages cross-fade into each other instead of cutting. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation-duration: .18s; }
+  ::view-transition-new(root) { animation-duration: .32s; }
+}
+
+/* Archive and case studies: the header comes in line by line, like the home hero. */
+.archive-hero > *, .case-hero > * { animation: introduction .7s var(--ease) both; }
+.archive-hero > :nth-child(2), .case-hero > :nth-child(2) { animation-delay: 80ms; }
+.archive-hero > :nth-child(3), .case-hero > :nth-child(3) { animation-delay: 160ms; }
+.case-hero > :nth-child(n + 4) { animation-delay: 240ms; }
+
+/* Images settle into place as they scroll in. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .showreel-poster, .case-image > *, .gallery-image-link img { animation: settle linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+    .service-price::before { transform-origin: 0 50%; animation: draw-x linear both; animation-timeline: view(); animation-range: entry 20% entry 100%; }
+  }
+}
+@keyframes settle { from { scale: 1.08; } }
+.case-image, .gallery-image-link { overflow: hidden; }
+
+/* Process: each dot fills in turn once its step is on screen. */
+.process-step[data-revealed]::before { background: var(--foreground); }
+.process-step:nth-child(2)::before { transition-delay: .15s; }
+.process-step:nth-child(3)::before { transition-delay: .3s; }
+.process-step:nth-child(4)::before { transition-delay: .45s; }
+.process-step:nth-child(5)::before { transition-delay: .6s; }
+
+/* Small hover answers. */
+.brand-mark, .subnav-brand .snow-dev-mark { transition: rotate .5s var(--ease); }
+.skill-card { transition: border-color .3s; }
+.archive-image img, .next-project strong { transition: transform .7s var(--ease), translate .5s var(--ease); }
+.faq-item .index { transition: color .2s; }
+.faq-item[open] .index { color: var(--foreground); }
+@media (hover: hover) and (pointer: fine) {
+  .brand:hover .brand-mark, .subnav-brand:hover .snow-dev-mark { rotate: -12deg; }
+  .skill-card:hover { border-color: var(--foreground); }
+  .archive-image:hover img { transform: scale(1.03); }
+  .next-project a:hover strong { translate: 12px 0; }
+}

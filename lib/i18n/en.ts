@@ -58,8 +58,7 @@ export const en = {
   },
   services: {
     eyebrow: "Services",
-    a: "What Snow Dev builds.",
-    b: "Backed by real work.",
+    a: "What Snow does.",
     intro: "Four kinds of work, each linked to a project that shows it. Small and focused, by design.",
     priceNote: "Fixed price once I've seen the project. No surprises.",
   },
