@@ -25,8 +25,8 @@ export default async function GithubStats({ repoUrl, lang, t }: { repoUrl: strin
     <div>
       <span>{t.label}</span>
       <strong className="github-stats">
-        {repo.stargazers_count > 0 && <span><Star aria-hidden="true" /> {repo.stargazers_count} {t.stars}</span>}
-        {repo.forks_count > 0 && <span><GitFork aria-hidden="true" /> {repo.forks_count} {t.forks}</span>}
+        {repo.stargazers_count > 0 && <span><Star aria-hidden="true" /> {repo.stargazers_count}<span className="sr-only"> {t.stars}</span></span>}
+        {repo.forks_count > 0 && <span><GitFork aria-hidden="true" /> {repo.forks_count}<span className="sr-only"> {t.forks}</span></span>}
         <span>{t.updated} <time dateTime={repo.pushed_at}>{updated.toLocaleDateString(lang, { year: "numeric", month: "short", timeZone: "UTC" })}</time></span>
       </strong>
     </div>

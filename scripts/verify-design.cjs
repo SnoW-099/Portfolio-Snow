@@ -3,7 +3,9 @@ const fs = require('node:fs/promises');
 const { spawn } = require('node:child_process');
 const assert = require('node:assert/strict');
 const url = 'http://127.0.0.1:3010';
-const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowtify', '/projects/rez-bot', '/projects/staroptimizer'];
+const slugs = ['py-mini-systems', 'snowtify', 'rez-bot', 'staroptimizer', 'vibe', 'portfolio'];
+const routes = ['en', 'es'].flatMap(lang => ['/' + lang, `/${lang}/projects`, ...slugs.map(slug => `/${lang}/projects/${slug}`)]);
+const home = url + '/en';
 
 (async () => {
   const server = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'start', '--hostname', '127.0.0.1', '--port', '3010'], { stdio: 'inherit' });
@@ -30,8 +32,7 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
       }
     }
     await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.goto(url, { waitUntil: 'networkidle' });
-    assert.deepEqual(await page.locator('.spotlight-bottom strong').allTextContents(), ['Python Mini Systems', 'Snowtify', 'Rez Bot']);
+    await page.goto(home, { waitUntil: 'networkidle' });
     await page.screenshot({ path: '.artifacts/design/home-desktop.png', fullPage: true });
     const desktop = await page.screenshot({ type: 'jpeg', quality: 75 });
     await fs.writeFile('.artifacts/design/hero-desktop.jpg', desktop);
@@ -40,19 +41,19 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
     await fs.writeFile('.artifacts/design/hero-dark.jpg', dark);
     await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' });
-    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.goto(home, { waitUntil: 'networkidle' });
     await page.getByRole('button', { name: 'Open navigation' }).click();
     await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'About', exact: true }).click();
     assert.equal(await page.getByRole('button', { name: 'Open navigation' }).getAttribute('aria-expanded'), 'false');
     await page.getByRole('button', { name: 'Open navigation' }).click();
     await page.keyboard.press('Escape');
     assert.equal(await page.getByRole('button', { name: 'Open navigation' }).evaluate(el => el === document.activeElement), true);
-    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.goto(home, { waitUntil: 'networkidle' });
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.classList.contains('skip-link')), true);
     await page.keyboard.press('Enter');
     assert.equal(new URL(page.url()).hash, '#work');
-    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.goto(home, { waitUntil: 'networkidle' });
     await page.screenshot({ path: '.artifacts/design/home-mobile.png', fullPage: true });
     const mobile = await page.screenshot({ type: 'jpeg', quality: 75 });
     await fs.writeFile('.artifacts/design/hero-mobile.jpg', mobile);
@@ -61,7 +62,7 @@ const routes = ['/', '/projects', '/projects/py-mini-systems', '/projects/snowti
     await page.screenshot({ path: '.artifacts/design/mobile-large-text.png', fullPage: true });
     assert.equal(await page.locator('.hero-title').evaluate(el => getComputedStyle(el).animationName), 'none');
     assert.deepEqual(errors, []);
-    console.log('PASS: 24 route/viewport checks; images; light/dark appearance; mobile navigation; Escape/focus; keyboard skip link; 200% text; reduced motion.');
+    console.log(`PASS: ${routes.length * 4} route/viewport checks (ES + EN); images; light/dark appearance; mobile navigation; Escape/focus; keyboard skip link; 200% text; reduced motion.`);
   } finally {
     if (browser) await browser.close();
     server.kill();

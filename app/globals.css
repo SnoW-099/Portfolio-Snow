@@ -961,3 +961,10 @@ body::after { content: ""; position: fixed; z-index: 60; inset: 0; pointer-event
 @keyframes nudge { to { transform: translateY(5px); } }
 @media (max-width: 62em) { .spin-badge { display: none; } }
 @media (forced-colors: active) { .hero-orbit, .spin-badge { display: none; } }
+
+/* Orbit tuning: it stays behind the copy, so it sits further out and quieter where text crosses it. */
+.hero-orbit { top: 24px; right: -20%; stroke: color-mix(in srgb, var(--foreground) 13%, transparent); }
+.orbit-label { fill: color-mix(in srgb, var(--muted) 60%, transparent); }
+@media (max-width: 48em) { .hero-orbit { top: 8px; right: -58%; opacity: .55; } }
+.reel-toggle { flex: none; }
+@media (max-width: 38em) { .reel-steps { gap: 10px; font-size: .6875rem; } }

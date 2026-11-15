@@ -170,3 +170,32 @@ Esto es lo que más distancia a un portfolio "bonito" de uno que consigue client
 - CMS o blog: solo merece la pena si el usuario va a escribir con regularidad.
 - Modo claro: la marca es oscura. Se podría añadir más adelante, pero no aporta para captar clientes.
 - Testimonios o logos de clientes ficticios.
+
+---
+
+## Estado de ejecución (2026-11-15, rama `mejora/mercado`)
+
+Hecho: fases 1, 2, 3 y 4. `npx tsc --noEmit` y `npm run build` en verde. Comprobado con Chrome sin interfaz a 320, 390, 768 y 1440 px en 12 rutas (ES y EN): sin scroll horizontal, sin títulos cortados y sin errores de consola.
+
+| Métrica | Antes | Después |
+|---|---|---|
+| Peso del showreel (MP4) | 5,1 MB | 2,3 MB (+ WebM de 2,3 MB) |
+| Lighthouse | pendiente | pendiente: el permiso para ejecutarlo se denegó otra vez |
+
+Decisiones tomadas al ejecutar:
+
+- **Idioma sin middleware:** la detección de `Accept-Language` se hace con `redirects` en `next.config.mjs` (`/` → `/es` o `/en`). Mismo resultado y sin código en ejecución.
+- **Idioma antes que el contenido:** se montó primero `/es` + `/en` para escribir cada texto nuevo una sola vez en los dos idiomas.
+- **Hero:** titular elegido "Webs y apps a medida para tu negocio." / "Sites & apps built for your business." Alternativas: "Tu web, lista y sin sorpresas." y "Webs y automatizaciones para negocios pequeños."
+- **CRF del vídeo:** 33 en lugar de 26, porque con 26 el archivo salía más grande que el original.
+- **Extras visuales (pedidos aparte):** órbita animada en el hero, cortina de entrada, iconos que se dibujan, sello giratorio en contacto, grano, guías de columnas y barra de progreso. Todo se apaga con `prefers-reduced-motion`.
+
+### Pendiente del usuario
+
+- [ ] **Revisar las respuestas de la FAQ** (`lib/faq.ts`): hosting a nombre del cliente, soporte tras el lanzamiento y funciones nuevas presupuestadas aparte describen una forma de trabajar razonable, pero la decides tú.
+- [ ] **Plazos del proceso** (`lib/process.ts`, campo `time`): vacío hasta que des plazos reales.
+- [ ] **Disponibilidad** (`lib/profile.ts`, `availableFrom`): vacío; no se muestra nada hasta que pongas el mes.
+- [ ] **Resultados reales** (`lib/projects.ts`, campo `outcome`): vacío en todos los proyectos.
+- [ ] **Umami:** crear la cuenta en cloud.umami.is y poner `NEXT_PUBLIC_UMAMI_WEBSITE_ID` en Netlify.
+- [ ] **Formulario:** probar un envío real en un deploy de Netlify (hay un campo nuevo, `language`).
+- [ ] **Fase 5 manual:** Lighthouse, lector de pantalla, Safari de iOS, Rich Results Test y reenviar el sitemap en Search Console (las URL ahora empiezan por `/es` y `/en`).
